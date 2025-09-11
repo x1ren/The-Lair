@@ -9,4 +9,4 @@ To succeed, one must journey through realms of programming, conquer challenges o
 
 The first trial awaits. The quest for knowledge begins now.
 
-<h6>                           -----      ALL HAIL MAROON AND GOLD     -----</h6>
+<h6> -----ALL HAIL MAROON AND GOLD-----</h6>
