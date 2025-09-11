@@ -1,4 +1,3 @@
 # The-Lair
-OOP1 RPG GAME PROJECT
 
-<h1>WELCOME TO THE LAIR GAME</h1>
+<h1 color = "Green">WELCOME TO THE LAIR GAME</h1>
