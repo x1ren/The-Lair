@@ -1,0 +1,180 @@
+# THE LAIR  
+by  
+**Iben Anoos · Gaille Amolong · Jamuel H. Bacus · Ilde Jan Figueras · Joseph Jimenez**  
+
+© 2025  
+All rights reserved.  
+
+---
+
+## Storyline (Backstory)  
+In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the **Cebu Institute of Technology University**.  
+
+To outsiders, it is only a school. To those within, it is a proving ground for digital pioneers.  
+
+A student arrives, ready to master the arcane arts of **Information Technology**. Their path is no ordinary education—it is a **legendary quest** through seven great trials. Each trial is defended by guardians of knowledge, instructors whose tests shape only the worthy into true mages of code.  
+
+The journey demands not only **logic** and **wisdom**, but resilience, creativity, and mastery over the hidden language of computation.  
+
+The first trial awaits. The quest for knowledge begins now.  
+
+---
+
+## Game Mechanics  
+
+Each character and villain has **three core stats**:  
+
+- **HP (Health Points)** 
+  Represents endurance and resilience. Mistakes in puzzles, wrong answers, or traps cause HP loss.  
+  - If HP reaches 0 → the character fails the trial.  
+  - Some characters have skills that allow survival at 0 HP.  
+
+- **Logic** 
+  Represents raw programming accuracy and problem-solving clarity.  
+  - High Logic increases success chances on **syntax-heavy puzzles** (loops, conditions, OOP details).  
+  - Characters with strong Logic often avoid extra penalties on technical mistakes.  
+
+- **Wisdom** 
+  Represents understanding, foresight, and decision-making.  
+  - High Wisdom increases success chances on **complex or conceptual puzzles** (recursion, algorithms, data systems, AI).  
+  - Wisdom also improves outcomes on puzzles requiring restraint or pattern recognition.  
+
+**How They Work Together**  
+- A puzzle may check **Logic** (syntax-based), **Wisdom** (conceptual/strategic), or both.  
+- Players roll/check against their stat values to determine outcomes.  
+- Skills may boost stats, prevent penalties, or change puzzle difficulty.  
+
+---
+
+## Main Characters (Player Selectable)  
+
+### 1. Iben Anoos — *The Codebreaker*  
+- **HP**: 4  
+- **Logic**: 3  
+- **Wisdom**: 2  
+- **Description**: A quiet thinker who sees through syntax like glass. Quick with loops and arrays, but prone to overthinking recursion.  
+
+**Backstory**  
+Iben grew up solving puzzles in silence, often dismantling gadgets and rewriting broken programs for fun. At CIT, he’s known as the one who always spots the bug no one else can see. His sharp eye for details makes him dangerous in the trial chambers, though his perfectionism sometimes slows him down.  
+
+**Skills**  
+- **Debugger’s Eye** – Once per trial, can reveal a hidden hint in a puzzle before answering.  
+- **Syntax Slayer** – Automatically avoids penalties from syntax-based traps.  
+- **Loop Mastery** – Gains +1 Logic whenever facing loop-based puzzles.  
+
+---
+
+### 2. Gaille Amolong — *The Architect*  
+- **HP**: 5  
+- **Logic**: 2  
+- **Wisdom**: 3  
+- **Description**: A visionary builder who blends creativity with discipline. Excels in designing clean structures, but sometimes risks too much ambition.  
+
+**Backstory**  
+Gaille doesn’t just write code—he designs worlds from scratch. From full-stack systems to AI prototypes, his drive has always been to create something bigger than himself. But this ambition is both his strength and weakness; building great systems demands equal parts stability and vision, and sometimes his eagerness pushes past limits.  
+
+**Skills**  
+- **Second Chance** – Once per trial, may ignore a single -1 HP loss.  
+- **Blueprint Mind** – Can restructure a failed puzzle into an easier version (usable once per stage).  
+- **Vision Realized** – After solving 3 puzzles in a row, gain +1 Wisdom permanently.  
+
+---
+
+### 3. Jamuel Bacus — *The Tactician*  
+- **HP**: 3  
+- **Logic**: 2  
+- **Wisdom**: 4  
+- **Description**: A strategist who plays the long game. Masters recursion and patterns, though weaker in brute-force coding.  
+
+**Backstory**  
+Jamuel always saw coding like a chess match—thinking three steps ahead, mapping recursion like unfolding branches. While not the strongest in raw logic, his ability to spot patterns and plan makes him invaluable in the deepest puzzles. He is patient, calculating, and ruthless when the opportunity presents itself.  
+
+**Skills**  
+- **Recursive Insight** – When solving recursion puzzles, automatically gain +1 Wisdom if correct.  
+- **Strategist’s Gambit** – Can skip one puzzle per stage without penalty (counts as a draw).  
+- **Pattern Recognition** – +1 Logic when facing puzzles with repeating sequences or nested conditions.  
+
+---
+
+### 4. Ilde Jan Figueras — *The Challenger*  
+- **HP**: 6  
+- **Logic**: 1  
+- **Wisdom**: 2  
+- **Description**: Bold and relentless, charging headfirst into code with sheer determination. Not always precise, but hard to bring down.  
+
+**Backstory**  
+Ilde grew up believing no obstacle was too great if met with enough force. He thrives in the heat of challenge, never backing down, even when his code crashes spectacularly. His resilience makes him a terrifying opponent in prolonged battles—he may not always win cleanly, but he refuses to lose.  
+
+**Skills**  
+- **Iron Will** – Can continue the trial with 0 HP once per stage (survive one fatal mistake).  
+- **Overclocked Resolve** – After dropping below 2 HP, gain +1 Logic until the trial ends.  
+- **Berserker Coder** – If reduced to 1 HP, solve the next puzzle automatically (adrenaline surge).  
+
+---
+
+### 5. Joseph Jimenez — *The Balanced*  
+- **HP**: 4  
+- **Logic**: 2  
+- **Wisdom**: 2  
+- **Description**: A steady learner with no glaring weaknesses, but no flashy strengths. Reliable under pressure, adaptable to any puzzle.  
+
+**Backstory**  
+Joseph has never been the top of the class, but he has never fallen behind either. His strength lies in adaptability—able to pick up just enough of any concept to survive. He thrives when situations demand flexibility, and his balanced nature lets him grow stronger the longer the journey goes on.  
+
+**Skills**  
+- **Jack of All Codes** – Gains +1 Logic or +1 Wisdom (player’s choice) after every completed stage.  
+- **Adaptive Learner** – If HP drops below half, instantly gain +1 to either Logic or Wisdom.  
+- **Steady Hand** – Immune to penalties from hesitation or “overthinking” traps.  
+
+---
+
+## Villains (Trial Guardians)  
+
+### NGE 103: Ma’am Cathy — *Keeper of First Flames* (Intro & Intermediate Programming)  
+- **HP**: 5  
+- **Logic**: 3  
+- **Wisdom**: 2  
+- **Domain**: Loops, conditionals, recursion, and error traps.  
+- **Skill – Syntax Curse**: When the player makes a mistake, they take extra -1 HP if the error is due to syntax.  
+- **Trial Theme**: Completing fragments of code; spotting logical vs syntactical flaws.  
+
+---
+
+### NGE 101: Sir Khai — *Warden of Objects* (OOP)  
+- **HP**: 6  
+- **Logic**: 4  
+- **Wisdom**: 3  
+- **Domain**: Classes, inheritance, encapsulation, polymorphism.  
+- **Skill – Null Reference**: Forces the player to reattempt a puzzle if their answer misses an “object detail.”  
+- **Trial Theme**: Object hierarchies, constructors, access modifiers, polymorphic traps.  
+
+---
+
+### NGE 104: Sir Serato — *Guardian of Data* (DSA)  
+- **HP**: 7  
+- **Logic**: 5  
+- **Wisdom**: 3  
+- **Domain**: Stacks, queues, linked lists, sorting, trees, and graphs.  
+- **Skill – Segmentation Fault**: Any wrong answer costs -2 HP instead of -1, as data collapses violently.  
+- **Trial Theme**: Optimizing algorithms, balancing trees, detecting infinite loops.  
+
+---
+
+### RTL 101: Ma’am Tulin — *Mistress of Networks* (Information Management)  
+- **HP**: 6  
+- **Logic**: 3  
+- **Wisdom**: 5  
+- **Domain**: Databases, schemas, queries, and information systems.  
+- **Skill – Query Overload**: If the player takes too long (hesitates in choice), they automatically lose -1 HP for inefficiency.  
+- **Trial Theme**: SQL queries, normalization puzzles, managing data integrity.  
+
+---
+
+### The Dean’s Office: The Dean — *Arbiter of Mastery* (All + Automata & AI)  
+- **HP**: 10  
+- **Logic**: 6  
+- **Wisdom**: 6  
+- **Domain**: Integrates all previous disciplines, adds Automata Theory, AI logic, and machine learning.  
+- **Skill – Turing’s Judgement**: Once per stage, forces the player into an unavoidable puzzle that tests both logic and wisdom at the same time.  
+- **Skill – Summon Instructor**: Can call back a previously defeated professor to reuse their trial mechanic.  
+- **Trial Theme**: DFA/NFA automata puzzles, AI decision trees, algorithmic optimization under pressure.  
