@@ -42,7 +42,7 @@ Ma’am Cathy lowers her staff, the fire around you dimming. She studies you wit
 
 <i>The flames part, revealing the path to the next chamber.</i>
 
-==================================================================<br>
+========================================================================<br>
 <b>Stage 2 – The Hall of Order (Sir Khai)</b><br>
 
 The next chamber is cold and still. Marble floors stretch into perfect patterns, and glowing runes hover in neat rows.
@@ -73,7 +73,7 @@ Sir Khai lowers his great blade, its glow fading. He nods once, his stern gaze s
 
 <i>The marble floors realign, forming a staircase to the next hall.</i>
 
-
+========================================================================<br>
 <b>Stage 3 – The Buglord Compiler(Sir Serato)</b><br>
 
 You step into a chamber filled with shifting pathways and streams of light that twist like rivers. The ground itself seems to reconfigure with every step.
@@ -103,8 +103,7 @@ Sir Serato’s blade of light dissolves back into streams, which calm into gentl
 
 <i>The glowing streams gather, forming a bridge to the next chamber.</i>
 
-
-
+========================================================================<br>
 <b>Stage 4 – The Chamber of Structures (Ma’am Tulin)</b><br>
 
 The next chamber stretches into an endless library. Shelves twist into mazes, ladders rearrange themselves, and scrolls knot into webs.
@@ -134,8 +133,7 @@ Ma’am Tulin’s lattice-staff folds back into a scroll. The shelves stop twist
 
 <i>The library doors creak open, revealing the golden staircase upward.</i>
 
-
-
+========================================================================<br>
 <b>Stage 5 – The Dean’s Judgement (Ma’am Dean)</b><br>
 The final staircase rises into a vast chamber of steel and stone. The hum of servers fills the air, glowing nodes and circuits lining the walls.
 
