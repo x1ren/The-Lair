@@ -145,7 +145,7 @@ At the center stands Ma’am Dean, calm yet commanding.
 <b>MA'AM DEAN</b><br>
 “You have kindled flame, forged order, mastered flow, and embraced structures. But these are fragments. The true test is harmony — bringing all together. If you would stand before me, prove first you can endure the echoes of every trial.”
 
-She raises her hand, and suddenly the chamber trembles. All the defeated bosses reappear — Ma’am Cathy, Sir Khai, Sir Serato, and Ma’am Tulin — their strength diminished, their vitality halved from their previous defeat, yet still formidable.
+She raises her hand, and suddenly the chamber trembles. All the defeated bosses reappear — Ma’am Cathy, Sir Khai, Sir Serato, and Ma’am Tulin — their strength diminished, their vitality halved from their previous defeat, yet still formidable.<br>
 <b>(summon previous boss)</b><br>
 
 <b>(all previous boss defeated)</b><br>
