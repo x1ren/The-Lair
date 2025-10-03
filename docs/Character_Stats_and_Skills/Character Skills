@@ -1,0 +1,105 @@
+# The Lair: Player Skills
+
+---
+
+## Iben Anoos — The Codebreaker
+
+### Debugger’s Eye
+- **Cost:** 40 Wisdom  
+- **Effect:** Enemy defense reduced by 25% for 3 turns. Reveals hidden abilities.  
+- **Puzzle Effect:** Reveals 1 hidden hint or removes 1 wrong option.  
+- **Cooldown:** 3 turns  
+
+### Syntax Slayer
+- **Cost:** 30 Wisdom  
+- **Effect:** Deals Logic × 1.5 damage. If enemy is weakened by Debugger’s Eye, damage becomes Logic × 2.  
+- **Puzzle Effect:** 50% chance to confirm last answer before locking it in.  
+- **Cooldown:** 2 turns  
+
+### Loop Mastery
+- **Cost:** 60 Wisdom  
+- **Effect:** Repeats last skill for free.  
+- **Puzzle Effect:** Retry last puzzle without penalty.  
+- **Cooldown:** 4 turns  
+
+---
+
+## Gaille Amolong — The Architect
+
+### Second Chance *(Passive)*
+- **Effect:** Revive once per stage with 30% HP.  
+- **Puzzle Effect:** Grants 1 extra attempt.  
+
+### Blueprint Mind
+- **Cost:** 50 Wisdom  
+- **Effect:** Increase Logic by 30% for 2 turns.  
+- **Puzzle Effect:** Highlights the key concept of the puzzle.  
+- **Cooldown:** 3 turns  
+
+### Vision Realized
+- **Cost:** 70 Wisdom  
+- **Effect:** +20% defense and regen 10% HP for 3 turns.  
+- **Puzzle Effect:** Reveals correct answer if only 2 remain.  
+- **Cooldown:** 5 turns  
+
+---
+
+## Jamuel Bacus — The Tactician
+
+### Recursive Insight
+- **Cost:** 40 Wisdom  
+- **Effect:** Reduces next enemy attack by 30%.  
+- **Puzzle Effect:** Preview the next question.  
+- **Cooldown:** 2 turns  
+
+### Strategist’s Gambit
+- **Cost:** 70 Wisdom  
+- **Effect:** Next skill deals ×1.75 damage. 10% critical chance.  
+- **Puzzle Effect:** Removes 2 wrong options, but wrong answer gives penalty.  
+- **Cooldown:** 4 turns  
+
+### Pattern Recognition
+- **Cost:** 60 Wisdom  
+- **Effect:** +20% accuracy and +10% critical chance for 3 turns.  
+- **Puzzle Effect:** Shows step-by-step code trace until 1 line before output.  
+- **Cooldown:** 3 turns  
+
+---
+
+## Ilde Jan Figueras — The Challenger
+
+### Iron Will *(Passive)*
+- **Effect:** When HP < 50%, damage taken reduced by 10%.  
+- **Puzzle Effect:** +10 seconds in timed puzzles.  
+
+### Overclocked Resolve
+- **Cost:** 80 Wisdom (scales per stage)  
+- **Effect:** Double Logic for 2 turns.  
+- **Puzzle Effect:** Skip one question without penalty.  
+- **Cooldown:** 3 turns  
+
+### Berserker Coder
+- **Cost:** 120 Wisdom (scales per stage) + 150 HP  
+- **Effect:** Deals Logic × 3 damage. Takes 10% recoil damage.  
+- **Puzzle Effect:** Auto-answers correctly, but disables skills next puzzle.  
+- **Cooldown:** 4 turns  
+
+---
+
+## Joseph Jimenez — The Balanced
+
+### Jack of All Codes
+- **Cost:** 40 Wisdom  
+- **Effect:** Deals Logic × 1.2 damage to all enemies.  
+- **Puzzle Effect:** 50/50 hint (narrow to 2 answers).  
+- **Cooldown:** 3 turns  
+
+### Adaptive Learner
+- **Cost:** 50 Wisdom  
+- **Effect:** Reuse last skill with +20% efficiency.  
+- **Puzzle Effect:** Wrong answer once gives a hint on the next question.  
+- **Cooldown:** 4 turns  
+
+### Steady Hand *(Passive)*
+- **Effect:** 15% chance to resist debuffs.  
+- **Puzzle Effect:** Prevents penalty for one wrong attempt.  
