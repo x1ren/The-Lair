@@ -1,0 +1,53 @@
+# The Lair: Player Stats
+
+When the player finishes a level, they are presented with a choice of upgrade categories (HP, Logic, Wisdom).
+
+Each chosen stat upgrade is randomized within a defined range that grows as the stages progress:
+
+- **Stage 1:** Random(50, 70)  
+- **Stage 2:** Random(60, 80)  
+- **Stage 3:** Random(65, 85)  
+- **Stage 4:** Random(70, 90)  
+- **Stage 5:** Random(90, 100)  
+
+---
+
+## Player Sheets
+
+### Iben Anoos — The Codebreaker
+- **HP:** 400  
+- **Logic:** 300  
+- **Wisdom:** 200  
+- **Skills:** Debugger’s Eye, Syntax Slayer, Loop Mastery  
+
+---
+
+### Gaille Amolong — The Architect
+- **HP:** 500  
+- **Logic:** 200  
+- **Wisdom:** 300  
+- **Skills:** Second Chance, Blueprint Mind, Vision Realized  
+
+---
+
+### Jamuel Bacus — The Tactician
+- **HP:** 300  
+- **Logic:** 200  
+- **Wisdom:** 400  
+- **Skills:** Recursive Insight, Strategist’s Gambit, Pattern Recognition  
+
+---
+
+### Ilde Jan Figueras — The Challenger
+- **HP:** 600  
+- **Logic:** 100  
+- **Wisdom:** 200  
+- **Skills:** Iron Will, Overclocked Resolve, Berserker Coder  
+
+---
+
+### Joseph Jimenez — The Balanced
+- **HP:** 400  
+- **Logic:** 200  
+- **Wisdom:** 200  
+- **Skills:** Jack of All Codes, Adaptive Learner, Steady Hand  
