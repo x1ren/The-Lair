@@ -1,4 +1,4 @@
-#The Lair
+<h4><i>The Lair</i></h4>
 
 In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the <strong>Cebu Institute of Technology University</strong>.
 
@@ -12,8 +12,7 @@ The greatest tests lie not in simple exams, but in battles of wit and creativity
 
 The first trial awaits. The quest for knowledge begins now.....
 
-<h5>Choose Character</h5>
-
+<h5>==Choose Character==</h5>
 
 <b>Stage 1 – The Hall of Flame (Ma’am Cathy)</b>
 
@@ -43,7 +42,7 @@ Ma’am Cathy lowers her staff, the fire around you dimming. She studies you wit
 
 <i>The flames part, revealing the path to the next chamber.</i>
 
-
+=====================================================================================================================
 <b>Stage 2 – The Hall of Order (Sir Khai)</b><br>
 
 The next chamber is cold and still. Marble floors stretch into perfect patterns, and glowing runes hover in neat rows.
