@@ -2,8 +2,8 @@
 
 *(Architect of Errors)*
 
-**HP:** 700
-**Logic (Attack Power):** 450
+**HP:** 700<br>
+**Logic (Attack Power):** 450<br>
 **Wisdom (Mana):** 300
 
 ### Role in The Lair
