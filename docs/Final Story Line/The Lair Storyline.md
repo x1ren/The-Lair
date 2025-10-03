@@ -131,7 +131,7 @@ Ma’am Tulin’s lattice-staff folds back into a scroll. The shelves stop twist
 <b>MA'AM TULIN</b><br>
 “You held the structures together. You commanded them, instead of being lost among them. With this, you are prepared for the final judgement — but be warned, it will call upon all that you have learned.”
 
-The library doors creak open, revealing the golden staircase upward.
+<i>The library doors creak open, revealing the golden staircase upward.<i>
 
 
 
