@@ -42,7 +42,7 @@ Ma’am Cathy lowers her staff, the fire around you dimming. She studies you wit
 
 <i>The flames part, revealing the path to the next chamber.</i>
 
-==================================================================================================
+==================================================================<br>
 <b>Stage 2 – The Hall of Order (Sir Khai)</b><br>
 
 The next chamber is cold and still. Marble floors stretch into perfect patterns, and glowing runes hover in neat rows.
