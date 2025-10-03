@@ -148,7 +148,7 @@ At the center stands Ma’am Dean, calm yet commanding.
 She raises her hand, and suddenly the chamber trembles. All the defeated bosses reappear — Ma’am Cathy, Sir Khai, Sir Serato, and Ma’am Tulin — their strength diminished, their vitality halved from their previous defeat, yet still formidable.
 <b>(summon previous boss)</b><br>
 
-<b>(all previous boss defeated/b><br>
+<b>(all previous boss defeated)</b><br>
 When the last echo fades does Ma’am Dean step forward, the chamber stabilizing, lights focusing on her.
 
 <b>MA'AM DEAN</b><br>
