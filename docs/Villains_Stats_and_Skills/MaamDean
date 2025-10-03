@@ -1,0 +1,62 @@
+# The Dean’s Judgement  
+
+**Stage:** Final Boss Encounter  
+**Requirement:** Players must have accumulated at least **500 HP**, **250 Logic**, and **250 Wisdom** to enter.  
+
+---
+
+## Boss Overview  
+**Name:** Ma’am Dean  
+**Title:** Overseer of All Knowledge  
+
+**Catchphrase:**  
+> *“All your lessons lead here. Show me if you truly deserve to pass.”*  
+
+---
+
+## Boss Stats  
+- **HP:** 1200  
+- **Logic (Attack Power):** 500  
+- **Wisdom (Mana):** 450  
+
+---
+
+## Passive Skill  
+
+### Authority of Knowledge  
+- **Effect:** At the start of battle, Dean gains **+10% defense** and regenerates **+30 Wisdom per turn**.  
+- **Puzzle Effect:** Every puzzle has an **extra hidden clause** unless countered by a player skill (e.g., *Debugger’s Eye*, *Blueprint Mind*).  
+
+---
+
+## Skills  
+
+### Exam Overload  
+- **Cost:** 70 Wisdom  
+- **Effect:** Deals *Logic × 1.2* damage to all players.  
+- **Puzzle Twist:** Players must solve **two linked puzzles** (e.g., code trace + logic riddle) in one turn.  
+- **Cooldown:** 3 turns  
+
+---
+
+### Administrative Pressure  
+- **Cost:** 80 Wisdom  
+- **Effect:** Reduces **Wisdom regeneration** of all players by 20 for 2 turns.  
+- **Puzzle Twist:** Skipping or giving up on a puzzle costs **extra -5 HP**.  
+- **Cooldown:** 4 turns  
+
+---
+
+### Comprehensive Exam (Ultimate)  
+- **Cost:** 100 Wisdom  
+- **Effect:** Deals *Logic × 2.0* damage in one devastating strike.  
+- **Puzzle Twist:** A **3-part exam chain** (trace → hidden condition → debugging).  
+- **Counterplay:** If solved fully, the attack is **negated** and the Dean takes *Logic × 1.0* reflected back.  
+- **Cooldown:** 6 turns  
+
+---
+
+## Battle Flow  
+1. **Opener:** Uses *Exam Overload* to overwhelm players with multi-task puzzles.  
+2. **Mid-fight:** Applies *Administrative Pressure* to weaken Wisdom regeneration and punish mistakes.  
+3. **Final Phase:** Unleashes *Comprehensive Exam*, the true Judgement — only those who master all puzzles can overcome it.  
