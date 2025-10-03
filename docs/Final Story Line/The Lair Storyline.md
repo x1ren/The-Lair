@@ -18,24 +18,23 @@ The first trial awaits. The quest for knowledge begins now.....
 <b>Stage 1 – The Hall of Flame (Ma’am Cathy)</b>
 
 You enter the first chamber. Torches roar to life, painting the walls in fiery light. The air burns with heat.
-
 At the far end stands Ma’am Cathy, her gaze sharp and unwavering.
 
-<b>MA’AM CATHY (calling out):</b>
+<b>MA’AM CATHY (calling out):</b><br>
 “You dare to begin the trials? Then prove you can withstand the fire. Defeat my students first — only then may you face me.”
 
-From the flames, minions rise:
+From the flames, minions rise:<br>
 <b>(start minion fight)</b>
 
-<b>(when all minion defeated)</b>
+<b>(when all minion defeated)</b><br>
 The last ember fades. Ma’am Cathy steps forward, staff glowing like molten steel.
 
-<b>MA’AM CATHY:</b>
+<b>MA’AM CATHY:</b><br>
 “You’ve survived the sparks, but I am the true flame. Let us see if your resolve burns brighter than mine.”
 
-<b>(Boss fight begins.)</b>
+<b>(Boss fight begins.)</b><br>
 
-<b>(Boss defeated)</b>
+<b>(Boss defeated)</b><br>
 Boss Epilogue:
 Ma’am Cathy lowers her staff, the fire around you dimming. She studies you with a firm but approving look.
 
