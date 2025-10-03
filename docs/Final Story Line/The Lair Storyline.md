@@ -43,6 +43,7 @@ Ma’am Cathy lowers her staff, the fire around you dimming. She studies you wit
 
 <i>The flames part, revealing the path to the next chamber.</i>
 
+
 <b>Stage 2 – The Hall of Order (Sir Khai)</b><br>
 
 The next chamber is cold and still. Marble floors stretch into perfect patterns, and glowing runes hover in neat rows.
@@ -71,7 +72,8 @@ Sir Khai lowers his great blade, its glow fading. He nods once, his stern gaze s
 <b>SIR KHAI:</b><br>
 “You’ve shown discipline. Chaos did not claim you, and you bent structure to your will. Take this lesson forward. Only with order can true strength be built.”
 
-<i>The marble floors realign, forming a staircase to the next hall.<i>
+<i>The marble floors realign, forming a staircase to the next hall.</i>
+
 
 <b>Stage 3 – The Buglord Compiler(Sir Serato)</b><br>
 
@@ -100,7 +102,7 @@ Sir Serato’s blade of light dissolves back into streams, which calm into gentl
 <b>SIR SERATO</b><br>
 “You found your way through the flow without waste. That is the mark of mastery. Remember — the shortest path is not always the easiest, but it is the truest.”
 
-<i>The glowing streams gather, forming a bridge to the next chamber.<i>
+<i>The glowing streams gather, forming a bridge to the next chamber.</i>
 
 
 
@@ -131,7 +133,7 @@ Ma’am Tulin’s lattice-staff folds back into a scroll. The shelves stop twist
 <b>MA'AM TULIN</b><br>
 “You held the structures together. You commanded them, instead of being lost among them. With this, you are prepared for the final judgement — but be warned, it will call upon all that you have learned.”
 
-<i>The library doors creak open, revealing the golden staircase upward.<i>
+<i>The library doors creak open, revealing the golden staircase upward.</i>
 
 
 
@@ -168,6 +170,6 @@ She steps closer, holding out a radiant seal. Its glow burns with the strength o
 <b>MA’AM DEAN:</b><br>
 “From this moment, you are no longer an initiate. You are a Scholar — one who carries both knowledge and mastery. Walk forward, and let the world see what you have become.”
 
-<i>The gates open behind her, golden light pouring through. You take your first step into the world beyond, the mark of a true Scholar upon you.<i>
+<i>The gates open behind her, golden light pouring through. You take your first step into the world beyond, the mark of a true Scholar upon you.</i>
 
 
