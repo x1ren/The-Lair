@@ -1,4 +1,4 @@
-<h4><i>The Lair</i></h4>
+<h1><i>The Lair</i></h1>
 
 In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the <strong>Cebu Institute of Technology University</strong>.
 
