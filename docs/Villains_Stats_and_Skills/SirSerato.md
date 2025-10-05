@@ -1,52 +1,84 @@
-## Sir Serato — *The Buglord Compiler*
+Sir Serato — The Algorithmic Tyrant
 
-*(Architect of Errors)*
+(Architect of Logical Collapse)
 
-**HP:** 700<br>
-**Logic (Attack Power):** 450<br>
-**Wisdom (Mana):** 300
+HP: 900
+Logic (Attack Power): 500
+Wisdom (Mana): 350
 
-### Role in The Lair
+Role in The Lair
 
-* **SecondTrial Guardian** — embodies the chaos of deeper programming errors that look “fine” until runtime.
-* **Theme:** Debugging nightmares — crashes, recursion traps, memory leaks.
-* **Battle Style:** Corrupts player flow with status effects, misdirection, and escalating “system failures.”
+Second Trial Guardian — The DSA Mastermind
+A master of data structures gone rogue. Once a wise compiler spirit, Serato grew obsessed with optimization — now he twists logic trees, tangles graphs, and fragments arrays into chaos. Players face him to prove mastery over structure, recursion, and complexity itself.
 
----
+Theme: Data Structure Corruption — linked lists that bite back, trees that loop into infinity, and graphs that trap explorers in cycles.
 
-### Skills
+Battle Style: Algorithmic traps and structure manipulation; the longer the battle runs, the more complex it becomes.
 
-**Segfault Strike**
+Skills
 
-* **Cost:** 50 Wisdom
-* **Effect:** Deals Logic × 0.9 damage (400 base).
-* **Debuff:** Randomly disables one player skill for 2 turns.
-* **Puzzle Twist:** Player must solve with fewer available options until the block clears.
-* **Cooldown:** 3 turns.
+1. Recursive Reaper
 
----
+Cost: 70 Wisdom
 
-**Garbage Overflow**
+Effect: Deals Logic × 1.0 (500 base) damage for 3 turns.
 
-* **Cost:** 60 Wisdom
-* **Effect:** Deals Logic × 1.05 (420 base) and clogs the player’s Wisdom recovery.
-* **Puzzle Twist:** Player’s Wisdom/Mana bar overfills — they must “collect garbage” or lose 10 Wisdom per turn.
-* **Cooldown:** 4 turns.
+Mechanic: Each repetition doubles in cost unless “base case” is found.
 
----
+Puzzle Twist: Player must identify the recursion’s base condition (like spotting the stop case in a function) or risk infinite recursion damage.
 
-**Infinite Loop**
+Cooldown: 4 turns.
 
-* **Cost:** 80 Wisdom
-* **Effect:** Deals 275 damage each turn until “debugged.”
-* **Puzzle Twist:** Player is forced to repeat the same move until they debug a code (like a pattern-break or a hard to analyze errors).
-* **Cooldown:** 5 turns.
+2. Stack Overflow
 
----
+Cost: 60 Wisdom
 
-### Battle Flow
+Effect: Instantly deals Logic × 0.95 (475 base) and overloads the player’s stack.
 
-* Starts with Segfault Strike to shut down player tools.
-* Locks them into Infinite Loop mid-fight, draining patience.
-* Uses Garbage Overflow to destabilize Wisdom management.
-* When cornered, unleashes Regex Hex for maximum confusion.
+Debuff: Player cannot queue multiple skills next turn — all future actions must “pop” correctly or misfire.
+
+Puzzle Twist: Player must choose correct “order of operations” to clear the stack safely.
+
+Cooldown: 3 turns.
+
+3. Heap Corruption
+
+Cost: 80 Wisdom
+
+Effect: Spreads a data corruption status, causing 50 HP loss per turn until “heap cleaned.”
+
+Puzzle Twist: Player must manage limited memory allocation by freeing nodes in the right order — failure triggers a Memory Leak Explosion.
+
+Cooldown: 5 turns.
+
+4. Binary Search Slash
+
+Cost: 40 Wisdom
+
+Effect: Logic × 0.8 (400 base) precision strike that doubles in damage if the player’s HP is in the “midpoint range.”
+
+Puzzle Twist: If the player’s HP divides evenly by 2, damage is critical — Serato “finds the target in log₂ time.”
+
+Cooldown: 2 turns.
+
+5. Graph Trap (Ultimate)
+
+Cost: 120 Wisdom
+
+Effect: Encloses the player in a recursive graph of false exits — 150 damage per turn until cycle is detected.
+
+Puzzle Twist: Player must trace the correct path through a maze of “nodes” (logic questions or quick tasks). Wrong paths loop back, wasting turns.
+
+Cooldown: 6 turns.
+
+Battle Flow
+
+Opens with Binary Search Slash to test the player’s defensive logic.
+
+Follows up with Stack Overflow to limit actions and enforce turn order thinking.
+
+Mid-fight, launches Recursive Reaper — forcing players to think like recursive functions.
+
+When pressured, taints memory with Heap Corruption, creating chaos in resource management.
+
+Final phase: summons the Graph Trap, turning the battle into a maze of decisions.
