@@ -1,5 +1,5 @@
-## Ma’am Tulin — The Architect of Structures  
-(Keeper of Data and Discipline)  
+## Ma’am Tulin — The Keeper of Knowledge  
+(Guardian of Information Management)  
 
 *HP:* 950  
 *Logic (Attack Power):* 500  
@@ -9,44 +9,44 @@
 
 ### Role in The Lair  
 
-- *Fourth Trial Guardian* — embodies the strength and discipline of Data Structures and Algorithms.  
-- *Theme:* Stacks, queues, and graphs that twist the flow of logic.  
-- *Battle Style:* Uses layered but straightforward strikes that test how well the player can solve DSA problems quickly.  
+- *Fourth Trial Guardian* — oversees the flow, storage, and organization of knowledge across the digital realm.  
+- *Theme:* Information systems, databases, and data integrity.  
+- *Battle Style:* Focused on order and accuracy. Tests how well the player can process, store, and retrieve information under pressure.  
 
 ---
 
 ### Skills  
 
-*Stack Smash*  
+*Data Sort*  
 - *Cost:* 40 Wisdom  
 - *Effect:* Deals 250 damage.  
 - *Puzzle Twist:*
-Fill in the blank (stack operation code).  
+Fill in the blank (sorting concept or SQL keyword).  
 - *Cooldown:* 2 turns.  
 
 ---
 
-*Queue Rush*  
+*Record Query*  
 - *Cost:* 50 Wisdom  
 - *Effect:* Deals 300 damage.  
 - *Puzzle Twist:*
-Output tracing (enqueue/dequeue sequence).  
+Output tracing (predicting query results or table operations).  
 - *Cooldown:* 3 turns.  
 
 ---
 
-*Graph Snare*  
+*System Backup*  
 - *Cost:* 80 Wisdom  
-- *Effect:* Deals 400 damage.  
+- *Effect:* Deals 400 damage and restores 100 HP.  
 - *Puzzle Twist:*
-Multiple choice (shortest path / adjacency question).  
+Multiple choice (data management or backup strategy).  
 - *Cooldown:* 5 turns.  
 
 ---
 
 ### Battle Flow  
 
-- Opens with *Stack Smash* as a warm-up test.  
-- Cycles into *Queue Rush* to disrupt rhythm.  
-- Uses *Graph Snare* as her finishing move.  
-- If all skills are on cooldown, she falls back on a *Basic Attack – Data Burst* (150 damage, no puzzle).
+- Opens with *Data Sort* to test organization skills.  
+- Uses *Record Query* to challenge quick thinking.  
+- When threatened, performs *System Backup* to recover and counterattack.  
+- If all skills are on cooldown, she uses *Basic Attack – File Burst* (150 damage, no puzzle).
