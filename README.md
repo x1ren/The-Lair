@@ -10,3 +10,32 @@ To succeed, one must journey through realms of programming, conquer challenges o
 The first trial awaits. The quest for knowledge begins now.
 
 <h6> -----ALL HAIL MAROON AND GOLD-----</h6>
+
+<hr/>
+
+<h3>MVP (Stages 1–2) – How to Run</h3>
+
+<p><b>Requirements:</b> Java 17+ (or compatible), a terminal/shell.</p>
+
+<ol>
+<li><b>Compile</b>
+<pre><code>javac -d out $(find src/main/java -name "*.java")
+</code></pre>
+</li>
+<li><b>Run</b>
+<pre><code>java -cp out main.java.com.thelair.Main
+</code></pre>
+</li>
+</ol>
+
+<p>
+This MVP uses OOP pillars:
+<ul>
+<li><b>Abstraction</b>: `Stage<T extends Guardian>` defines the stage contract.</li>
+<li><b>Inheritance</b>: `CathyGuardian` and `KhaiGuardian` extend `Guardian`.</li>
+<li><b>Polymorphism</b>: `GameManager` iterates a `List&lt;Stage&lt;?&gt;&gt;` and calls `run`.</li>
+<li><b>Encapsulation</b>: `Player`/`Guardian` fields are private with getters/setters.</li>
+</ul>
+</p>
+
+<p>Future devs can add Stage 3+ by creating new `Guardian` subclasses and `Stage` implementations, then wiring them in `GameManager`.</p>
