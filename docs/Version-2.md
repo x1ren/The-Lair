@@ -114,23 +114,23 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
 ## Characters (Final Stats & Skills)
 
 ### Iben Anoos — The Codebreaker
-- HP: 4 | Logic: 3 | Wisdom: 2
+- HP: 70 | MP: 70 | STR: 8 | SPD: 14 | INT: 18
 - Skills: Debugger’s Eye, Syntax Slayer, Loop Mastery.
 
 ### Gaille Amolong — The Architect
-- HP: 5 | Logic: 2 | Wisdom: 3
+- HP: 90 | MP: 50 | STR: 12 | SPD: 10 | INT: 14
 - Skills: Second Chance, Blueprint Mind, Vision Realized.
 
 ### Jamuel Bacus — The Tactician
-- HP: 3 | Logic: 2 | Wisdom: 4
+- HP: 65 | MP: 65 | STR: 10 | SPD: 12 | INT: 17
 - Skills: Recursive Insight, Strategist’s Gambit, Pattern Recognition.
 
 ### Ilde Jan Figueras — The Challenger
-- HP: 6 | Logic: 1 | Wisdom: 2
+- HP: 120 | MP: 25 | STR: 18 | SPD: 9 | INT: 7
 - Skills: Iron Will, Overclocked Resolve, Berserker Coder.
 
 ### Joseph Jimenez — The Balanced
-- HP: 4 | Logic: 2 | Wisdom: 2
+- HP: 85 | MP: 45 | STR: 11 | SPD: 11 | INT: 11
 - Skills: Jack of All Codes, Adaptive Learner, Steady Hand.
 
 ---
