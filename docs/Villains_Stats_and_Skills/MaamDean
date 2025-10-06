@@ -1,0 +1,109 @@
+# The Dean’s Judgement
+
+**Stage:** Final Boss Encounter  
+**Entry Requirement:** Players must have at least **500 HP**, **250 Logic**, and **250 Wisdom** to enter.
+
+---
+
+## Encounter Overview
+
+**Boss Name:** Ma’am Dean  
+**Title:** Overseer of All Knowledge  
+
+**Catchphrase:**  
+> *“All your lessons lead here. Show me if you truly deserve to pass.”*
+
+This encounter serves as the final evaluation of all player progress.  
+The Dean begins by summoning her instructors, testing players across every subject they have faced before.  
+After these trials, she reveals her true awakened form, embodying ultimate academic power and judgement.
+
+---
+
+## Boss Stats (Awakened Form)
+
+- **HP:** 1200  
+- **Logic (Attack Power):** 500  
+- **Wisdom (Mana):** 450  
+
+---
+
+## Phase 1: Dean’s Summoning (Instructor Trials)
+
+**Description:**  
+Ma’am Dean starts by calling forth the instructors from previous stages. Each instructor represents a different discipline — Logic, Coding, Strategy, or Analysis.  
+The Dean observes and empowers them, gradually testing the player’s endurance and adaptability.
+
+**Starting HP:** 800  
+
+**Mechanics:**
+- Every 2 turns, Dean summons one Instructor from the Instructor File.  
+- Each active Instructor grants Dean:
+  - +15 Wisdom regeneration  
+  - +5% Logic (Attack Power)  
+- Instructors must be defeated before damage can be dealt to the Dean.  
+- After 3–4 Instructors are defeated, Dean transitions to her Awakened Form, restoring her full HP.
+
+**Transition Dialogue:**  
+> *“You have bested my mentors... but can you withstand the source of all exams?”*
+
+---
+
+## Phase 2: Awakened Dean (Final Judgement)
+
+Once her summons fall, the Dean unleashes her true power. The battle shifts into complex, multi-layered puzzles combining Logic, Wisdom, and Memory management.
+
+---
+
+### Passive Skill: Authority of Knowledge
+
+**Effect:**
+- At the start of battle, Dean gains +10% Defense.  
+- Regenerates +30 Wisdom per turn.  
+- Every puzzle includes a hidden clause unless countered by specific player skills (Debugger’s Eye, Blueprint Mind, etc.).
+
+---
+
+### Skill 1: Exam Overload
+
+- **Cost:** 70 Wisdom  
+- **Effect:** Deals Logic × 1.2 damage to all players.  
+- **Puzzle Twist:** Players must solve two linked puzzles (e.g., code trace + logic riddle) within one turn.  
+- **Cooldown:** 3 turns  
+
+---
+
+### Skill 2: Administrative Pressure
+
+- **Cost:** 80 Wisdom  
+- **Effect:** Reduces all players’ Wisdom regeneration by 20 for 2 turns.  
+- **Puzzle Twist:** Skipping or giving up on a puzzle costs an extra –5 HP.  
+- **Cooldown:** 4 turns  
+
+---
+
+### Ultimate Skill: Comprehensive Exam
+
+- **Cost:** 100 Wisdom  
+- **Effect:** Deals Logic × 2.0 damage in one devastating strike.  
+- **Puzzle Twist:** A 3-part exam chain — trace → hidden condition → debugging.  
+- **Counterplay:**  
+  - If players solve the full chain, the attack is negated,  
+  - and the Dean takes Logic × 1.0 reflected back.  
+- **Cooldown:** 6 turns  
+
+---
+
+## Battle Flow
+
+1. **Opener:** Uses Exam Overload to overwhelm players with multi-task puzzles.  
+2. **Mid-fight:** Applies Administrative Pressure to drain Wisdom regeneration and punish mistakes.  
+3. **Final Phase:** Unleashes Comprehensive Exam — the true Judgement. Only mastery of all puzzle types can lead to victory.
+
+---
+
+## Victory Condition
+
+Defeat Ma’am Dean by enduring her exam chain and reflecting her ultimate skill.  
+Players who succeed prove their mastery of all subjects — earning the title:
+
+**“Graduate of the Academy of Logic.”**
