@@ -1,6 +1,6 @@
 ## The Lair
 
-In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the *Cebu Institute of Technology University.*
+In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the **Cebu Institute of Technology University.**
 
 To the outside world, it is a school, but to those who walk its halls, it is a proving ground for the next generation of digital pioneers.
 
@@ -14,17 +14,17 @@ The first trial awaits. The quest for knowledge begins now.....
 
 ## CHOOSE CHARACTER
 
-*Stage 1 – The Hall of Flame (Ma’am Cathy)*
+<b>Stage 1 – The Hall of Flame (Ma’am Cathy)</b><br>
 
 You enter the first chamber. Torches roar to life, painting the walls in fiery light. The air burns with heat.
 At the far end stands *Ma’am Cathy,* her gaze sharp and unwavering.
 
-*MA’AM CATHY (calling out):*
+<b>MA’AM CATHY (calling out):</b><br>
 “You dare to begin the trials? Then prove you can withstand the fire. Defeat my students first — only then may you face me.”
 
-* *From the flames, minions rise:*
-* *(start minion fight)*
-* *(when all minion defeated)*
+<b>From the flames, minions rise:</b><br>
+<b>(start minion fight)</b><br>
+<b>(when all minion defeated)</b><br>
 
 The last ember fades. Ma’am Cathy steps forward, staff glowing like molten steel.
 
@@ -32,7 +32,6 @@ The last ember fades. Ma’am Cathy steps forward, staff glowing like molten ste
 “You’ve survived the sparks, but I am the true flame. Let us see if your resolve burns brighter than mine.”
 
 <b>(Boss fight begins.)</b><br>
-
 <b>(Boss defeated)</b><br>
 Boss Epilogue:
 Ma’am Cathy lowers her staff, the fire around you dimming. She studies you with a firm but approving look.
