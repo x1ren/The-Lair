@@ -168,4 +168,4 @@ She steps closer, holding out a radiant seal. Its glow burns with the strength o
 
 <i>The gates open behind her, golden light pouring through. You take your first step into the world beyond, the mark of a true Scholar upon you.</i>
 
-
+## ALL HAIL MAROON AND GOLD
