@@ -1,4 +1,4 @@
-##Sir Serato — *The Algorithmic Tyrant*
+## Sir Serato — *The Algorithmic Tyrant*
 
 *(Architect of Logical Collapse)*
 
@@ -6,14 +6,14 @@
 * **Logic (Attack Power):** 500<br>
 * **Wisdom (Mana):** 350
 
-##Role in The Lair
+## Role in The Lair
 
 * **Second Trial Guardian** — A master of data structures gone rogue. Once a wise compiler spirit, Serato grew obsessed with optimization — now he twists logic trees, tangles graphs, and fragments arrays into chaos. Players face him to prove mastery over structure, recursion, and complexity itself.
 * **Theme:** Data Structure Corruption — linked lists that bite back, trees that loop into infinity, and graphs that trap explorers in cycles.
 * **Battle Style:** Algorithmic traps and structure manipulation; the longer the battle runs, the more complex it becomes.
 
 ---<br>
-##Skills
+## Skills
 
 * **Recursive Reaper**
 * **Cost:** 50 Wisdom
@@ -57,7 +57,7 @@
 
 ---<br>
 
-###Battle Flow
+## Battle Flow
 * Opens with Binary Search Slash to test the player’s defensive logic.
 * Follows up with Stack Overflow to limit actions and enforce turn order thinking.
 * Mid-fight, launches Recursive Reaper — forcing players to think like recursive functions.
