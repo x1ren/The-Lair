@@ -10,6 +10,8 @@ public class GameManager {
 	public GameManager() {
 		stages.add(new StageOne());
 		stages.add(new StageTwo());
+		// TODO [Jamuel]: Add StageThree and StageFour implementations to the list
+		// TODO [Joseph]: Add StageFive (Dean) multi-phase stage implementation
 	}
 
 	public void run(Player player) {

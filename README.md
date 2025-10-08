@@ -31,11 +31,19 @@ The first trial awaits. The quest for knowledge begins now.
 <p>
 This MVP uses OOP pillars:
 <ul>
-<li><b>Abstraction</b>: `Stage<T extends Guardian>` defines the stage contract.</li>
-<li><b>Inheritance</b>: `CathyGuardian` and `KhaiGuardian` extend `Guardian`.</li>
-<li><b>Polymorphism</b>: `GameManager` iterates a `List&lt;Stage&lt;?&gt;&gt;` and calls `run`.</li>
+<li><b>Abstraction</b>: `Stage<T extends Guardian>` and `Combatant` interface unify battles.</li>
+<li><b>Inheritance</b>: `CathyGuardian` and `KhaiGuardian` extend `Guardian`; heroes extend `Player`.</li>
+<li><b>Polymorphism</b>: `Player` subclasses override signature skills; `BattleSystem` accepts any `Combatant`.</li>
 <li><b>Encapsulation</b>: `Player`/`Guardian` fields are private with getters/setters.</li>
 </ul>
 </p>
 
 <p>Future devs can add Stage 3+ by creating new `Guardian` subclasses and `Stage` implementations, then wiring them in `GameManager`.</p>
+
+<h3>Developer TODOs</h3>
+<ul>
+<li><b>Ilde Jan</b>: Build `Puzzle` engine (types, difficulty, stat checks, outcomes).</li>
+<li><b>Iben</b>: Implement hero skill costs/cooldowns and prompts in `BattleSystem`.</li>
+<li><b>Jamuel</b>: Add Stage 3–4 minions/guardians and intros per docs.</li>
+<li><b>Joseph</b>: Implement Dean’s multi-phase flow and polish battle logs/UI.</li>
+</ul>

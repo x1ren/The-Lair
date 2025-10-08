@@ -115,23 +115,38 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
 
 ### Iben Anoos — The Codebreaker
 - HP: 70 | MP: 70 | STR: 8 | SPD: 14 | INT: 18
-- Skills: Debugger’s Eye, Syntax Slayer, Loop Mastery.
+- Skills:
+  - Debugger’s Eye — cost 40 Wisdom; reveal hint/remove wrong option; -25% enemy defense for 3 turns; cd 3
+  - Syntax Slayer — cost 30 Wisdom; damage = Logic × 1.5 (×2 if eye active); cd 2
+  - Loop Mastery — cost 60 Wisdom; repeats last skill free; retry last puzzle; cd 4
 
 ### Gaille Amolong — The Architect
 - HP: 90 | MP: 50 | STR: 12 | SPD: 10 | INT: 14
-- Skills: Second Chance, Blueprint Mind, Vision Realized.
+- Skills:
+  - Second Chance (Passive) — revive once per stage with 30% HP; +1 extra attempt
+  - Blueprint Mind — cost 50 Wisdom; +30% Logic for 2 turns; cd 3
+  - Vision Realized — cost 70 Wisdom; +20% defense, regen 10% HP for 3 turns; cd 5
 
 ### Jamuel Bacus — The Tactician
 - HP: 65 | MP: 65 | STR: 10 | SPD: 12 | INT: 17
-- Skills: Recursive Insight, Strategist’s Gambit, Pattern Recognition.
+- Skills:
+  - Recursive Insight — cost 40 Wisdom; -30% next enemy attack; preview next question; cd 2
+  - Strategist’s Gambit — cost 70 Wisdom; next skill ×1.75; removes 2 wrong options with risk; cd 4
+  - Pattern Recognition — cost 60 Wisdom; +20% accuracy, +10% crit for 3 turns; trace preview; cd 3
 
 ### Ilde Jan Figueras — The Challenger
 - HP: 120 | MP: 25 | STR: 18 | SPD: 9 | INT: 7
-- Skills: Iron Will, Overclocked Resolve, Berserker Coder.
+- Skills:
+  - Iron Will (Passive) — at HP < 50%, -10% damage taken; +10s in timed puzzles
+  - Overclocked Resolve — cost 80 Wisdom (scales); double Logic for 2 turns; skip one question; cd 3
+  - Berserker Coder — cost 120 Wisdom (scales) + 150 HP; Logic × 3, 10% recoil; auto-answer then disable skills next puzzle; cd 4
 
 ### Joseph Jimenez — The Balanced
 - HP: 85 | MP: 45 | STR: 11 | SPD: 11 | INT: 11
-- Skills: Jack of All Codes, Adaptive Learner, Steady Hand.
+- Skills:
+  - Jack of All Codes — cost 40 Wisdom; AOE, Logic × 1.2; 50/50 hint; cd 3
+  - Adaptive Learner — cost 50 Wisdom; reuse last skill with +20% efficiency; hint after one wrong; cd 4
+  - Steady Hand (Passive) — 15% resist debuffs; prevent one wrong penalty
 
 ---
 
@@ -140,35 +155,48 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
 ### Ma’am Cathy — Keeper of First Flames (Loops & Conditionals)
 - HP: 500 | Logic: 300 | Wisdom: 200
 - Trial: Syntax-focused. Deceptively simple but punishing.
-- Signature Skills: Syntax Curse, Deceptive Simplicity, Loop Trap.
+- Signature Skills:
+  - Syntax Curse — cost 40 W; damage Logic × 1.2; next player skill +10 W; cd 2
+  - Deceptive Simplicity — cost 50 W; -20% player damage for 2 turns; misleading hints; cd 3
+  - Loop Trap — cost 60 W; damage over 2 turns Logic × 1.5; repeated puzzle on fail; cd 4
 
 ### Sir Khai — Warden of Objects (OOP)
 - HP: 600 | Logic: 400 | Wisdom: 300
 - Trial: Classes, inheritance, polymorphism, encapsulation.
 - Signature Skills:
-  - Null Reference — disables one player skill for 1–2 turns; forces careful planning.
-  - Constructor Overload — rapid follow-up attack if player misuses types/params.
-  - Polymorph Edge — damage bonus if player misclassifies inheritance.
-- Flavor: “Strength without discipline is chaos. Wield structure, or be broken by it.”
+  - Encapsulation Barrier — cost 50 W; -40% incoming damage for 3 turns; requires method access; cd 3
+  - Inheritance Strike — cost 60 W; copies player’s last ability and strengthens it; cd 4
+  - Polymorphic Mirage — cost 75 W; spawns illusions; pick the true instance; cd 5
+  - Access Modifier Judgment — cost 65 W; changes effect based on visibility state; cd 3
+  - Abstract Punishment — cost 120 W; disables concrete effects 2 turns until implemented; cd 6
+  - Flavor: “Strength without discipline is chaos. Wield structure, or be broken by it.”
 
 ### Sir Serato — Guardian of Data (Debugging & DSA)
-- HP: 700 | Logic: 450 | Wisdom: 300
+- HP: 700 | Logic: 500 | Wisdom: 350
 - Trial: Debugging nightmares; stacks, queues, recursion traps.
-- Signature Skills: Segfault Strike, Garbage Overflow, Infinite Loop.
+- Signature Skills:
+  - Recursive Reaper — cost 50 W; damage over 3 turns; identify base case; cd 4
+  - Stack Overflow — cost 60 W; forces strict order of operations next turn; cd 3
+  - Heap Corruption — cost 80 W; DOT until “heap cleaned”; cd 5
+  - Binary Search Slash — cost 40 W; precision strike; crit if HP in midpoint; cd 2
+  - Graph Trap — cost 120 W; maze of choices; cd 6
 
-### Ma’am Tulin — Mistress of Networks (Data Structures & Systems)
+### Ma’am Tulin — The Keeper of Knowledge (Information Systems)
 - HP: 950 | Logic: 500 | Wisdom: 400
-- Trial: Stacks, queues, graphs, and system-like layered checks.
-- Signature Skills: Stack Smash, Queue Rush, Graph Snare.
+- Trial: Information systems, data integrity, organization.
+- Signature Skills:
+  - Data Sort — cost 40 W; 250 dmg; sorting/SQL fill-in; cd 2
+  - Record Query — cost 50 W; 300 dmg; output tracing; cd 3
+  - System Backup — cost 80 W; 400 dmg + heal 100; multiple choice; cd 5
 
 ### The Dean — Arbiter of Mastery (Final Boss)
-- HP: 1000+ | Logic: 600 | Wisdom: 600
+- HP: 1200 | Logic: 500 | Wisdom: 450 (Awakened phase)
 - Trial: Hybrid mechanics across all domains + automata/AI concepts.
 - Signature Skills:
-  - Turing’s Judgement — hybrid check that locks skills if failed.
-  - Summon Instructor — calls weakened echoes of all prior bosses.
-  - Comprehensive Exam — multi-step puzzle where hints are delayed.
-- Flavor: “Pieces are not enough. Only mastery unites them.”
+  - Exam Overload — cost 70 W; AOE Logic × 1.2; dual linked puzzles; cd 3
+  - Administrative Pressure — cost 80 W; -Wisdom regen for 2 turns; cd 4
+  - Comprehensive Exam — cost 100 W; Logic × 2.0, 3-part chain; reflect on solve; cd 6
+  - Passive: Authority of Knowledge — +10% defense, +30 W/turn, hidden clause in puzzles
 
 ---
 
@@ -197,11 +225,12 @@ Each stage opens with minions, escalates through puzzles, and concludes with a b
 ## Java Implementation (Blueprint)
 
 ### Key Classes
-- `Game` — manages flow.
-- `PlayerCharacter` — base class, extended by heroes.
-- `Guardian` — base class for villains.
-- `Puzzle` — question, type, difficulty, answer, effects.
-- `BattleSystem` — runs puzzles, applies damage, skills, status.
+- `GameManager` — manages flow.
+- `Player` — abstract base class, extended by heroes (inheritance + abstraction).
+- `Guardian` — base class for villains (inheritance), implements `Combatant` (interface).
+- `Combatant` — interface for anything that can fight (players, guardians, minions).
+- `Minion` — simple `Combatant` used for stage waves.
+- `BattleSystem` — runs simple turn-based battles, uses try/catch for input safety.
 
 ### Loop Skeleton
 ```java
@@ -224,9 +253,3 @@ while (!gameOver) {
 - **Victory** → Defeat the Dean. Credits + Graduation ending.
 - **Defeat** → HP = 0 with no survival skill left. Expelled ending.
 
----
-
-## Credits & Notes
-
-- Consolidated from internal docs: storyline script, minion sheets, and guardian skill sheets.
-- Sir Khai and The Dean profiles improvised to align with stage narratives.

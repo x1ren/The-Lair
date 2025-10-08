@@ -6,6 +6,7 @@ import main.java.com.thelair.player.GailleAmolong;
 import main.java.com.thelair.player.IldeJanFigueras;
 import main.java.com.thelair.player.JosephJimenez;
 import main.java.com.thelair.player.JamuelBacus;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CharacterSelection {
@@ -28,9 +29,19 @@ public class CharacterSelection {
         System.out.println("5) Jamuel Bacus - The Tactician");
         System.out.println("   HP: 65, MP: 65, STR: 10, SPD: 12, INT: 17");
         System.out.println("A strategist who plays the long game.");
-        System.out.print("Enter the number of your choice: ");
 
-        int choice = scanner.nextInt();
+        int choice;
+        while (true){
+            try {
+                System.out.print("Enter the Player's Number of your choice: ");
+                choice = scanner.nextInt();
+                break;
+            } catch (InputMismatchException ex) {
+                scanner.nextLine();
+                System.out.println("Invalid input! Please try again.");
+                
+            }
+        }
         scanner.nextLine();
         
         switch(choice) {
