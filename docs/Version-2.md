@@ -114,35 +114,35 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
 ## Characters (Final Stats & Skills)
 
 ### Iben Anoos — The Codebreaker
-- HP: 70 | MP: 70 | STR: 8 | SPD: 14 | INT: 18
+- HP: 400 | Logic: 300 | Wisdom: 200
 - Skills:
   - Debugger’s Eye — cost 40 Wisdom; reveal hint/remove wrong option; -25% enemy defense for 3 turns; cd 3
   - Syntax Slayer — cost 30 Wisdom; damage = Logic × 1.5 (×2 if eye active); cd 2
   - Loop Mastery — cost 60 Wisdom; repeats last skill free; retry last puzzle; cd 4
 
 ### Gaille Amolong — The Architect
-- HP: 90 | MP: 50 | STR: 12 | SPD: 10 | INT: 14
+- HP: 500 | Logic: 200 | Wisdom: 300
 - Skills:
   - Second Chance (Passive) — revive once per stage with 30% HP; +1 extra attempt
   - Blueprint Mind — cost 50 Wisdom; +30% Logic for 2 turns; cd 3
   - Vision Realized — cost 70 Wisdom; +20% defense, regen 10% HP for 3 turns; cd 5
 
 ### Jamuel Bacus — The Tactician
-- HP: 65 | MP: 65 | STR: 10 | SPD: 12 | INT: 17
+- HP: 300 | Logic: 200 | Wisdom: 400
 - Skills:
   - Recursive Insight — cost 40 Wisdom; -30% next enemy attack; preview next question; cd 2
   - Strategist’s Gambit — cost 70 Wisdom; next skill ×1.75; removes 2 wrong options with risk; cd 4
   - Pattern Recognition — cost 60 Wisdom; +20% accuracy, +10% crit for 3 turns; trace preview; cd 3
 
 ### Ilde Jan Figueras — The Challenger
-- HP: 120 | MP: 25 | STR: 18 | SPD: 9 | INT: 7
+- HP: 600 | Logic: 100 | Wisdom: 200
 - Skills:
   - Iron Will (Passive) — at HP < 50%, -10% damage taken; +10s in timed puzzles
   - Overclocked Resolve — cost 80 Wisdom (scales); double Logic for 2 turns; skip one question; cd 3
   - Berserker Coder — cost 120 Wisdom (scales) + 150 HP; Logic × 3, 10% recoil; auto-answer then disable skills next puzzle; cd 4
 
 ### Joseph Jimenez — The Balanced
-- HP: 85 | MP: 45 | STR: 11 | SPD: 11 | INT: 11
+- HP: 400 | Logic: 200 | Wisdom: 200
 - Skills:
   - Jack of All Codes — cost 40 Wisdom; AOE, Logic × 1.2; 50/50 hint; cd 3
   - Adaptive Learner — cost 50 Wisdom; reuse last skill with +20% efficiency; hint after one wrong; cd 4
@@ -223,6 +223,12 @@ Each stage opens with minions, escalates through puzzles, and concludes with a b
 ---
 
 ## Java Implementation (Blueprint)
+- Stat Upgrades per Stage (post-clear):
+  - Stage 1: Random(50, 70)
+  - Stage 2: Random(60, 80)
+  - Stage 3: Random(65, 85)
+  - Stage 4: Random(70, 90)
+  - Stage 5: Random(90, 100)
 
 ### Key Classes
 - `GameManager` — manages flow.

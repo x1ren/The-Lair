@@ -20,6 +20,8 @@ public abstract class Player implements Combatant {
     protected int strength;
     protected int speed;    
     protected int intelligence;
+    protected int logic;
+    protected int wisdom;
     protected Skill[] skills;
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
@@ -126,8 +128,8 @@ public abstract class Player implements Combatant {
     }
 
     public void displayStats() {
-        System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d%n", 
-        name, characterClass, currentHP, maxHP, currentMP, maxMP);
+        System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d | Logic: %d | Wisdom: %d%n", 
+        name, characterClass, currentHP, maxHP, currentMP, maxMP, logic, wisdom);
     }
 
     // Combatant implementation
@@ -142,7 +144,16 @@ public abstract class Player implements Combatant {
     }
 
     public int useSignatureSkill() {
-        // Default: modest bonus based on intelligence
-        return strength + (int)(0.5 * intelligence);
+        // Default: modest bonus based on logic
+        return strength + (int)(0.5 * logic);
     }
+
+    // New stat accessors
+    public int getLogic() { return logic; }
+    public int getWisdomStat() { return wisdom; }
+    public void setLogic(int logic) { this.logic = logic; }
+    public void setWisdomStat(int wisdom) { this.wisdom = wisdom; }
+    public void increaseLogic(int amount) { this.logic += amount; }
+    public void increaseWisdomStat(int amount) { this.wisdom += amount; }
+    public void increaseMaxHP(int amount) { this.maxHP += amount; this.currentHP = Math.min(this.currentHP + amount, this.maxHP); }
 }

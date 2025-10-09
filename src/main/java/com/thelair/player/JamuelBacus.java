@@ -3,6 +3,11 @@ package main.java.com.thelair.player;
 public class JamuelBacus extends Player {
     public JamuelBacus(String name, int level, int maxHP, int maxMP, int strength, int speed, int intelligence) {
         super("Bacus", "The Tactician", 1, 65, 65, 10, 12, 17);
+        // Align to Character Stats doc (HP 300, Logic 200, Wisdom 400)
+        this.setMaxHP(300);
+        this.setCurrentHP(300);
+        this.setLogic(200);
+        this.setWisdomStat(400);
     }
 
     @Override
@@ -12,8 +17,8 @@ public class JamuelBacus extends Player {
 
     @Override
     public int useSignatureSkill() {
-        // Moderate boost with small extra for speed
-        return getStrength() + (int)(0.6 * getIntelligence()) + (int)(0.2 * getSpeed());
+        // Moderate boost with small extra for speed using logic
+        return getStrength() + (int)(0.6 * getLogic()) + (int)(0.2 * getSpeed());
     }
 }
 
