@@ -1,6 +1,8 @@
 package main.java.com.thelair.guardian;
 
-public class Guardian {
+import main.java.com.thelair.battle.Combatant;
+
+public class Guardian implements Combatant {
     private String name;
     private int level;
     private int maxHP, currentHP;
@@ -62,5 +64,11 @@ public class Guardian {
 
     public int getExperienceReward() {
         return level * 50;
+    }
+
+    // Combatant implementation
+    @Override
+    public int attack() {
+        return strength;
     }
 }
