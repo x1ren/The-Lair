@@ -1,4 +1,4 @@
-## Sir Serato — *The Algorithmic Tyrant*
+## Sir Serato — *The Guardian of Data*
 
 *(Architect of Logical Collapse)*
 
