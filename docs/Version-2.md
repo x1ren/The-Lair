@@ -154,8 +154,12 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
 ### Sir Serato — Guardian of Data (Debugging & DSA)
 - HP: 700 | Logic: 450 | Wisdom: 300
 - Trial: Debugging nightmares; stacks, queues, recursion traps.
-- Signature Skills: Segfault Strike, Garbage Overflow, Infinite Loop.
-
+- Signature Skills:
+   - Segfault Strike,
+   - Garbage Overflow,
+   - Infinite Loop.
+- Flavor: “Strength without discipline is chaos. Wield structure, or be broken by it.”
+  
 ### Ma’am Tulin — Mistress of Networks (Data Structures & Systems)
 - HP: 950 | Logic: 500 | Wisdom: 400
 - Trial: Stacks, queues, graphs, and system-like layered checks.
