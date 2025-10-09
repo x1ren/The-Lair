@@ -17,8 +17,8 @@ public class IldeJanFigueras extends Player {
 
     @Override
     public int useSignatureSkill() {
-        // Heavy STR-based strike
-        return getStrength() + 5;
+        // Heavy logic-based simple strike in simplified model
+        return getLogic() + 5;
     }
 }
 

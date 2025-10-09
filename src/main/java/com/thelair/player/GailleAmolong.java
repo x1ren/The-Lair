@@ -18,7 +18,7 @@ public class GailleAmolong extends Player {
     @Override
     public int useSignatureSkill() {
         // Slightly higher boost based on logic
-        return getStrength() + (int)(0.8 * getLogic());
+        return (int)(0.8 * getLogic());
     }
 }
 

@@ -17,9 +17,6 @@ public abstract class Player implements Combatant {
     protected int level;
     protected int maxHP, currentHP;
     protected int maxMP, currentMP;
-    protected int strength;
-    protected int speed;    
-    protected int intelligence;
     protected int logic;
     protected int wisdom;
     protected Skill[] skills;
@@ -34,9 +31,6 @@ public abstract class Player implements Combatant {
         this.currentHP = maxHP;
         this.maxMP = maxMP;
         this.currentMP = maxMP;
-        this.strength = strength;
-        this.speed = speed;
-        this.intelligence = intelligence;
         this.level = level;
         this.experience = 0;
         this.experienceToNextLevel = level * 100;
@@ -83,11 +77,9 @@ public abstract class Player implements Combatant {
         level++;
         maxHP += 10;
         currentHP = maxHP;
-        maxMP += 5;
-        currentMP = maxMP;
-        strength += 2;
-        speed += 2;
-        intelligence += 2;
+        // Logic/Wisdom are the only scaling stats in this simplified model
+        logic += 2;
+        wisdom += 2;
         experienceToNextLevel += level * 100; // current scaling method
         System.out.println(name + " leveled up to level " + level + "!");
     }
@@ -99,9 +91,7 @@ public abstract class Player implements Combatant {
     public int getCurrentHP() { return currentHP; }
     public int getMaxMP() { return maxMP; }
     public int getCurrentMP() { return currentMP;}
-    public int getStrength() { return strength; }
-    public int getSpeed() { return speed; }
-    public int getIntelligence() { return intelligence; }
+    // strength/speed/intelligence removed
     
     public void setLevel(int level) {
         this.level = level;
@@ -115,27 +105,17 @@ public abstract class Player implements Combatant {
         this.currentHP = currentHP;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
+    // setters for strength/speed/intelligence removed
 
     public void displayStats() {
-        System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d | Logic: %d | Wisdom: %d%n", 
-        name, characterClass, currentHP, maxHP, currentMP, maxMP, logic, wisdom);
+        System.out.printf("%s (%s) - HP: %d/%d | Logic: %d | Wisdom: %d%n", 
+        name, characterClass, currentHP, maxHP, logic, wisdom);
     }
 
     // Combatant implementation
     @Override
     public int attack() {
-        return strength;
+        return logic;
     }
 
     // Polymorphic signature skill. Subclasses may override.
@@ -145,7 +125,7 @@ public abstract class Player implements Combatant {
 
     public int useSignatureSkill() {
         // Default: modest bonus based on logic
-        return strength + (int)(0.5 * logic);
+        return (int)(0.5 * logic);
     }
 
     // New stat accessors

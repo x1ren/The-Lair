@@ -17,8 +17,8 @@ public class JamuelBacus extends Player {
 
     @Override
     public int useSignatureSkill() {
-        // Moderate boost with small extra for speed using logic
-        return getStrength() + (int)(0.6 * getLogic()) + (int)(0.2 * getSpeed());
+        // Moderate boost using logic
+        return (int)(0.6 * getLogic());
     }
 }
 

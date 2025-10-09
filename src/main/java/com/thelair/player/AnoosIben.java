@@ -18,7 +18,7 @@ public class AnoosIben extends Player {
     @Override
     public int useSignatureSkill() {
         // High Logic scaling burst
-        return getStrength() + getLogic();
+        return getLogic();
     }
 }
 

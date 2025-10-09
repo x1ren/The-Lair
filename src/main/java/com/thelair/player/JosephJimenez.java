@@ -17,8 +17,8 @@ public class JosephJimenez extends Player {
 
     @Override
     public int useSignatureSkill() {
-        // Balanced scaling
-        return getStrength() + (int)(0.4 * getIntelligence()) + (int)(0.2 * getSpeed());
+        // Balanced scaling on logic only in simplified model
+        return (int)(0.5 * getLogic());
     }
 }
 
