@@ -172,6 +172,7 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
   - Flavor: “Strength without discipline is chaos. Wield structure, or be broken by it.”
 
 ### Sir Serato — Guardian of Data (Debugging & DSA)
+
 - HP: 700 | Logic: 500 | Wisdom: 350
 - Trial: Debugging nightmares; stacks, queues, recursion traps.
 - Signature Skills:
@@ -181,7 +182,7 @@ Each character has 3 unique skills, usable once per stage unless stated otherwis
   - Binary Search Slash — cost 40 W; precision strike; crit if HP in midpoint; cd 2
   - Graph Trap — cost 120 W; maze of choices; cd 6
 
-### Ma’am Tulin — The Keeper of Knowledge (Information Systems)
+### Ma’am Tulin — The Mistress of Knowledge (Information Systems)
 - HP: 950 | Logic: 500 | Wisdom: 400
 - Trial: Information systems, data integrity, organization.
 - Signature Skills:
