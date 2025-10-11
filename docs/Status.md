@@ -1,7 +1,5 @@
-# ##Joseph Jimenez
 
-
-public class Dean implements Combatant {
+* public class Dean implements Combatant {
     private String name = "The Dean — Overseer of All Knowledge";
     private int hp;
     private int maxHp;
@@ -69,15 +67,10 @@ public class Dean implements Combatant {
     }
 }
 
-
-
-#Stage 5 Implementaion for Ui#
-
-
-public class Stage5 {
+* public class Stage5 {
     private Dean dean;
     private Player player;
-
+    
     public Stage5(Player player) {
         this.player = player;
         this.dean = new Dean();
@@ -88,13 +81,13 @@ public class Stage5 {
         BattleLog.log("You face " + dean.getName() + "!");
         BattleLog.separator();
 
-        while (player.isAlive() && dean.isAlive()) {
+     *   while (player.isAlive() && dean.isAlive()) {
             playerTurn();
             if (!dean.isAlive()) break;
             enemyTurn();
         }
 
-        if (player.isAlive()) {
+     if (player.isAlive()) {
             BattleLog.log("\nYou defeated The Dean! Congratulations!");
             checkLevelUp();
         } else {
@@ -114,10 +107,9 @@ public class Stage5 {
         dean.attack(player);
     }
 
+*Level Up
 
-#Level Up flow#
-
-    private void checkLevelUp() {
+ private void checkLevelUp() {
         if (player.gainExperience(500)) {
             BattleLog.log("Level up! " + player.getName() + " reached Level " + player.getLevel() + "!");
             BattleLog.log("Stats increased — Logic +5, Wisdom +3.");
