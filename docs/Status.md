@@ -4,7 +4,7 @@ public class Stage5 {
     public Stage5(Player player) {
         this.player = player;
         this.dean = new Dean();
-    }
+    } * THIS FOR STAGE 5 IMPLEMENTATIONS
     
     public void start() {
         BattleLog.log("\n=== STAGE 5: FINAL EXAM — THE DEAN ===");
