@@ -1,6 +1,3 @@
-<h5>Stage 5</h5>
-
-
 public class Stage5 {
     private Dean dean;
     private Player player;
@@ -8,6 +5,7 @@ public class Stage5 {
         this.player = player;
         this.dean = new Dean();
     }
+    
     public void start() {
         BattleLog.log("\n=== STAGE 5: FINAL EXAM — THE DEAN ===");
         BattleLog.log("You face " + dean.getName() + "!");
@@ -34,4 +32,4 @@ public class Stage5 {
         BattleLog.log("\nEnemy Turn:");
         dean.attack(player);
     }
-}
+    
