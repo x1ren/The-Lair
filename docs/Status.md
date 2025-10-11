@@ -1,31 +1,128 @@
-## Current Implementation Status (v2 MVP ~40%)
+#Joseph Jimenez#
 
-- Stage 1 and Stage 2 implemented with minion waves and boss.
-- Basic turn-based combat with `Combatant` interface (abstraction + polymorphism).
-- Player subclasses override signature skills (polymorphism).
-- Guardians aligned to docs for stats flavor (encapsulation via getters/setters).
-- Input handling uses try/catch to avoid crashes on invalid entries.
 
----
+public class Dean implements Combatant {
+    private String name = "The Dean — Overseer of All Knowledge";
+    private int hp;
+    private int maxHp;
+    private int phase;
+    private boolean isAwakened;
 
-## Next Steps (Task Breakdown)
+    public Dean() {
+        this.maxHp = 900;
+        this.hp = maxHp;
+        this.phase = 1;
+        this.isAwakened = false;
+    }
 
-- Add puzzle system (Logic/Wisdom/Hybrid types, difficulties, outcomes).
-- Implement skills’ costs/cooldowns/effects fully for heroes and guardians.
-- Implement Stages 3–5: minions, guardians, and Dean’s multi-phase fight.
-- Add items (Healing Potion, Debugging Scroll) and simple inventory.
-- Add save/load or simple session persistence.
-- Balance numbers for damage, HP, and rewards.
+    @Override
+    public String getName() 
+    { 
+    return name; 
+    }
 
-Developer TODOs:
-- TODO [Ilde Jan]: Implement `Puzzle` engine and resolution checks.
-- TODO [Iben]: Implement hero skills with costs/cooldowns and UI prompts.
-- TODO [Jamuel]: Build Stage 3 and 4 encounters with minion sheets.
-- TODO [Joseph]: Implement Stage 5 (Dean) multi-phase and polish battle logs.
+    @Override
+    public int getHP() { 
+    return hp; 
+    }
+    
 
----
+    @Override
+    public boolean isAlive() { 
+    return hp > 0;
+    }
 
-## Credits & Notes
+    @Override
+    public void takeDamage(int dmg) {
+        hp-=dmg;
+        if (hp < 0) hp = 0;
+        BattleLog.log(name + " took " + dmg + " damage (" + hp + "/" + maxHp + ")");
+        checkPhaseTransition();
+    }
 
-- Consolidated from internal docs: storyline script, minion sheets, and guardian skill sheets.
-- Sir Khai and The Dean profiles improvised to align with stage narratives.
+    @Override
+    public void attack(Player player) {
+        if (phase == 1) {
+            Skill s = new Skill("Exam Review", 40, "Deals medium logic damage");
+            BattleLog.log(name + " used " + s.getName() + "!");
+            player.takeDamage(40);
+        } else {
+            Skill s = new Skill("Comprehensive Exam", 70, "High wisdom damage to all players!");
+            BattleLog.log(name + " unleashed " + s.getName() + "!");
+            player.takeDamage(70);
+        }
+    }
+
+    private void checkPhaseTransition() {
+        if (phase == 1 && hp <= 0 && !isAwakened) {
+            awaken();
+        }
+    }
+
+    private void awaken() {
+        BattleLog.log("\nThe Dean Return!);
+        this.phase = 2;
+        this.isAwakened = true;
+        this.maxHp = 1200;
+        this.hp = maxHp;
+        BattleLog.log(name + " restores to full HP (" + maxHp + ") and gains new skills!");
+    }
+}
+
+
+
+#Stage 5 Implementaion for Ui#
+
+
+public class Stage5 {
+    private Dean dean;
+    private Player player;
+
+    public Stage5(Player player) {
+        this.player = player;
+        this.dean = new Dean();
+    }
+
+    public void start() {
+        BattleLog.log("\Stage 5");
+        BattleLog.log("You face " + dean.getName() + "!");
+        BattleLog.separator();
+
+        while (player.isAlive() && dean.isAlive()) {
+            playerTurn();
+            if (!dean.isAlive()) break;
+            enemyTurn();
+        }
+
+        if (player.isAlive()) {
+            BattleLog.log("\nYou defeated The Dean! Congratulations!");
+            checkLevelUp();
+        } else {
+            BattleLog.log("\nYou have failed the final exam. Retry?");
+        }
+    }
+
+    private void playerTurn() {
+        BattleLog.log("\nYour Turn — choose a skill:");
+        Skill chosen = player.chooseSkill();  // assume UI or console input
+        BattleLog.log("You used " + chosen.getName() + "!");
+        dean.takeDamage(chosen.getDamage());
+    }
+
+    private void enemyTurn() {
+        BattleLog.log("\nEnemy Turn:");
+        dean.attack(player);
+    }
+
+
+#Level Up flow#
+
+    private void checkLevelUp() {
+        if (player.gainExperience(500)) {
+            BattleLog.log("Level up! " + player.getName() + " reached Level " + player.getLevel() + "!");
+            BattleLog.log("Stats increased — Logic +5, Wisdom +3.");
+        } else {
+            BattleLog.log("You earned 500 EXP. Keep going!");
+        }
+    }
+}
