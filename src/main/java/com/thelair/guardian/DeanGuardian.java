@@ -1,21 +1,19 @@
 package main.java.com.thelair.guardian;
-import main.java.com.thelair.battle.Combatant;
 import java.util.Random;
 
 /**
  * DeanGuardian
  */
-public class DeanGuardian extends Guardian implements Combatant {
+public class DeanGuardian extends Guardian {
     private int phase = 1;
     private int turnsSinceSummon = 0;
     private boolean awakenedAnnounced = false;
     private final Random random = new Random();
 
     public DeanGuardian() {
-        super("Dean", 4, 1000, 70, 25, 50);
+        super("Dean", 5, 1200, 120, 25, 450);
     }
 
-    @Override
     public String getIntro() {
         if (phase == 1) {
             return "Stage 4 – The Hall of Balance: 'Strength with discipline is power.'";
@@ -32,21 +30,21 @@ public class DeanGuardian extends Guardian implements Combatant {
                 System.out.println("Each instructor empowers her resolve...");
             }
             turnsSinceSummon++;
-            return getAttackPower() + random.nextInt(10);
+            return getStrength() + random.nextInt(10);
         } else {
             // her special skills and awaken
             int roll = random.nextInt(100);
             if (roll < 40) {
                 System.out.println("\nDean casts - Exam Overload!");
-                return (int) (getAttackPower() * 1.2);
+                return (int) (getStrength() * 1.2);
             } else if (roll < 75) {
                 System.out.println("\nDean uses - Administrative Pressure!");
                 System.out.println("Your Wisdom regeneration is suppressed!");
-                return (int) (getAttackPower() * 1.5);
+                return (int) (getStrength() * 1.5);
             } else {
                 System.out.println("\nDean unleashes - Comprehensive Exam!");
                 System.out.println("Only perfect logic can survive this strike...");
-                return (int) (getAttackPower() * 2.0);
+                return (int) (getStrength() * 2.0);
             }
         }
     }
@@ -55,13 +53,13 @@ public class DeanGuardian extends Guardian implements Combatant {
     public void takeDamage(int damage) {
         super.takeDamage(damage);
 
-        // When deans hp currently below 25%, go bakc to phase2
+        // Transition to phase 2 when HP <= 25%
         if (phase == 1 && getCurrentHP() <= getMaxHP() * 0.25) {
             phase = 2;
-            setMaxHP(1200);
-            setCurrentHP(1200);
-            setAttackPower(150);
-            setWisdom(450);
+            setMaxHP(1500);
+            setCurrentHP(1500);
+            setStrength(150);
+            setIntelligence(500);
             if (!awakenedAnnounced) {
                 System.out.println("\nDean awakens!");
                 System.out.println("“You have defeated my mentors... but can you withstand the source of all exams?”");

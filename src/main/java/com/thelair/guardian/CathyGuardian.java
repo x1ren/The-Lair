@@ -6,6 +6,6 @@ public class CathyGuardian extends Guardian {
 	}
 
 	public String getIntro() {
-        return "Stage 1 – The Hall of Flame: 'You dare to begin the trials? Prove it.'";
+        return "Stage 1 – The Keeper of First Flames: 'This is very easy guys. Dali ra kaau ni ihuman ninyo.'";
 	}
 }

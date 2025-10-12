@@ -36,6 +36,7 @@ public class BattleSystem {
         });
         ConsoleUI.prompt("Enter choice:");
         int choice = safeNextInt();
+        scanner.nextLine(); 
         switch(choice) {
             case 1: {
                 int damage = player.attack();
@@ -69,20 +70,20 @@ public class BattleSystem {
     
     public void startBattle(Combatant opponent, Integer experienceReward) {
        
-        String battleIntro = "";
+        String battleIntro;
         if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
             String guardianName = opponent.getName();
             switch(guardianName) {
-                case "Cathy":
-                    battleIntro = "Ma'am Cathy emerges: 'You dare challenge me? Let's see if you know the basics!'";
+                case "Ma'am Cathy":
+                    battleIntro = "Ma'am Cathy emerges: 'This is very easy guys. Dali ra kaau ni ihuman ninyo.'";
                     break;
-                case "Khai":
+                case "Sir Khai":
                     battleIntro = "Sir Khai stands firm: 'Object-oriented principles will be your downfall!'";
                     break;
                 case "Serato":
                     battleIntro = "Serato appears: 'Your code is messy! Let me teach you proper structure!'";
                     break;
-                case "Tulin":
+                case "Ma'am Tulin":
                     battleIntro = "Ma'am Tulin declares: 'Data is everything! Prove you can manage it!'";
                     break;
                 case "Dean":

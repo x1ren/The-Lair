@@ -6,12 +6,12 @@ import main.java.com.thelair.game.GameManager;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		Player player = CharacterSelection.chooseCharacter(scanner);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Player player = CharacterSelection.chooseCharacter(scanner);
 
-		GameManager manager = new GameManager();
-		manager.run(player);
-		scanner.close();
-	}
+        GameManager manager = new GameManager(scanner);
+        manager.run(player);
+        scanner.close();
+    }
 }  

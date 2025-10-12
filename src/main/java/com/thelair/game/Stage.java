@@ -2,6 +2,7 @@ package main.java.com.thelair.game;
 
 import main.java.com.thelair.player.Player;
 import main.java.com.thelair.guardian.Guardian;
+import java.util.Scanner;
 
 /**
  * Generic Stage abstraction. Concrete stages define their guardian and prelude text.
@@ -31,5 +32,5 @@ public abstract class Stage<T extends Guardian> {
 	/**
 	 * Run the core encounter for this stage (minions + boss simplified for MVP).
 	 */
-	public abstract void run(Player player);
+    public abstract void run(Player player, Scanner scanner);
 }

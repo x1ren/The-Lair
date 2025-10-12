@@ -195,7 +195,9 @@ public class PuzzleEngine {
             return false;
         }
 
-        Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
+        // Prefer a harder question when the guardian is in finisher range, else random
+        availableQuestions.sort(Comparator.comparingInt(Question::getDifficulty).reversed());
+        Question question = availableQuestions.get(0);
         question.displayQuestion();
 
         String input = scanner.nextLine().trim().toUpperCase();
