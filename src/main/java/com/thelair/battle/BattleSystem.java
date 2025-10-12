@@ -126,7 +126,7 @@ public class BattleSystem {
                 System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
                     main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
-                    System.out.println("ATK: " + g.getStrength() + ", SPD: " + g.getSpeed() + ", INT: " + g.getIntelligence());
+                    System.out.println("ATK: " + g.getLogic() +  ", MP: " + g.getMaxMP());
                 }
                 break;
             default:

@@ -6,7 +6,7 @@ public class JosephJimenez extends Player {
         // Align to Character Stats doc (HP 400, Logic 200, Wisdom 200)
         this.setMaxHP(400);
         this.setCurrentHP(400);
-        this.setLogic(200);
+        this.setLogic(50);
         this.setWisdomStat(200);
         this.setMaxMP(200);
         this.setCurrentMP(200);

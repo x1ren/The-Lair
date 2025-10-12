@@ -6,7 +6,7 @@ public class JamuelBacus extends Player {
         // Align to Character Stats doc (HP 300, Logic 200, Wisdom 400)
         this.setMaxHP(300);
         this.setCurrentHP(300);
-        this.setLogic(200);
+        this.setLogic(50);
         this.setWisdomStat(400);
         this.setMaxMP(400);
         this.setCurrentMP(400);

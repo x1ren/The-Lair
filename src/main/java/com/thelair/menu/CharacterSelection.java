@@ -15,15 +15,15 @@ public class CharacterSelection {
         Player player;
 
         ConsoleUI.header("Choose your character");
-        ConsoleUI.printCharacterOption(1, "Iben Anoos", "The Codebreaker", 400, 300, 200,
+        ConsoleUI.printCharacterOption(1, "Iben Anoos", "The Codebreaker", 400, 60, 200,
                 "A quiet thinker who sees through syntax like glass.");
-        ConsoleUI.printCharacterOption(2, "Gaille Amolong", "The Architect", 500, 200, 300,
+        ConsoleUI.printCharacterOption(2, "Gaille Amolong", "The Architect", 500, 50, 300,
                 "A visionary builder who blends creativity with discipline.");
-        ConsoleUI.printCharacterOption(3, "Ilde Jan Figueras", "The Challenger", 600, 100, 200,
+        ConsoleUI.printCharacterOption(3, "Ilde Jan Figueras", "The Challenger", 600, 40, 200,
                 "Bold and relentless, charging headfirst into code with sheer determination.");
-        ConsoleUI.printCharacterOption(4, "Joseph Jimenez", "The Balanced", 400, 200, 200,
+        ConsoleUI.printCharacterOption(4, "Joseph Jimenez", "The Balanced", 400, 50, 200,
                 "A steady learner with no glaring weaknesses, but no flashy strengths.");
-        ConsoleUI.printCharacterOption(5, "Jamuel Bacus", "The Tactician", 300, 200, 400,
+        ConsoleUI.printCharacterOption(5, "Jamuel Bacus", "The Tactician", 300, 50, 400,
                 "A strategist who plays the long game.");
 
         int choice;
