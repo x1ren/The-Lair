@@ -33,12 +33,14 @@ public final class ConsoleUI {
         thickDivider();
         System.out.println(center(title.toUpperCase(), WIDTH));
         thickDivider();
+        System.out.println();
     }
 
     public static void section(String title) {
         divider();
         System.out.println(center(title, WIDTH));
         divider();
+        System.out.println();
     }
 
     public static void prompt(String text) {
