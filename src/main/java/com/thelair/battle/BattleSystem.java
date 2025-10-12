@@ -32,7 +32,8 @@ public class BattleSystem {
             "Attack",
             "Signature Skill",
             "Defend",
-            "Use Item"
+            "Use Item",
+            "Inspect Enemy"
         });
         ConsoleUI.prompt("Enter choice:");
         int choice = safeNextInt();
@@ -45,9 +46,23 @@ public class BattleSystem {
                 break;
             }
             case 2: {
+                // Enforce MP costs and cooldowns (simple defaults by class)
+                int cost = Math.max(20, (int)(player.getWisdomStat() * 0.1));
+                String key = "SIG:" + player.getClass().getSimpleName();
+                int cd = player.getCooldown(key);
+                if (cd > 0) {
+                    System.out.println("Skill on cooldown for " + cd + " more turn(s).");
+                    break;
+                }
+                if (player.getCurrentMP() < cost) {
+                    System.out.println("Not enough MP (need " + cost + ")!");
+                    break;
+                }
+                player.useMP(cost);
                 int damage = player.useSignatureSkill();
                 opponent.takeDamage(damage);
                 System.out.println("You used " + player.getSignatureSkillName() + " and dealt " + damage + " damage!");
+                player.setCooldown(key, 3);
                 break;
             }
             case 3:
@@ -55,7 +70,45 @@ public class BattleSystem {
                 // MVP: no state tracking; in a fuller build, track a defend flag
                 break;
             case 4:
-                System.out.println("You rummage for an item, but your bag is empty (MVP).");
+                if (player.getInventory().isEmpty()) {
+                    System.out.println("Your bag is empty.");
+                    break;
+                }
+                System.out.println("Items:");
+                for (int i = 0; i < player.getInventory().size(); i++) {
+                    System.out.println("  " + (i+1) + ") " + player.getInventory().get(i));
+                }
+                ConsoleUI.prompt("Choose item number:");
+                int idx = safeNextInt();
+                scanner.nextLine();
+                int sel = idx - 1;
+                if (sel < 0 || sel >= player.getInventory().size()) {
+                    System.out.println("Invalid item.");
+                    break;
+                }
+                String item = player.getInventory().get(sel);
+                if (player.consumeItem(item)) {
+                    if ("POTION_SMALL".equals(item)) {
+                        player.heal(100);
+                        System.out.println("You used a Small Potion and recovered 100 HP.");
+                    } else if ("ETHER_SMALL".equals(item)) {
+                        player.restoreMP(80);
+                        System.out.println("You used a Small Ether and recovered 80 MP.");
+                    } else if ("BOMB".equals(item)) {
+                        opponent.takeDamage(150);
+                        System.out.println("You threw a Bomb for 150 true damage!");
+                    } else {
+                        System.out.println("Nothing happened.");
+                    }
+                }
+                break;
+            case 5:
+                System.out.println("Enemy: " + opponent.getName());
+                System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
+                if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+                    main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
+                    System.out.println("ATK: " + g.getStrength() + ", SPD: " + g.getSpeed() + ", INT: " + g.getIntelligence());
+                }
                 break;
             default:
                 System.out.println("Invalid choice! You lose your turn.");
@@ -121,6 +174,8 @@ public class BattleSystem {
                 opponentTurn(opponent);
             }
             
+            // tick cooldowns at end of round
+            player.tickCooldowns();
             ConsoleUI.battleHUD(player, opponent);
         }
         

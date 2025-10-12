@@ -6,6 +6,15 @@ import main.java.com.thelair.battle.Combatant;
 public final class ConsoleUI {
     private static final int WIDTH = 70;
 
+    // ANSI colors
+    public static final String RESET = "\u001B[0m";
+    public static final String BOLD = "\u001B[1m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String CYAN = "\u001B[36m";
+
     private ConsoleUI() {}
 
     private static String repeat(char ch, int count) {
@@ -21,6 +30,10 @@ public final class ConsoleUI {
         return repeat(' ', pad) + text;
     }
 
+    public static String color(String text, String color) {
+        return color + text + RESET;
+    }
+
     public static void divider() {
         System.out.println(repeat('-', WIDTH));
     }
@@ -31,14 +44,14 @@ public final class ConsoleUI {
 
     public static void header(String title) {
         thickDivider();
-        System.out.println(center(title.toUpperCase(), WIDTH));
+        System.out.println(center(BOLD + title.toUpperCase() + RESET, WIDTH));
         thickDivider();
         System.out.println();
     }
 
     public static void section(String title) {
         divider();
-        System.out.println(center(title, WIDTH));
+        System.out.println(center(CYAN + title + RESET, WIDTH));
         divider();
         System.out.println();
     }
@@ -63,8 +76,11 @@ public final class ConsoleUI {
     }
 
     public static void battleHUD(Player player, Combatant opponent) {
-        System.out.printf("%nPlayer HP: %d/%d%n", player.getCurrentHP(), player.getMaxHP());
-        System.out.printf("%s HP: %d/%d%n", opponent.getName(), opponent.getCurrentHP(), opponent.getMaxHP());
+        String playerHp = color("" + player.getCurrentHP() + "/" + player.getMaxHP(), GREEN);
+        String playerMp = color("" + player.getCurrentMP() + "/" + player.getMaxMP(), BLUE);
+        String enemyHp = color("" + opponent.getCurrentHP() + "/" + opponent.getMaxHP(), RED);
+        System.out.printf("%nPlayer HP: %s  |  MP: %s%n", playerHp, playerMp);
+        System.out.printf("%s HP: %s%n", opponent.getName(), enemyHp);
     }
 }
 

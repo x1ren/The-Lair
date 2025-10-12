@@ -10,11 +10,11 @@ import java.util.Scanner;
 public abstract class Stage<T extends Guardian> {
 	protected final String stageName;
 	protected final T guardian;
+    protected Stage(String stageName, T guardian) {
+        this.stageName = stageName;
+        this.guardian = guardian;
+    }
 
-	protected Stage(String stageName, T guardian) {
-		this.stageName = stageName;
-		this.guardian = guardian;
-	}
 
 	public String getStageName() {
 		return stageName;

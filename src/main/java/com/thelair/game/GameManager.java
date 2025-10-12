@@ -17,6 +17,7 @@ public class GameManager {
         stages.add(new StageTwo());
         stages.add(new StageThree());
         stages.add(new StageFour());
+        stages.add(new StageFive());
     }
 
     public void run(Player player) {
