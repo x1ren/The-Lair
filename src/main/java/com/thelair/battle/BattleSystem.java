@@ -66,7 +66,7 @@ public class BattleSystem {
     }
     
     public void startBattle(Combatant opponent, Integer experienceReward) {
-        // Boss-specific battle introductions
+       
         String battleIntro = "";
         if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
             String guardianName = opponent.getName();
@@ -99,7 +99,7 @@ public class BattleSystem {
             playerTurn(opponent);
             
             if(opponent.isAlive()) {
-                // Check for finisher opportunity (only for Guardians at 10% HP)
+                
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian && 
                     puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent)) {
                     
@@ -108,7 +108,7 @@ public class BattleSystem {
                         (main.java.com.thelair.guardian.Guardian) opponent, player, scanner);
                     
                     if (finisherSuccess) {
-                        opponent.takeDamage(opponent.getCurrentHP()); // Instant defeat
+                        opponent.takeDamage(opponent.getCurrentHP()); 
                         break;
                     } else {
                         System.out.println(opponent.getName() + " now has " + opponent.getCurrentHP() + "/" + opponent.getMaxHP() + " HP");
