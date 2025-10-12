@@ -8,6 +8,13 @@ public class AnoosIben extends Player {
         this.setCurrentHP(400);
         this.setLogic(300);
         this.setWisdomStat(200);
+        this.setMaxMP(200);
+        this.setCurrentMP(200);
+        this.setSkills(new Skill[]{
+            new Skill("DBG_EYE", "Debugger’s Eye", 40, "Reduce enemy defense by 25% for 3 turns; reveals hidden abilities.", 3),
+            new Skill("SYN_SLAYER", "Syntax Slayer", 60, "Deal Logic ×1.5 damage (×2 if enemy weakened).", 2),
+            new Skill("LOOP_MASTERY", "Loop Mastery", 80, "Repeat last skill for free.", 4)
+        });
     }
 
     @Override
