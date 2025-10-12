@@ -108,6 +108,8 @@ public abstract class Player implements Combatant {
     }
 
     // setters for strength/speed/intelligence removed
+    public void setMaxMP(int maxMP) { this.maxMP = maxMP; }
+    public void setCurrentMP(int currentMP) { this.currentMP = currentMP; }
 
     public void displayStats() {
         System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d | Logic: %d | Wisdom: %d%n", 
@@ -138,6 +140,9 @@ public abstract class Player implements Combatant {
     public void increaseLogic(int amount) { this.logic += amount; }
     public void increaseWisdomStat(int amount) { this.wisdom += amount; }
     public void increaseMaxHP(int amount) { this.maxHP += amount; this.currentHP = Math.min(this.currentHP + amount, this.maxHP); }
+
+    public Skill[] getSkills() { return skills; }
+    public void setSkills(Skill[] skills) { this.skills = skills; }
 
     // Inventory helpers
     public java.util.List<String> getInventory() { return inventory; }

@@ -195,7 +195,7 @@ public class PuzzleEngine {
             return false;
         }
 
-        // Prefer a harder question when the guardian is in finisher range, else random
+        // prefer a harder question when the guardian is in finisher range, else we go random
         availableQuestions.sort(Comparator.comparingInt(Question::getDifficulty).reversed());
         Question question = availableQuestions.get(0);
         question.displayQuestion();
@@ -227,7 +227,32 @@ public class PuzzleEngine {
 
     public boolean shouldTriggerFinisher(Guardian guardian) {
         double hpPercentage = (double) guardian.getCurrentHP() / guardian.getMaxHP();
-        return hpPercentage <= 0.10; // 10% HP threshold
+        return hpPercentage <= 0.40; // 40% HP threshold per docs
+    }
+
+    // Ask a question based on a theme (guardian name) without needing a real Guardian.
+    public boolean triggerThemeQuestion(String themeGuardianName, Scanner scanner) {
+        List<Question> availableQuestions = questionBank.get(themeGuardianName);
+        if (availableQuestions == null || availableQuestions.isEmpty()) {
+            System.out.println("No questions available for theme: " + themeGuardianName);
+            return false;
+        }
+        availableQuestions.sort(Comparator.comparingInt(Question::getDifficulty).reversed());
+        Question question = availableQuestions.get(0);
+        question.displayQuestion();
+
+        String input = scanner.nextLine().trim().toUpperCase();
+        int playerAnswer;
+        switch(input) {
+            case "A": playerAnswer = 0; break;
+            case "B": playerAnswer = 1; break;
+            case "C": playerAnswer = 2; break;
+            case "D": playerAnswer = 3; break;
+            default: 
+                System.out.println("Invalid input! Please enter A, B, C, or D.");
+                return false;
+        }
+        return question.isCorrect(playerAnswer);
     }
 }
 

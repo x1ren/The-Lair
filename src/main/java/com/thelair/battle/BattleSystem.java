@@ -46,23 +46,42 @@ public class BattleSystem {
                 break;
             }
             case 2: {
-                // Enforce MP costs and cooldowns (simple defaults by class)
-                int cost = Math.max(20, (int)(player.getWisdomStat() * 0.1));
-                String key = "SIG:" + player.getClass().getSimpleName();
-                int cd = player.getCooldown(key);
-                if (cd > 0) {
-                    System.out.println("Skill on cooldown for " + cd + " more turn(s).");
+                // Show multi-skill menu
+                if (player.getSkills() == null || player.getSkills().length == 0) {
+                    System.out.println("No skills available.");
                     break;
                 }
-                if (player.getCurrentMP() < cost) {
-                    System.out.println("Not enough MP (need " + cost + ")!");
+                System.out.println("Skills:");
+                for (int i = 0; i < player.getSkills().length; i++) {
+                    main.java.com.thelair.player.Skill s = player.getSkills()[i];
+                    int cdLeft = player.getCooldown(s.getId());
+                    System.out.printf("  %d) %s (Cost %d MP, CD %d) %s%n", i+1, s.getName(), s.getMpCost(), s.getCooldown(), cdLeft>0?"[CD "+cdLeft+"]":"");
+                    System.out.println("     - " + s.getDescription());
+                }
+                ConsoleUI.prompt("Choose skill:");
+                int sIdx = safeNextInt();
+                scanner.nextLine();
+                int sSel = sIdx - 1;
+                if (sSel < 0 || sSel >= player.getSkills().length) {
+                    System.out.println("Invalid skill.");
                     break;
                 }
-                player.useMP(cost);
+                main.java.com.thelair.player.Skill s = player.getSkills()[sSel];
+                int cdLeft = player.getCooldown(s.getId());
+                if (cdLeft > 0) {
+                    System.out.println("Skill on cooldown for " + cdLeft + " more turn(s).");
+                    break;
+                }
+                if (player.getCurrentMP() < s.getMpCost()) {
+                    System.out.println("Not enough MP (need " + s.getMpCost() + ")!");
+                    break;
+                }
+                player.useMP(s.getMpCost());
+                // For MVP, map all skills to damage equal to player.useSignatureSkill() baseline/variants
                 int damage = player.useSignatureSkill();
                 opponent.takeDamage(damage);
-                System.out.println("You used " + player.getSignatureSkillName() + " and dealt " + damage + " damage!");
-                player.setCooldown(key, 3);
+                System.out.println("You used " + s.getName() + " and dealt " + damage + " damage!");
+                if (s.getCooldown() > 0) player.setCooldown(s.getId(), s.getCooldown());
                 break;
             }
             case 3:
@@ -151,23 +170,40 @@ public class BattleSystem {
         
         ConsoleUI.section(battleIntro);
         
+        int bossPuzzleUses = 0;
         while(player.isAlive() && opponent.isAlive()) {
             playerTurn(opponent);
             
             if(opponent.isAlive()) {
                 
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian && 
-                    puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent)) {
-                    
-                    System.out.println("\n💡 " + opponent.getName() + " is weakened! Finish them with your knowledge!");
+                    puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent) && bossPuzzleUses < 2) {
+                    bossPuzzleUses++;
+                    System.out.println("\n💡 " + opponent.getName() + " is weakened! Answer to deal extra damage!");
                     boolean finisherSuccess = puzzleEngine.triggerFinisher(
                         (main.java.com.thelair.guardian.Guardian) opponent, player, scanner);
-                    
                     if (finisherSuccess) {
-                        opponent.takeDamage(opponent.getCurrentHP()); 
-                        break;
+                        int extra = (int)(player.getLogic() * 1.5);
+                        opponent.takeDamage(extra);
+                        System.out.println("Your answer was correct! Extra damage: " + extra);
                     } else {
-                        System.out.println(opponent.getName() + " now has " + opponent.getCurrentHP() + "/" + opponent.getMaxHP() + " HP");
+                        int regen = Math.min( (int)(opponent.getMaxHP() * 0.20), opponent.getMaxHP() - opponent.getCurrentHP());
+                        ((main.java.com.thelair.guardian.Guardian) opponent).heal(regen);
+                        System.out.println(opponent.getName() + " regenerates " + regen + " HP!");
+                    }
+                } else if (!(opponent instanceof main.java.com.thelair.guardian.Guardian)) {
+                    // Minion chance to ask a theme question; reward random item on success
+                    if (new java.util.Random().nextInt(100) < 30) { // 30% chance
+                        System.out.println("A quick puzzle appears!");
+                        boolean ok = puzzleEngine.triggerThemeQuestion("Ma'am Cathy", scanner);
+                        if (ok) {
+                            String[] pool = new String[]{"POTION_SMALL","POTION_SMALL","ETHER_SMALL","BOMB"};
+                            String reward = pool[new java.util.Random().nextInt(pool.length)];
+                            player.addItem(reward);
+                            System.out.println("You solved it! Found an item: " + reward);
+                        } else {
+                            System.out.println("Incorrect. No reward.");
+                        }
                     }
                 }
                 
