@@ -5,15 +5,16 @@ import main.java.com.thelair.player.Player;
 import main.java.com.thelair.guardian.CathyGuardian;
 import main.java.com.thelair.battle.BattleSystem;
 import main.java.com.thelair.battle.Minion;
+import main.java.com.thelair.ui.ConsoleUI;
 
 public class StageOne extends Stage<CathyGuardian> {
 	public StageOne() {
 		super("Stage 1 – The Hall of Flame", new CathyGuardian());
 	}
 
-	public void intro() {
-		System.out.println(getGuardian().getIntro());
-	}
+    public void intro() {
+        ConsoleUI.section(getGuardian().getIntro());
+    }
 
 	public void run(Player player) {
 		intro();

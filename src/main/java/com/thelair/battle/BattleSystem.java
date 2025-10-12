@@ -2,6 +2,7 @@ package main.java.com.thelair.battle;
 
 import main.java.com.thelair.player.Player;
 import main.java.com.thelair.puzzle.PuzzleEngine;
+import main.java.com.thelair.ui.ConsoleUI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -27,12 +28,13 @@ public class BattleSystem {
     }
 
     private void playerTurn(Combatant opponent) {
-        System.out.println("\nYour Turn! Choose an action:");
-        System.out.println("1. Attack");
-        System.out.println("2. Signature Skill");
-        System.out.println("3. Defend");
-        System.out.println("4. Use Item");
-        System.out.print("Enter choice: ");
+        ConsoleUI.menu("Your Turn! Choose an action:", new String[]{
+            "Attack",
+            "Signature Skill",
+            "Defend",
+            "Use Item"
+        });
+        ConsoleUI.prompt("Enter choice:");
         int choice = safeNextInt();
         switch(choice) {
             case 1: {
@@ -93,7 +95,7 @@ public class BattleSystem {
             battleIntro = "A wild " + opponent.getName() + " appears!";
         }
         
-        System.out.println(battleIntro);
+        ConsoleUI.section(battleIntro);
         
         while(player.isAlive() && opponent.isAlive()) {
             playerTurn(opponent);
@@ -118,8 +120,7 @@ public class BattleSystem {
                 opponentTurn(opponent);
             }
             
-            System.out.println("\nPlayer HP: " + player.getCurrentHP() + "/" + player.getMaxHP());
-            System.out.println(opponent.getName() + " HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
+            ConsoleUI.battleHUD(player, opponent);
         }
         
         if(player.isAlive()) {
