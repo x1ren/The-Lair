@@ -3,32 +3,36 @@ package main.java.com.thelair.game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import main.java.com.thelair.player.Player;
+import main.java.com.thelair.ui.ConsoleUI;
 
 public class GameManager {
-	private final List<Stage<?>> stages = new ArrayList<>();
+    private final List<Stage<?>> stages = new ArrayList<>();
+    private final Scanner scanner;
 
-	public GameManager() {
-		stages.add(new StageOne());
-		stages.add(new StageTwo());
-		stages.add(new StageThree());
-		stages.add(new StageFour());
-	}
+    public GameManager(Scanner scanner) {
+        this.scanner = scanner;
+        stages.add(new StageOne());
+        stages.add(new StageTwo());
+        stages.add(new StageThree());
+        stages.add(new StageFour());
+    }
 
-	public void run(Player player) {
+    public void run(Player player) {
 		for (Stage<?> stage : stages) {
-			stage.run(player);
+            stage.run(player, scanner);
 			if (!player.isAlive()) {
 				System.out.println("You were defeated. Game Over.");
 				return;
 			}
-			// Simple post-stage upgrade per Character Stats doc
-			applyRandomUpgrade(player, stages.indexOf(stage) + 1);
+            int stageNumber = stages.indexOf(stage) + 1;
+            applyChosenUpgrade(player, stageNumber);
 		}
-		System.out.println("Stages 1 and 2 complete! (MVP)");
+        ConsoleUI.header("MVP complete – Stages 1 through 4");
 	}
 
-	private void applyRandomUpgrade(Player player, int stageNumber) {
+    private void applyChosenUpgrade(Player player, int stageNumber) {
 		int min, max;
 		switch (stageNumber) {
 			case 1: min = 50; max = 70; break;
@@ -40,8 +44,19 @@ public class GameManager {
 		}
 		Random rng = new Random();
 		int roll = rng.nextInt((max - min) + 1) + min;
-		int category = rng.nextInt(3); // 0 HP, 1 Logic, 2 Wisdom
-		switch (category) {
+        ConsoleUI.menu("Choose your upgrade (Stage " + stageNumber + ")", new String[]{
+            "+HP",
+            "+Logic",
+            "+Wisdom"
+        });
+        ConsoleUI.prompt("Enter choice:");
+        int category;
+        try {
+            category = Integer.parseInt(scanner.nextLine().trim()) - 1;
+        } catch (Exception e) {
+            category = 0;
+        }
+        switch (category) {
 			case 0:
 				player.increaseMaxHP(roll);
 				System.out.println("Upgrade: +" + roll + " HP");

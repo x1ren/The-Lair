@@ -16,9 +16,8 @@ public class StageOne extends Stage<CathyGuardian> {
         ConsoleUI.section(getGuardian().getIntro());
     }
 
-	public void run(Player player) {
-		intro();
-		Scanner scanner = new Scanner(System.in);
+    public void run(Player player, Scanner scanner) {
+        intro();
         BattleSystem battle = new BattleSystem(player, scanner);
         // Minion wave: 5 Goblins (HP 40, ATK 5)
         for (int i = 1; i <= 5 && player.isAlive(); i++) {
