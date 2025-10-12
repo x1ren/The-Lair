@@ -47,7 +47,7 @@ public class PuzzleEngine {
             },
             2, "Loops", 1
         ));
-        questionBank.put("Cathy", cathyQuestions);
+        questionBank.put("Ma'am Cathy", cathyQuestions);
 
         // Stage 2: Khai - OOP - Difficulty 2
         List<Question> khaiQuestions = new ArrayList<>();
@@ -81,7 +81,7 @@ public class PuzzleEngine {
             },
             0, "OOP Concepts", 2
         ));
-        questionBank.put("Khai", khaiQuestions);
+        questionBank.put("Sir Khai", khaiQuestions);
 
         // Stage 3: Serato - Debugging and DSA - Difficulty 3
         List<Question> seratoQuestions = new ArrayList<>();
@@ -149,7 +149,7 @@ public class PuzzleEngine {
             },
             1, "Databases", 4
         ));
-        questionBank.put("Tulin", tulinQuestions);
+        questionBank.put("Ma'am Tulin", tulinQuestions);
 
         // Stage 5: Dean - All Combined - Difficulty 5
         List<Question> deanQuestions = new ArrayList<>();
@@ -187,47 +187,46 @@ public class PuzzleEngine {
     }
 
     public boolean triggerFinisher(Guardian guardian, Player player, Scanner scanner) {
-    String guardianName = guardian.getName();
-    List<Question> availableQuestions = questionBank.get(guardianName);
-    
-    if (availableQuestions == null || availableQuestions.isEmpty()) {
-        System.out.println("No questions available for " + guardianName);
-        return false;
-    }
-
-    // Select a random question for this guardian
-    Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
-    question.displayQuestion();
-
-    // Get and validate player input
-    String input = scanner.nextLine().trim().toUpperCase();
-    int playerAnswer = -1;
-    
-    switch(input) {
-        case "A": playerAnswer = 0; break;
-        case "B": playerAnswer = 1; break;
-        case "C": playerAnswer = 2; break;
-        case "D": playerAnswer = 3; break;
-        default: 
-            System.out.println("Invalid input! Please enter A, B, C, or D.");
+        String guardianName = guardian.getName();
+        List<Question> availableQuestions = questionBank.get(guardianName);
+        
+        if (availableQuestions == null || availableQuestions.isEmpty()) {
+            System.out.println("No questions available for " + guardianName);
             return false;
-    }
+        }
 
-    // Check answer
-    if (question.isCorrect(playerAnswer)) {
-        System.out.println("\n✓ " + guardianName + " collapses: 'Impossible... you truly understand...'");
-        return true;
-    } else {
-        int healAmount = (int)(guardian.getMaxHP() * 0.25);
-        guardian.heal(healAmount);
-        System.out.println("\n✗ " + guardianName + " laughs: 'Fool! You know nothing! I regain my strength!'");
-        System.out.println(guardianName + " regenerates " + healAmount + " HP!");
-        return false;
+        Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
+        question.displayQuestion();
+
+        String input = scanner.nextLine().trim().toUpperCase();
+        int playerAnswer = -1;
+        
+        switch(input) {
+            case "A": playerAnswer = 0; break;
+            case "B": playerAnswer = 1; break;
+            case "C": playerAnswer = 2; break;
+            case "D": playerAnswer = 3; break;
+            default: 
+                System.out.println("Invalid input! Please enter A, B, C, or D.");
+                return false;
+        }
+
+        if (question.isCorrect(playerAnswer)) {
+            System.out.println("\n✓ " + guardianName + " collapses: 'Impossible... you truly understand...'");
+            return true;
+        } else {
+            int healAmount = (int)(guardian.getMaxHP() * 0.25);
+            guardian.heal(healAmount);
+            System.out.println("\n✗ " + guardianName + " laughs: 'Fool! You know nothing! I regain my strength!'");
+            System.out.println(guardianName + " regenerates " + healAmount + " HP!");
+            return false;
+        }
     }
-}
 
     public boolean shouldTriggerFinisher(Guardian guardian) {
         double hpPercentage = (double) guardian.getCurrentHP() / guardian.getMaxHP();
         return hpPercentage <= 0.10; // 10% HP threshold
     }
 }
+
+
