@@ -13,7 +13,7 @@ The first trial awaits. The quest for knowledge begins now.
 
 <hr/>
 
-<h3>MVP (Stages 1–2) – How to Run</h3>
+<h3>How to Run</h3>
 
 <p><b>Requirements:</b> Java 17+ (or compatible), a terminal/shell.</p>
 
@@ -38,7 +38,17 @@ This MVP uses OOP pillars:
 </ul>
 </p>
 
-<p>Future devs can add Stage 3+ by creating new `Guardian` subclasses and `Stage` implementations, then wiring them in `GameManager`.</p>
+<p>Stages 1–5 are wired. Add new stages by creating a `Guardian` and `Stage` and wiring in `GameManager`.</p>
+
+<h3>New Features</h3>
+<ul>
+<li><b>Upgrade Choice</b>: After each stage, choose +HP, +Logic, or +Wisdom. Ranges scale per docs.</li>
+<li><b>Skills Enforced</b>: Signature Skill now checks MP and has cooldown.</li>
+<li><b>Inventory & Items</b>: Start with Small Potion (+100 HP), Small Ether (+80 MP), Bomb (150 dmg). Use in battle.</li>
+<li><b>Inspect Enemy</b>: View boss/minion stats mid-battle.</li>
+<li><b>ANSI Colors</b>: Colored headers and HUD for readability.</li>
+<li><b>Stage 5</b>: Dean’s Judgement with puzzle finisher gating.</li>
+</ul>
 
 <h3>Developer TODOs</h3>
 <ul>

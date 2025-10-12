@@ -61,6 +61,10 @@ public class CharacterSelection {
                 player = new AnoosIben("Iben Anoos", 1, 0, 0, 0, 0, 0);
         }
         System.out.println("You have chosen " + player.getName() + " - " + player.getCharacterClass() + "!");
+        // Seed starter items
+        player.addItem("POTION_SMALL");
+        player.addItem("ETHER_SMALL");
+        player.addItem("BOMB");
         System.out.println();
         return player;
     }

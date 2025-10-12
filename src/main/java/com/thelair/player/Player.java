@@ -20,6 +20,8 @@ public abstract class Player implements Combatant {
     protected int logic;
     protected int wisdom;
     protected Skill[] skills;
+    protected java.util.Map<String, Integer> skillCooldowns = new java.util.HashMap<>();
+    protected java.util.List<String> inventory = new java.util.ArrayList<>();
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
 
@@ -108,8 +110,8 @@ public abstract class Player implements Combatant {
     // setters for strength/speed/intelligence removed
 
     public void displayStats() {
-        System.out.printf("%s (%s) - HP: %d/%d | Logic: %d | Wisdom: %d%n", 
-        name, characterClass, currentHP, maxHP, logic, wisdom);
+        System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d | Logic: %d | Wisdom: %d%n", 
+        name, characterClass, currentHP, maxHP, currentMP, maxMP, logic, wisdom);
     }
 
     // Combatant implementation
@@ -124,7 +126,7 @@ public abstract class Player implements Combatant {
     }
 
     public int useSignatureSkill() {
-        // Default: modest bonus based on logic
+        // Default: modest bonus based on logic, no cost
         return (int)(0.5 * logic);
     }
 
@@ -136,4 +138,21 @@ public abstract class Player implements Combatant {
     public void increaseLogic(int amount) { this.logic += amount; }
     public void increaseWisdomStat(int amount) { this.wisdom += amount; }
     public void increaseMaxHP(int amount) { this.maxHP += amount; this.currentHP = Math.min(this.currentHP + amount, this.maxHP); }
+
+    // Inventory helpers
+    public java.util.List<String> getInventory() { return inventory; }
+    public void addItem(String itemId) { inventory.add(itemId); }
+    public boolean consumeItem(String itemId) { return inventory.remove(itemId); }
+
+    // Cooldowns helpers
+    public int getCooldown(String key) { return skillCooldowns.getOrDefault(key, 0); }
+    public void setCooldown(String key, int turns) { skillCooldowns.put(key, turns); }
+    public void tickCooldowns() {
+        java.util.Map<String, Integer> next = new java.util.HashMap<>();
+        for (java.util.Map.Entry<String, Integer> e : skillCooldowns.entrySet()) {
+            int v = Math.max(0, e.getValue() - 1);
+            if (v > 0) next.put(e.getKey(), v);
+        }
+        skillCooldowns = next;
+    }
 }
