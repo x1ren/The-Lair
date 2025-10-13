@@ -6,7 +6,7 @@ public class IldeJanFigueras extends Player {
         // Align to Character Stats doc (HP 600, Logic 100, Wisdom 200)
         this.setMaxHP(600);
         this.setCurrentHP(600);
-        this.setLogic(100);
+        this.setLogic(40);
         this.setWisdomStat(200);
         this.setMaxMP(200);
         this.setCurrentMP(200);

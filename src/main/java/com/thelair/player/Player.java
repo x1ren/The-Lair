@@ -1,6 +1,8 @@
     package main.java.com.thelair.player;
 
 import main.java.com.thelair.battle.Combatant;
+import java.util.Random;
+
 
 /** 
  * HP (Health Points): represents the amount of damage a character can take before dying or being knocked out.
@@ -11,6 +13,8 @@ import main.java.com.thelair.battle.Combatant;
  */
 
 public abstract class Player implements Combatant {
+
+
     protected String name; 
     protected String nickname;
     protected String characterClass;
@@ -36,6 +40,18 @@ public abstract class Player implements Combatant {
         this.level = level;
         this.experience = 0;
         this.experienceToNextLevel = level * 100;
+    }
+
+    public void restoreStats(){
+        
+        currentHP = maxHP;
+        currentMP = maxMP;
+        System.out.println(name + " is now resting in the library to restore HP and MP");
+        System.out.println("After 2 minutes....");
+        System.out.printf("Current HP: %d\n", currentHP);
+        System.out.printf("Current MP: %d\n", currentMP);
+        System.out.println(name + "is now fully rested!");
+
     }
 
     public boolean isAlive() {
@@ -119,7 +135,10 @@ public abstract class Player implements Combatant {
     // Combatant implementation
     @Override
     public int attack() {
-        return logic;
+        int min = logic;
+        int max = logic + 30;
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
     // Polymorphic signature skill. Subclasses may override.

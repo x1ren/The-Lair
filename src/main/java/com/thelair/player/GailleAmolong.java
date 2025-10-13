@@ -6,7 +6,7 @@ public class GailleAmolong extends Player {
         // Align to Character Stats doc (HP 500, Logic 200, Wisdom 300)
         this.setMaxHP(500);
         this.setCurrentHP(500);
-        this.setLogic(200);
+        this.setLogic(50);
         this.setWisdomStat(300);
         this.setMaxMP(300);
         this.setCurrentMP(300);

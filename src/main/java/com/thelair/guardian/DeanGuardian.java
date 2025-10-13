@@ -11,7 +11,8 @@ public class DeanGuardian extends Guardian {
     private final Random random = new Random();
 
     public DeanGuardian() {
-        super("Dean", 5, 1200, 120, 25, 450);
+        super("Dean", 5, 900, 85, 450);
+        ////String name, int level, int maxHP, int logic, int maxMP
     }
 
     public String getIntro() {
@@ -30,21 +31,21 @@ public class DeanGuardian extends Guardian {
                 System.out.println("Each instructor empowers her resolve...");
             }
             turnsSinceSummon++;
-            return getStrength() + random.nextInt(10);
+            return getLogic() + random.nextInt(10);
         } else {
             // her special skills and awaken
             int roll = random.nextInt(100);
             if (roll < 40) {
                 System.out.println("\nDean casts - Exam Overload!");
-                return (int) (getStrength() * 1.2);
+                return (int) (getLogic() * 1.2);
             } else if (roll < 75) {
                 System.out.println("\nDean uses - Administrative Pressure!");
                 System.out.println("Your Wisdom regeneration is suppressed!");
-                return (int) (getStrength() * 1.5);
+                return (int) (getLogic() * 1.5);
             } else {
                 System.out.println("\nDean unleashes - Comprehensive Exam!");
                 System.out.println("Only perfect logic can survive this strike...");
-                return (int) (getStrength() * 2.0);
+                return (int) (getLogic() * 2.0);
             }
         }
     }
@@ -56,10 +57,10 @@ public class DeanGuardian extends Guardian {
         // Transition to phase 2 when HP <= 25%
         if (phase == 1 && getCurrentHP() <= getMaxHP() * 0.25) {
             phase = 2;
-            setMaxHP(1500);
-            setCurrentHP(1500);
-            setStrength(150);
-            setIntelligence(500);
+            
+            setCurrentHP(1000);
+            setLogic(90);
+            
             if (!awakenedAnnounced) {
                 System.out.println("\nDean awakens!");
                 System.out.println("“You have defeated my mentors... but can you withstand the source of all exams?”");
