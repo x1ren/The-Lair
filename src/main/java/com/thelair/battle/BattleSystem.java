@@ -72,12 +72,24 @@ public class BattleSystem {
                     System.out.println("Skill on cooldown for " + cdLeft + " more turn(s).");
                     break;
                 }
-                if (player.getCurrentMP() < s.getMpCost()) {
-                    System.out.println("Not enough MP (need " + s.getMpCost() + ")!");
+                if (player.getCurrentWisdom() < s.getMpCost()) {
+                    System.out.println("Not enough Wisdom (need " + s.getMpCost() + ")!");
                     break;
                 }
-                player.useMP(s.getMpCost());
-                // For MVP, map all skills to damage equal to player.useSignatureSkill() baseline/variants
+                player.useWisdom(s.getMpCost());
+                // Apply skill-specific effects
+                if ("DBG_EYE".equals(s.getId())) {
+                    // Debugger’s Eye: apply enemyDefenseDown for 3 turns
+                    if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+                        ((main.java.com.thelair.guardian.Guardian) opponent).applyStatusEffect("enemyDefenseDown", 3);
+                    }
+                    System.out.println("You used " + s.getName() + " and reduced enemy defense!");
+                } else if ("BLUEPRINT_MIND".equals(s.getId())) {
+                    // Blueprint Mind: apply logicBuff for 2 turns
+                    player.applyStatusEffect("logicBuff", 2);
+                    System.out.println("You used " + s.getName() + " and boosted your Logic for 2 turns!");
+                }
+                // Other skills just deal base damage for now
                 int damage = player.useSignatureSkill();
                 opponent.takeDamage(damage);
                 System.out.println("You used " + s.getName() + " and dealt " + damage + " damage!");
@@ -116,7 +128,7 @@ public class BattleSystem {
                         player.heal(250);
                         System.out.println("You used a Medium Potion and recovered 250 HP.");
                     } else if ("ETHER_SMALL".equals(item)) {
-                        player.restoreMP(80);
+                        player.restoreWisdom(80);
                         System.out.println("You used a Small Ether and recovered 80 Wisdom.");
                     } else if ("REVIVE".equals(item)) {
                         if (!player.isAlive()) {
@@ -138,7 +150,7 @@ public class BattleSystem {
                 System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
                     main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
-                    System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxMP());
+                    System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxWisdom());
                 }
                 break;
             default:

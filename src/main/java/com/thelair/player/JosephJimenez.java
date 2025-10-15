@@ -8,8 +8,8 @@ public class JosephJimenez extends Player {
         this.setCurrentHP(400);
         this.setLogic(50);
         this.setWisdomStat(200);
-        this.setMaxMP(200);
-        this.setCurrentMP(200);
+        this.setMaxWisdom(200);
+        this.setCurrentWisdom(200);
         this.setSkills(new Skill[]{
             new Skill("JACK_OF_ALL_CODES", "Jack of All Codes", 40, "Deals Logic ×1.2 damage to all enemies.", 3),
             new Skill("ADAPTIVE_LEARNER", "Adaptive Learner", 50, "Reuse last skill with +20% efficiency.", 4),

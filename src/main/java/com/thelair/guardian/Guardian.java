@@ -10,16 +10,18 @@ public class Guardian implements Combatant {
     //private int speed;
     //private int intelligence;
     private int logic;
-    private int maxMP, currentMP;
+    private int maxWisdom, currentWisdom;
+    protected java.util.Map<String, Integer> statusEffects = new java.util.HashMap<>();
 
 
-    public Guardian(String name, int level, int maxHP, int logic, int maxMP) {
+    public Guardian(String name, int level, int maxHP, int logic, int maxWisdom) {
         this.name = name;
         this.level = level;
         this.maxHP = maxHP;
         this.currentHP = maxHP;
         this.logic = logic;
-        this.maxMP = maxMP;
+        this.maxWisdom = maxWisdom;
+        this.currentWisdom = maxWisdom;
 
     }
 
@@ -41,7 +43,10 @@ public class Guardian implements Combatant {
     public int getLevel() { return level; }
     public int getMaxHP() { return maxHP; }
     public int getCurrentHP() { return currentHP; }
-   
+    public int getLogic(){return logic;}
+    public int getMaxWisdom(){return maxWisdom;}
+    public int getCurrentWisdom(){return currentWisdom;}
+
 
     public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
@@ -53,15 +58,36 @@ public class Guardian implements Combatant {
     public void setLogic(int logic){
         this.logic = logic;
     }
-    public int getLogic(){return logic;}
-    public void setMaxMP(int maxMP){
-        this.maxMP = maxMP;
+    public void setMaxWisdom(int maxWisdom){
+        this.maxWisdom = maxWisdom;
     }
-    public int getMaxMP(){
-        return maxMP;
+    public void setCurrentWisdom(int currentWisdom){
+        this.currentWisdom = currentWisdom;
     }
     public int getExperienceReward() {
         return level * 50;
+    }
+
+    // Status effect helpers
+    public void applyStatusEffect(String effect, int duration) {
+        statusEffects.put(effect, duration);
+    }
+
+    public boolean hasStatusEffect(String effect) {
+        return statusEffects.containsKey(effect) && statusEffects.get(effect) > 0;
+    }
+
+    public int getStatusEffectDuration(String effect) {
+        return statusEffects.getOrDefault(effect, 0);
+    }
+
+    public void tickStatusEffects() {
+        java.util.Map<String, Integer> next = new java.util.HashMap<>();
+        for (java.util.Map.Entry<String, Integer> e : statusEffects.entrySet()) {
+            int v = Math.max(0, e.getValue() - 1);
+            if (v > 0) next.put(e.getKey(), v);
+        }
+        statusEffects = next;
     }
 
     // Combatant implementation

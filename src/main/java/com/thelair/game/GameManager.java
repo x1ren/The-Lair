@@ -28,10 +28,22 @@ public class GameManager {
 				return;
 			}
             int stageNumber = stages.indexOf(stage) + 1;
+
+			// Stage transition narrative
+			if (stageNumber < stages.size()) {
+				System.out.println();
+				System.out.println("As you emerge victorious from " + stage.getStageName() + ",");
+				System.out.println("you feel the weight of knowledge growing within you.");
+				System.out.println("The next chamber beckons, holding even greater challenges...");
+				System.out.println();
+			}
+
             applyChosenUpgrade(player, stageNumber);
-			player.restoreStats();
 		}
         ConsoleUI.header("Stages 1–5 complete! GG");
+		System.out.println("You have proven your mastery of the arcane arts of Information Technology!");
+		System.out.println("The faculty recognizes your dedication and grants you your degree.");
+		System.out.println("Congratulations, graduate! Your journey in The Lair is complete.");
 	}
 
     private void applyChosenUpgrade(Player player, int stageNumber) {

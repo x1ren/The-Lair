@@ -20,7 +20,8 @@ public abstract class Player implements Combatant {
     protected String characterClass;
     protected int level;
     protected int maxHP, currentHP;
-    protected int maxMP, currentMP;
+    protected int maxWisdom, currentWisdom;
+    protected java.util.Map<String, Integer> statusEffects = new java.util.HashMap<>();
     protected int logic;
     protected int wisdom;
     protected Skill[] skills;
@@ -29,27 +30,27 @@ public abstract class Player implements Combatant {
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
 
-    public Player(String name, String characterClass, int level, 
-    int maxHP, int maxMP, int strength, int speed, int intelligence) {
+    public Player(String name, String characterClass, int level,
+    int maxHP, int maxWisdom, int strength, int speed, int intelligence) {
         this.name = name;
         this.characterClass = characterClass;
         this.maxHP = maxHP;
         this.currentHP = maxHP;
-        this.maxMP = maxMP;
-        this.currentMP = maxMP;
+        this.maxWisdom = maxWisdom;
+        this.currentWisdom = maxWisdom;
         this.level = level;
         this.experience = 0;
         this.experienceToNextLevel = level * 100;
     }
 
     public void restoreStats(){
-        
+
         currentHP = maxHP;
-        currentMP = maxMP;
-        System.out.println(name + " is now resting in the library to restore HP and MP");
+        currentWisdom = maxWisdom;
+        System.out.println(name + " is now resting in the library to restore HP and Wisdom");
         System.out.println("After 2 minutes....");
         System.out.printf("Current HP: %d\n", currentHP);
-        System.out.printf("Current MP: %d\n", currentMP);
+        System.out.printf("Current Wisdom: %d\n", currentWisdom);
         System.out.println(name + "is now fully rested!");
 
     }
@@ -58,24 +59,20 @@ public abstract class Player implements Combatant {
         return currentHP > 0;
     }
 
-    public void takeDamage(int damage) {
-        currentHP -= damage;
-        if(currentHP < 0) currentHP = 0;
-    }
 
     public void heal(int amount) {
         currentHP += amount;
         if(currentHP > maxHP) currentHP = maxHP;
     }
 
-    public void useMP(int amount) {
-        currentMP -= amount;
-        if(currentMP < 0) currentMP = 0;
+    public void useWisdom(int amount) {
+        currentWisdom -= amount;
+        if(currentWisdom < 0) currentWisdom = 0;
     }
 
-    public void restoreMP(int amount) {
-        currentMP += amount;
-        if(currentMP > maxMP) currentMP = maxMP;
+    public void restoreWisdom(int amount) {
+        currentWisdom += amount;
+        if(currentWisdom > maxWisdom) currentWisdom = maxWisdom;
     }
     
     public void checkLevelUp() {
@@ -107,10 +104,10 @@ public abstract class Player implements Combatant {
     public int getLevel() { return level; }
     public int getMaxHP() { return maxHP; }
     public int getCurrentHP() { return currentHP; }
-    public int getMaxMP() { return maxMP; }
-    public int getCurrentMP() { return currentMP;}
+    public int getMaxWisdom() { return maxWisdom; }
+    public int getCurrentWisdom() { return currentWisdom;}
     // strength/speed/intelligence removed
-    
+
     public void setLevel(int level) {
         this.level = level;
     }
@@ -124,19 +121,20 @@ public abstract class Player implements Combatant {
     }
 
     // setters for strength/speed/intelligence removed
-    public void setMaxMP(int maxMP) { this.maxMP = maxMP; }
-    public void setCurrentMP(int currentMP) { this.currentMP = currentMP; }
+    public void setMaxWisdom(int maxWisdom) { this.maxWisdom = maxWisdom; }
+    public void setCurrentWisdom(int currentWisdom) { this.currentWisdom = currentWisdom; }
 
     public void displayStats() {
-        System.out.printf("%s (%s) - HP: %d/%d | MP: %d/%d | Logic: %d | Wisdom: %d%n", 
-        name, characterClass, currentHP, maxHP, currentMP, maxMP, logic, wisdom);
+        System.out.printf("%s (%s) - HP: %d/%d | Wisdom: %d/%d | Logic: %d%n",
+        name, characterClass, currentHP, maxHP, currentWisdom, maxWisdom, logic);
     }
 
     // Combatant implementation
     @Override
     public int attack() {
-        int min = logic;
-        int max = logic + 30;
+        int effectiveLogic = getEffectiveLogic();
+        int min = effectiveLogic;
+        int max = effectiveLogic + 30;
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
@@ -192,5 +190,45 @@ public abstract class Player implements Combatant {
             if (v > 0) next.put(e.getKey(), v);
         }
         skillCooldowns = next;
+        tickStatusEffects();
+    }
+
+    public void tickStatusEffects() {
+        java.util.Map<String, Integer> next = new java.util.HashMap<>();
+        for (java.util.Map.Entry<String, Integer> e : statusEffects.entrySet()) {
+            int v = Math.max(0, e.getValue() - 1);
+            if (v > 0) next.put(e.getKey(), v);
+        }
+        statusEffects = next;
+    }
+
+    public void applyStatusEffect(String effect, int duration) {
+        statusEffects.put(effect, duration);
+    }
+
+    public boolean hasStatusEffect(String effect) {
+        return statusEffects.containsKey(effect) && statusEffects.get(effect) > 0;
+    }
+
+    public int getStatusEffectDuration(String effect) {
+        return statusEffects.getOrDefault(effect, 0);
+    }
+
+    public int getEffectiveLogic() {
+        int baseLogic = logic;
+        if (hasStatusEffect("logicBuff")) {
+            baseLogic = (int) (baseLogic * 1.3); // 30% boost
+        }
+        return baseLogic;
+    }
+
+    @Override
+    public void takeDamage(int damage) {
+        // Iron Will passive: 10% damage reduction when HP < 50%
+        if (currentHP < maxHP / 2) {
+            damage = (int) (damage * 0.9);
+        }
+        currentHP -= damage;
+        if(currentHP < 0) currentHP = 0;
     }
 }

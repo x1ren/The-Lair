@@ -11,8 +11,8 @@ public class DeanGuardian extends Guardian {
     private final Random random = new Random();
 
     public DeanGuardian() {
-        super("Dean", 5, 900, 85, 450);
-        ////String name, int level, int maxHP, int logic, int maxMP
+        super("Dean", 5, 1200, 120, 450);
+        //String name, int level, int maxHP, int logic, int maxWisdom
     }
 
     public String getIntro() {
