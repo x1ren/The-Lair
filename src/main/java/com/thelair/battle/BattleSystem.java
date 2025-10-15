@@ -126,7 +126,7 @@ public class BattleSystem {
                 System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
                     main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
-                    System.out.println("ATK: " + g.getLogic() +  ", MP: " + g.getMaxMP());
+                    System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxMP());
                 }
                 break;
             default:
@@ -195,7 +195,13 @@ public class BattleSystem {
                     // Minion chance to ask a theme question; reward random item on success
                     if (new java.util.Random().nextInt(100) < 30) { // 30% chance
                         System.out.println("A quick puzzle appears!");
-                        boolean ok = puzzleEngine.triggerThemeQuestion("Ma'am Cathy", scanner);
+                        // Map puzzle theme based on current guardian in the stage: default Cathy
+                        String theme = "Ma'am Cathy";
+                        // we cannot access the stage here; approximate based on opponent name wave
+                        if (opponent.getName().contains("Sorcerer")) theme = "Sir Khai";
+                        if (opponent.getName().contains("Thieves")) theme = "Serato";
+                        if (opponent.getName().contains("Dire Wolves")) theme = "Ma'am Tulin";
+                        boolean ok = puzzleEngine.triggerThemeQuestion(theme, scanner);
                         if (ok) {
                             String[] pool = new String[]{"POTION_SMALL","POTION_SMALL","ETHER_SMALL","BOMB"};
                             String reward = pool[new java.util.Random().nextInt(pool.length)];

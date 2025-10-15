@@ -77,9 +77,9 @@ public final class ConsoleUI {
 
     public static void battleHUD(Player player, Combatant opponent) {
         String playerHp = color("" + player.getCurrentHP() + "/" + player.getMaxHP(), GREEN);
-        String playerMp = color("" + player.getCurrentMP() + "/" + player.getMaxMP(), BLUE);
+        String playerMp = color("" + player.getWisdomStat(), BLUE);
         String enemyHp = color("" + opponent.getCurrentHP() + "/" + opponent.getMaxHP(), RED);
-        System.out.printf("%nPlayer HP: %s  |  MP: %s%n", playerHp, playerMp);
+        System.out.printf("%nPlayer HP: %s  |  Wisdom: %s%n", playerHp, playerMp);
         System.out.printf("%s HP: %s%n", opponent.getName(), enemyHp);
     }
 }
