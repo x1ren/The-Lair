@@ -42,23 +42,23 @@ public class CharacterSelection {
         
         switch(choice) {
             case 1:
-                player = new AnoosIben("Iben Anoos", 1, 0, 0, 0, 0, 0);
+                player = new AnoosIben("Iben Anoos", 1, 400, 200);
                 break;
             case 2:
-                player = new GailleAmolong("Gaille Amolong", 1, 0, 0, 0, 0, 0);
+                player = new GailleAmolong("Gaille Amolong", 1, 500, 300);
                 break;
             case 3:
-                player = new IldeJanFigueras("Ilde Jan Figueras", 1, 0, 0, 0, 0, 0);
+                player = new IldeJanFigueras("Ilde Jan Figueras", 1, 600, 200);
                 break;
             case 4:
-                player = new JosephJimenez("Joseph Jimenez", 1, 0, 0, 0, 0, 0);
+                player = new JosephJimenez("Joseph Jimenez", 1, 400, 200);
                 break;
             case 5:
-                player = new JamuelBacus("Jamuel Bacus", 1, 0, 0, 0, 0, 0);
+                player = new JamuelBacus("Jamuel Bacus", 1, 300, 400);
                 break;
             default:
                 System.out.println("Invalid choice! Defaulting to Iben Anoos.");
-                player = new AnoosIben("Iben Anoos", 1, 0, 0, 0, 0, 0);
+                player = new AnoosIben("Iben Anoos", 1, 400, 200);
         }
         System.out.println("You have chosen " + player.getName() + " - " + player.getCharacterClass() + "!");
         // Seed starter items

@@ -78,19 +78,34 @@ public class BattleSystem {
                 }
                 player.useWisdom(s.getMpCost());
                 // Apply skill-specific effects
+                int damage = 0;
                 if ("DBG_EYE".equals(s.getId())) {
                     // Debugger’s Eye: apply enemyDefenseDown for 3 turns
                     if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
                         ((main.java.com.thelair.guardian.Guardian) opponent).applyStatusEffect("enemyDefenseDown", 3);
                     }
                     System.out.println("You used " + s.getName() + " and reduced enemy defense!");
+                    damage = player.useSignatureSkill();
+                } else if ("SYN_SLAYER".equals(s.getId())) {
+                    // Syntax Slayer: check for enemyDefenseDown and double damage if present
+                    damage = player.useSignatureSkill();
+                    if (opponent instanceof main.java.com.thelair.guardian.Guardian &&
+                        ((main.java.com.thelair.guardian.Guardian) opponent).hasStatusEffect("enemyDefenseDown")) {
+                        damage *= 2;
+                        System.out.println("Enemy defense is down! Damage doubled!");
+                    } else {
+                        damage = (int) (damage * 1.5);
+                        System.out.println("Syntax Slayer deals 1.5x damage!");
+                    }
                 } else if ("BLUEPRINT_MIND".equals(s.getId())) {
                     // Blueprint Mind: apply logicBuff for 2 turns
                     player.applyStatusEffect("logicBuff", 2);
                     System.out.println("You used " + s.getName() + " and boosted your Logic for 2 turns!");
+                    damage = player.useSignatureSkill();
+                } else {
+                    // Other skills just deal base damage for now
+                    damage = player.useSignatureSkill();
                 }
-                // Other skills just deal base damage for now
-                int damage = player.useSignatureSkill();
                 opponent.takeDamage(damage);
                 System.out.println("You used " + s.getName() + " and dealt " + damage + " damage!");
                 if (s.getCooldown() > 0) player.setCooldown(s.getId(), s.getCooldown());
@@ -240,8 +255,11 @@ public class BattleSystem {
                 opponentTurn(opponent);
             }
             
-            // tick cooldowns at end of round
+            // tick cooldowns and status effects at end of round
             player.tickCooldowns();
+            if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+                ((main.java.com.thelair.guardian.Guardian) opponent).tickStatusEffects();
+            }
             ConsoleUI.battleHUD(player, opponent);
         }
         

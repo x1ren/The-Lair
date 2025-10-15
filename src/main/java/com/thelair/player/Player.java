@@ -30,8 +30,7 @@ public abstract class Player implements Combatant {
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
 
-    public Player(String name, String characterClass, int level,
-    int maxHP, int maxWisdom, int strength, int speed, int intelligence) {
+    public Player(String name, String characterClass, int level, int maxHP, int maxWisdom) {
         this.name = name;
         this.characterClass = characterClass;
         this.maxHP = maxHP;
@@ -145,8 +144,8 @@ public abstract class Player implements Combatant {
     }
 
     public int useSignatureSkill() {
-        // Default: modest bonus based on logic, no cost
-        return (int)(0.5 * logic);
+        // Default: modest bonus based on effective logic (with buffs), no cost
+        return (int)(0.5 * getEffectiveLogic());
     }
 
     // New stat accessors
