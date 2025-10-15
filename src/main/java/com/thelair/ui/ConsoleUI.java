@@ -82,6 +82,43 @@ public final class ConsoleUI {
         System.out.printf("%nPlayer HP: %s  |  Wisdom: %s%n", playerHp, playerWisdom);
         System.out.printf("%s HP: %s%n", opponent.getName(), enemyHp);
     }
+
+    /**
+     * Displays text with a typewriter animation effect (Star Wars style).
+     * @param text The text to animate
+     * @param delayMs Delay between each character in milliseconds
+     */
+    public static void animateText(String text, int delayMs) {
+        if (text == null) return;
+
+        for (int i = 0; i < text.length(); i++) {
+            System.out.print(text.charAt(i));
+            System.out.flush();
+
+            try {
+                Thread.sleep(delayMs);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+        System.out.println(); // New line at end
+    }
+
+    /**
+     * Displays multiple lines of text with animation, with paragraph breaks.
+     */
+    public static void animateStory(String[] lines, int delayMs) {
+        for (String line : lines) {
+            animateText(line, delayMs);
+            try {
+                Thread.sleep(delayMs * 2); // Slightly longer pause between lines
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+    }
 }
 
 
