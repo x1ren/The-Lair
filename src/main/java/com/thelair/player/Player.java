@@ -39,7 +39,7 @@ public abstract class Player implements Combatant {
         this.currentWisdom = maxWisdom;
         this.level = level;
         this.experience = 0;
-        this.experienceToNextLevel = level * 100;
+        this.experienceToNextLevel = 100; // First level up at 100 XP
     }
 
     public void restoreStats(){
@@ -88,14 +88,19 @@ public abstract class Player implements Combatant {
     }
 
     private void levelUp() {
+        Random random = new Random();
         level++;
-        maxHP += 10;
+        int maxHpToAdd = 35 + random.nextInt(30);
+        int logicToAdd = 35 + random.nextInt(25);
+        int wisdomToAdd = 25 + random.nextInt(75);
+        maxHP += maxHpToAdd; // More HP per level
         currentHP = maxHP;
         // Logic/Wisdom are the only scaling stats in this simplified model
-        logic += 2;
-        wisdom += 2;
-        experienceToNextLevel += level * 100; // current scaling method
+        logic += logicToAdd; // More logic per level
+        wisdom += wisdomToAdd; // More wisdom per level
+        experienceToNextLevel = level * 50; 
         System.out.println(name + " leveled up to level " + level + "!");
+        System.out.println("HP increased by " + maxHpToAdd + ",  Logic increased by " + logicToAdd + ", Wisdom increased by " + wisdomToAdd + "!");
     }
 
     public String getName() { return name; }
