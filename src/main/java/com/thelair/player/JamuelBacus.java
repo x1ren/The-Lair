@@ -1,12 +1,12 @@
 package main.java.com.thelair.player;
 
 public class JamuelBacus extends Player {
-    public JamuelBacus(String name, int level, int maxHP, int maxMP, int strength, int speed, int intelligence) {
-        super("Bacus", "The Tactician", 1, 65, 65, 10, 12, 17);
+    public JamuelBacus(String name, int level, int maxHP, int maxWisdom) {
+        super("Bacus", "The Tactician", 1, 300, 400);
         // Align to Character Stats doc (HP 300, Logic 200, Wisdom 400)
         this.setMaxHP(300);
         this.setCurrentHP(300);
-        this.setLogic(50);
+        this.setLogic(200);
         this.setWisdomStat(400);
         this.setMaxWisdom(400);
         this.setCurrentWisdom(400);
