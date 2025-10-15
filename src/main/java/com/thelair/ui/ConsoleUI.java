@@ -42,6 +42,22 @@ public final class ConsoleUI {
         System.out.println(repeat('=', WIDTH));
     }
 
+    public static String getDivider() {
+        return repeat('-', WIDTH) + "\n";
+    }
+
+    public static String getThickDivider() {
+        return repeat('=', WIDTH) + "\n";
+    }
+
+    public static String getBlankLine() {
+        return "\n";
+    }
+
+    public static String getCenteredText(String text) {
+        return center(text, WIDTH) + "\n";
+    }
+
     public static void header(String title) {
         thickDivider();
         System.out.println(center(BOLD + title.toUpperCase() + RESET, WIDTH));
@@ -49,11 +65,27 @@ public final class ConsoleUI {
         System.out.println();
     }
 
+    public static String getHeader(String title) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(repeat('=', WIDTH)).append("\n");
+        sb.append(center(BOLD + title.toUpperCase() + RESET, WIDTH)).append("\n");
+        sb.append(repeat('=', WIDTH)).append("\n");
+        return sb.toString();
+    }
+
     public static void section(String title) {
         divider();
         System.out.println(center(CYAN + title + RESET, WIDTH));
         divider();
         System.out.println();
+    }
+
+    public static String getSection(String title) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(repeat('-', WIDTH)).append("\n");
+        sb.append(center(CYAN + title + RESET, WIDTH)).append("\n");
+        sb.append(repeat('-', WIDTH)).append("\n");
+        return sb.toString();
     }
 
     public static void prompt(String text) {
@@ -91,18 +123,22 @@ public final class ConsoleUI {
     public static void animateText(String text, int delayMs) {
         if (text == null) return;
 
-        for (int i = 0; i < text.length(); i++) {
-            System.out.print(text.charAt(i));
-            System.out.flush();
+        // Handle multi-line text by splitting on newlines
+        String[] lines = text.split("\n");
+        for (String line : lines) {
+            for (int i = 0; i < line.length(); i++) {
+                System.out.print(line.charAt(i));
+                System.out.flush();
 
-            try {
-                Thread.sleep(delayMs);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
+                try {
+                    Thread.sleep(delayMs);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
             }
+            System.out.println(); // New line at end of each line
         }
-        System.out.println(); // New line at end
     }
 
     /**
