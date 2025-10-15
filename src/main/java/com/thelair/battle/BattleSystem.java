@@ -102,6 +102,21 @@ public class BattleSystem {
                     player.applyStatusEffect("logicBuff", 2);
                     System.out.println("You used " + s.getName() + " and boosted your Logic for 2 turns!");
                     damage = player.useSignatureSkill();
+                } else if ("GOD_MODE".equals(s.getId())) {
+                    // Debug hero god mode - instant defeat
+                    damage = opponent.getCurrentHP() + 1000; // More than enough to kill anything
+                    System.out.println("GOD MODE ACTIVATED! Enemy obliterated!");
+                } else if ("INFINITE_WISDOM".equals(s.getId())) {
+                    // Debug hero infinite wisdom
+                    player.restoreWisdom(player.getMaxWisdom());
+                    System.out.println("Infinite Wisdom! All Wisdom restored!");
+                    damage = player.useSignatureSkill();
+                } else if ("PERFECT_DEFENSE".equals(s.getId())) {
+                    // Debug hero perfect defense
+                    player.applyStatusEffect("perfectDefense", 1); // Lasts 1 turn
+                    System.out.println("Perfect Defense! You are invincible this turn!");
+                    // Don't deal damage, but apply defense effect
+                    damage = 0;
                 } else {
                     // Other skills just deal base damage for now
                     damage = player.useSignatureSkill();
@@ -175,8 +190,17 @@ public class BattleSystem {
 
     private void opponentTurn(Combatant opponent) {
         int damage = opponent.attack();
+
+        // Check if debug hero has perfect defense active
+        if (player.hasStatusEffect("perfectDefense")) {
+            System.out.println("Perfect Defense blocks all damage!");
+            damage = 0;
+        }
+
         player.takeDamage(damage);
-        System.out.println("The " + opponent.getName() + " attacks you for " + damage + " damage!");
+        if (damage > 0) {
+            System.out.println("The " + opponent.getName() + " attacks you for " + damage + " damage!");
+        }
     }
     
     public void startBattle(Combatant opponent, Integer experienceReward) {
