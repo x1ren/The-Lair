@@ -21,10 +21,14 @@ public class StageTwo extends Stage<KhaiGuardian> {
         BattleSystem battle = new BattleSystem(player, scanner);
         // Minion wave: 5 Sorcerers (HP 60, ATK 10)
         for (int i = 1; i <= 5 && player.isAlive(); i++) {
+            // 30% chance for random event before each minion
+            triggerRandomEvent(player, scanner);
             Minion sorc = new Minion("Sorcerer #" + i, 60, 10);
-            battle.startBattle(sorc, 15);
+            battle.startBattle(sorc, 35);
         }
         if (player.isAlive()) {
+            // Random event before boss
+            triggerRandomEvent(player, scanner);
             battle.startBattle(getGuardian(), getGuardian().getExperienceReward());
         }
 	}

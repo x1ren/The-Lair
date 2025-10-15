@@ -21,10 +21,14 @@ public class StageFour extends Stage<TulinGuardian> {
         BattleSystem battle = new BattleSystem(player, scanner);
         // Minion wave: 5 Dire Wolves (HP 80, ATK 12)
         for (int i = 1; i <= 5 && player.isAlive(); i++) {
+            // 30% chance for random event before each minion
+            triggerRandomEvent(player, scanner);
             Minion direWolves = new Minion("Dire Wolves #" + i, 80, 12);
-            battle.startBattle(direWolves, 25);
+            battle.startBattle(direWolves, 55);
         }
         if (player.isAlive()) {
+            // Random event before boss
+            triggerRandomEvent(player, scanner);
             battle.startBattle(getGuardian(), getGuardian().getExperienceReward());
         }
 	}

@@ -2,7 +2,7 @@ package main.java.com.thelair.guardian;
 
 public class CathyGuardian extends Guardian {
 	public CathyGuardian() {
-        super("Ma'am Cathy", 1, 500, 300, 200);
+        super("Ma'am Cathy", 1, 500, 100, 200);
 		//String name, int level, int maxHP, int logic, int maxWisdom
 	}
 

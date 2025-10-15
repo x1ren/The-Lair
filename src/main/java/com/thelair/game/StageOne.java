@@ -21,10 +21,14 @@ public class StageOne extends Stage<CathyGuardian> {
         BattleSystem battle = new BattleSystem(player, scanner);
         // Minion wave: 5 Goblins (HP 40, ATK 5) - easier for testing
         for (int i = 1; i <= 5 && player.isAlive(); i++) {
+            // 30% chance for random event before each minion
+            triggerRandomEvent(player, scanner);
             Minion goblin = new Minion("Goblin #" + i, 40, 5);
-            battle.startBattle(goblin, 10);
+            battle.startBattle(goblin, 15);
         }
         if (player.isAlive()) {
+            // Random event before boss
+            triggerRandomEvent(player, scanner);
             battle.startBattle(getGuardian(), getGuardian().getExperienceReward());
         }
 	}

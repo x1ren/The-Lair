@@ -210,19 +210,19 @@ public class BattleSystem {
             String guardianName = opponent.getName();
             switch(guardianName) {
                 case "Ma'am Cathy":
-                    battleIntro = "Ma'am Cathy emerges: 'This is very easy guys. Dali ra kaau ni ihuman ninyo.'";
+                    battleIntro = "Ma'am Cathy emerges from the flames:\n'This is very easy guys. Dali ra kaau ni ihuman ninyo.'\n'You dare challenge the fundamentals?'";
                     break;
                 case "Sir Khai":
-                    battleIntro = "Sir Khai stands firm: 'Object-oriented principles will be your downfall!'";
+                    battleIntro = "Sir Khai stands firm in the Hall of Order:\n'Object-oriented principles will be your downfall!'\n'Order is not restriction — it is understanding.'";
                     break;
                 case "Serato":
-                    battleIntro = "Serato appears: 'Your code is messy! Let me teach you proper structure!'";
+                    battleIntro = "Serato materializes from swirling code:\n'Your code is messy! Let me teach you proper structure!'\n'Discipline without strength is tyranny.'";
                     break;
                 case "Ma'am Tulin":
-                    battleIntro = "Ma'am Tulin declares: 'Data is everything! Prove you can manage it!'";
+                    battleIntro = "Ma'am Tulin appears surrounded by data streams:\n'Data is everything! Prove you can manage it!'\n'Information is power. Show me you can wield it.'";
                     break;
                 case "Dean":
-                    battleIntro = "Dean emerges: 'I am the final test! Show me you've learned everything!'";
+                    battleIntro = "Dean emerges as the ultimate authority:\n'I am the final test! Show me you've learned everything!'\n'I have watched you grow. Now prove your mastery.'";
                     break;
                 default:
                     battleIntro = "A wild " + opponent.getName() + " appears!";

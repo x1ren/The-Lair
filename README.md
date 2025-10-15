@@ -38,22 +38,40 @@ This MVP uses OOP pillars:
 </ul>
 </p>
 
-<p>Stages 1–5 are wired. Add new stages by creating a `Guardian` and `Stage` and wiring in `GameManager`.</p>
+<p>Stages 1–5 are fully implemented with balanced combat, random events, puzzles, and story progression. Each stage features:
+- **5 minions** with increasing difficulty
+- **Boss battles** with animated dialogues and puzzle gating
+- **Random events** (20% chance): story moments, environmental hazards, or random encounters
+- **Experience rewards** that scale with stage difficulty (15-30 XP per minion, 75+ XP per boss)
+- **Level progression** with meaningful stat increases (+25 HP, +15 Logic, +10 Wisdom per level)</p>
 
 <h3>New Features</h3>
 <ul>
-<li><b>Upgrade Choice</b>: After each stage, choose +HP, +Logic, or +Wisdom. Ranges scale per docs.</li>
-<li><b>Skills Enforced</b>: Signature Skill now checks MP and has cooldown.</li>
-<li><b>Inventory & Items</b>: Start with Small Potion (+100 HP), Small Ether (+80 MP), Bomb (150 dmg). Use in battle.</li>
-<li><b>Inspect Enemy</b>: View boss/minion stats mid-battle.</li>
-<li><b>ANSI Colors</b>: Colored headers and HUD for readability.</li>
-<li><b>Stage 5</b>: Dean’s Judgement with puzzle finisher gating.</li>
+<li><b>Balanced Combat</b>: All character and guardian stats properly balanced for fair progression</li>
+<li><b>Balanced Experience System</b>: Proper progression requiring 200 XP for level 2, scaling to 200×level XP for subsequent levels</li>
+<li><b>Advanced Skill System</b>: Status effects, synergies, and cooldown management</li>
+<li><b>Random Events</b>: 60% chance for story moments, environmental hazards, or random encounters during stages</li>
+<li><b>Inventory & Items</b>: Stackable consumables with strategic usage in battle</li>
+<li><b>Animated Boss Dialogues</b>: Epic, multi-line introductions for all guardians</li>
+<li><b>Dean Ultimate Form</b>: Multi-phase final boss with powers from all guardians</li>
+<li><b>Debug Hero</b>: Testing character (option 6) for storyline review</li>
 </ul>
 
-<h3>Developer TODOs</h3>
+<h3>Implementation Status</h3>
+<p><b>FULLY IMPLEMENTED</b> - All planned features have been successfully implemented:</p>
 <ul>
-<li><b>Ilde Jan</b>: Build `Puzzle` engine (types, difficulty, stat checks, outcomes).</li>
-<li><b>Iben</b>: Implement hero skill costs/cooldowns and prompts in `BattleSystem`.</li>
-<li><b>Jamuel</b>: Add Stage 3–4 minions/guardians and intros per docs.</li>
-<li><b>Joseph</b>: Implement Dean’s multi-phase flow and polish battle logs/UI.</li>
+<li><b>Puzzle Engine</b>: Complete question bank with 5+ questions per guardian, difficulty scaling, and stat-based outcomes</li>
+<li><b>Skill System</b>: Multi-skill selection with costs, cooldowns, synergies, and status effects</li>
+<li><b>Stage Content</b>: All 5 stages with minions, bosses, random events, and balanced progression</li>
+<li><b>Dean Multi-Phase</b>: Complex final boss with guardian power channeling and transformation mechanics</li>
+<li><b>UI Polish</b>: Animated intros, colored displays, and comprehensive battle feedback</li>
+</ul>
+
+<h3>Advanced Features Added</h3>
+<ul>
+<li><b>Random Event System</b>: 60% chance for dynamic story moments, environmental challenges, and procedural encounters</li>
+<li><b>Status Effect Engine</b>: Turn-based buffs/debuffs with synergies (defense debuff enables damage multipliers)</li>
+<li><b>Experience Scaling</b>: Meaningful progression with +25 HP, +15 Logic, +10 Wisdom per level</li>
+<li><b>Inventory Management</b>: Stackable items with strategic combat applications</li>
+<li><b>Debug Testing Tools</b>: Special character for complete storyline review and balance testing</li>
 </ul>

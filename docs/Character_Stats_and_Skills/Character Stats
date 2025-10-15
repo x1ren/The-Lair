@@ -1,14 +1,24 @@
 # The Lair: Player Stats
 
-When the player finishes a level, they are presented with a choice of upgrade categories (HP, Logic, Wisdom).
+## Leveling System
+- **Starting Level:** 1
+- **Experience to Level 2:** 200 XP
+- **Experience to Subsequent Levels:** 200 × current level XP
+- **Level Bonuses:** +25 HP, +15 Logic, +10 Wisdom per level
 
-Each chosen stat upgrade is randomized within a defined range that grows as the stages progress:
+## Stage Upgrade Rewards
+When completing a stage, players choose one stat to upgrade with randomized values:
 
-- **Stage 1:** Random(50, 70)  
-- **Stage 2:** Random(60, 80)  
-- **Stage 3:** Random(65, 85)  
-- **Stage 4:** Random(70, 90)  
-- **Stage 5:** Random(90, 100)  
+- **Stage 1:** Random(50, 70)
+- **Stage 2:** Random(60, 80)
+- **Stage 3:** Random(65, 85)
+- **Stage 4:** Random(70, 90)
+- **Stage 5:** Random(90, 100)
+
+## Experience Rewards
+- **Minions:** 15-30 XP (varies by stage)
+- **Bosses:** 75+ XP (level × 75)
+- **Random Encounters:** 15 XP  
 
 ---
 

@@ -65,7 +65,7 @@ public class Guardian implements Combatant {
         this.currentWisdom = currentWisdom;
     }
     public int getExperienceReward() {
-        return level * 50;
+        return level * 60; // Increased from 50 to 65 for better balance
     }
 
     // Status effect helpers

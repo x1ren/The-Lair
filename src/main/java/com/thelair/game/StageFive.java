@@ -17,6 +17,8 @@ public class StageFive extends Stage<DeanGuardian> {
 
     public void run(Player player, Scanner scanner) {
         intro();
+        // Random event before the final boss
+        triggerRandomEvent(player, scanner);
         BattleSystem battle = new BattleSystem(player, scanner);
         battle.startBattle(getGuardian(), getGuardian().getExperienceReward());
     }
