@@ -72,12 +72,24 @@ public class BattleSystem {
                     System.out.println("Skill on cooldown for " + cdLeft + " more turn(s).");
                     break;
                 }
-                if (player.getCurrentMP() < s.getMpCost()) {
-                    System.out.println("Not enough MP (need " + s.getMpCost() + ")!");
+                if (player.getCurrentWisdom() < s.getMpCost()) {
+                    System.out.println("Not enough Wisdom (need " + s.getMpCost() + ")!");
                     break;
                 }
-                player.useMP(s.getMpCost());
-                // For MVP, map all skills to damage equal to player.useSignatureSkill() baseline/variants
+                player.useWisdom(s.getMpCost());
+                // Apply skill-specific effects
+                if ("DBG_EYE".equals(s.getId())) {
+                    // Debugger’s Eye: apply enemyDefenseDown for 3 turns
+                    if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+                        ((main.java.com.thelair.guardian.Guardian) opponent).applyStatusEffect("enemyDefenseDown", 3);
+                    }
+                    System.out.println("You used " + s.getName() + " and reduced enemy defense!");
+                } else if ("BLUEPRINT_MIND".equals(s.getId())) {
+                    // Blueprint Mind: apply logicBuff for 2 turns
+                    player.applyStatusEffect("logicBuff", 2);
+                    System.out.println("You used " + s.getName() + " and boosted your Logic for 2 turns!");
+                }
+                // Other skills just deal base damage for now
                 int damage = player.useSignatureSkill();
                 opponent.takeDamage(damage);
                 System.out.println("You used " + s.getName() + " and dealt " + damage + " damage!");
@@ -94,25 +106,37 @@ public class BattleSystem {
                     break;
                 }
                 System.out.println("Items:");
-                for (int i = 0; i < player.getInventory().size(); i++) {
-                    System.out.println("  " + (i+1) + ") " + player.getInventory().get(i));
+                java.util.List<String> itemKeys = new java.util.ArrayList<>(player.getInventory().keySet());
+                for (int i = 0; i < itemKeys.size(); i++) {
+                    String key = itemKeys.get(i);
+                    System.out.println("  " + (i+1) + ") " + key + " x" + player.getInventory().get(key));
                 }
                 ConsoleUI.prompt("Choose item number:");
                 int idx = safeNextInt();
                 scanner.nextLine();
                 int sel = idx - 1;
-                if (sel < 0 || sel >= player.getInventory().size()) {
+                if (sel < 0 || sel >= itemKeys.size()) {
                     System.out.println("Invalid item.");
                     break;
                 }
-                String item = player.getInventory().get(sel);
+                String item = itemKeys.get(sel);
                 if (player.consumeItem(item)) {
                     if ("POTION_SMALL".equals(item)) {
                         player.heal(100);
                         System.out.println("You used a Small Potion and recovered 100 HP.");
+                    } else if ("POTION_MED".equals(item)) {
+                        player.heal(250);
+                        System.out.println("You used a Medium Potion and recovered 250 HP.");
                     } else if ("ETHER_SMALL".equals(item)) {
-                        player.restoreMP(80);
-                        System.out.println("You used a Small Ether and recovered 80 MP.");
+                        player.restoreWisdom(80);
+                        System.out.println("You used a Small Ether and recovered 80 Wisdom.");
+                    } else if ("REVIVE".equals(item)) {
+                        if (!player.isAlive()) {
+                            player.heal(player.getMaxHP()/2);
+                            System.out.println("You used a Revive! Restored to 50% HP.");
+                        } else {
+                            System.out.println("Revive can only be used when down.");
+                        }
                     } else if ("BOMB".equals(item)) {
                         opponent.takeDamage(150);
                         System.out.println("You threw a Bomb for 150 true damage!");
@@ -126,7 +150,7 @@ public class BattleSystem {
                 System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
                     main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
-                    System.out.println("ATK: " + g.getLogic() +  ", MP: " + g.getMaxMP());
+                    System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxWisdom());
                 }
                 break;
             default:
@@ -195,7 +219,13 @@ public class BattleSystem {
                     // Minion chance to ask a theme question; reward random item on success
                     if (new java.util.Random().nextInt(100) < 30) { // 30% chance
                         System.out.println("A quick puzzle appears!");
-                        boolean ok = puzzleEngine.triggerThemeQuestion("Ma'am Cathy", scanner);
+                        // Map puzzle theme based on current guardian in the stage: default Cathy
+                        String theme = "Ma'am Cathy";
+                        // we cannot access the stage here; approximate based on opponent name wave
+                        if (opponent.getName().contains("Sorcerer")) theme = "Sir Khai";
+                        if (opponent.getName().contains("Thieves")) theme = "Serato";
+                        if (opponent.getName().contains("Dire Wolves")) theme = "Ma'am Tulin";
+                        boolean ok = puzzleEngine.triggerThemeQuestion(theme, scanner);
                         if (ok) {
                             String[] pool = new String[]{"POTION_SMALL","POTION_SMALL","ETHER_SMALL","BOMB"};
                             String reward = pool[new java.util.Random().nextInt(pool.length)];

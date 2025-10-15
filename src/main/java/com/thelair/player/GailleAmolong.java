@@ -8,8 +8,8 @@ public class GailleAmolong extends Player {
         this.setCurrentHP(500);
         this.setLogic(50);
         this.setWisdomStat(300);
-        this.setMaxMP(300);
-        this.setCurrentMP(300);
+        this.setMaxWisdom(300);
+        this.setCurrentWisdom(300);
         this.setSkills(new Skill[]{
             new Skill("PASSIVE_SECOND_CHANCE", "Second Chance (Passive)", 0, "Revive once per stage with 30% HP.", 0),
             new Skill("BLUEPRINT_MIND", "Blueprint Mind", 50, "+30% Logic for 2 turns.", 3),

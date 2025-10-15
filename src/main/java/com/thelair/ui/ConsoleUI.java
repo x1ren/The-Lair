@@ -42,6 +42,22 @@ public final class ConsoleUI {
         System.out.println(repeat('=', WIDTH));
     }
 
+    public static String getDivider() {
+        return repeat('-', WIDTH) + "\n";
+    }
+
+    public static String getThickDivider() {
+        return repeat('=', WIDTH) + "\n";
+    }
+
+    public static String getBlankLine() {
+        return "\n";
+    }
+
+    public static String getCenteredText(String text) {
+        return center(text, WIDTH) + "\n";
+    }
+
     public static void header(String title) {
         thickDivider();
         System.out.println(center(BOLD + title.toUpperCase() + RESET, WIDTH));
@@ -49,11 +65,27 @@ public final class ConsoleUI {
         System.out.println();
     }
 
+    public static String getHeader(String title) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(repeat('=', WIDTH)).append("\n");
+        sb.append(center(BOLD + title.toUpperCase() + RESET, WIDTH)).append("\n");
+        sb.append(repeat('=', WIDTH)).append("\n");
+        return sb.toString();
+    }
+
     public static void section(String title) {
         divider();
         System.out.println(center(CYAN + title + RESET, WIDTH));
         divider();
         System.out.println();
+    }
+
+    public static String getSection(String title) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(repeat('-', WIDTH)).append("\n");
+        sb.append(center(CYAN + title + RESET, WIDTH)).append("\n");
+        sb.append(repeat('-', WIDTH)).append("\n");
+        return sb.toString();
     }
 
     public static void prompt(String text) {
@@ -77,10 +109,51 @@ public final class ConsoleUI {
 
     public static void battleHUD(Player player, Combatant opponent) {
         String playerHp = color("" + player.getCurrentHP() + "/" + player.getMaxHP(), GREEN);
-        String playerMp = color("" + player.getCurrentMP() + "/" + player.getMaxMP(), BLUE);
+        String playerWisdom = color("" + player.getCurrentWisdom() + "/" + player.getMaxWisdom(), BLUE);
         String enemyHp = color("" + opponent.getCurrentHP() + "/" + opponent.getMaxHP(), RED);
-        System.out.printf("%nPlayer HP: %s  |  MP: %s%n", playerHp, playerMp);
+        System.out.printf("%nPlayer HP: %s  |  Wisdom: %s%n", playerHp, playerWisdom);
         System.out.printf("%s HP: %s%n", opponent.getName(), enemyHp);
+    }
+
+    /**
+     * Displays text with a typewriter animation effect (Star Wars style).
+     * @param text The text to animate
+     * @param delayMs Delay between each character in milliseconds
+     */
+    public static void animateText(String text, int delayMs) {
+        if (text == null) return;
+
+        // Handle multi-line text by splitting on newlines
+        String[] lines = text.split("\n");
+        for (String line : lines) {
+            for (int i = 0; i < line.length(); i++) {
+                System.out.print(line.charAt(i));
+                System.out.flush();
+
+                try {
+                    Thread.sleep(delayMs);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+            System.out.println(); // New line at end of each line
+        }
+    }
+
+    /**
+     * Displays multiple lines of text with animation, with paragraph breaks.
+     */
+    public static void animateStory(String[] lines, int delayMs) {
+        for (String line : lines) {
+            animateText(line, delayMs);
+            try {
+                Thread.sleep(delayMs * 2); // Slightly longer pause between lines
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
     }
 }
 

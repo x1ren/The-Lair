@@ -6,11 +6,9 @@ import java.util.*;
 
 public class PuzzleEngine {
     private final Map<String, List<Question>> questionBank;
-    private final Random random;
 
     public PuzzleEngine() {
         this.questionBank = new HashMap<>();
-        this.random = new Random();
         initializeQuestions();
     }
 

@@ -8,8 +8,8 @@ public class JamuelBacus extends Player {
         this.setCurrentHP(300);
         this.setLogic(50);
         this.setWisdomStat(400);
-        this.setMaxMP(400);
-        this.setCurrentMP(400);
+        this.setMaxWisdom(400);
+        this.setCurrentWisdom(400);
         this.setSkills(new Skill[]{
             new Skill("RECURSIVE_INSIGHT", "Recursive Insight", 40, "Reduces next enemy attack by 30%.", 2),
             new Skill("STRATEGIST_GAMBIT", "Strategist’s Gambit", 70, "Next skill deals ×1.75 damage (10% crit).", 4),

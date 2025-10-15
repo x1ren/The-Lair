@@ -8,8 +8,8 @@ public class IldeJanFigueras extends Player {
         this.setCurrentHP(600);
         this.setLogic(40);
         this.setWisdomStat(200);
-        this.setMaxMP(200);
-        this.setCurrentMP(200);
+        this.setMaxWisdom(200);
+        this.setCurrentWisdom(200);
         this.setSkills(new Skill[]{
             new Skill("PASSIVE_IRON_WILL", "Iron Will (Passive)", 0, "When HP < 50%, damage taken reduced by 10%.", 0),
             new Skill("OVERCLOCKED_RESOLVE", "Overclocked Resolve", 80, "Double Logic for 2 turns.", 3),
