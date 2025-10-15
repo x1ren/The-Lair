@@ -25,7 +25,7 @@ public abstract class Player implements Combatant {
     protected int wisdom;
     protected Skill[] skills;
     protected java.util.Map<String, Integer> skillCooldowns = new java.util.HashMap<>();
-    protected java.util.List<String> inventory = new java.util.ArrayList<>();
+    protected java.util.Map<String, Integer> inventory = new java.util.HashMap<>();
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
 
@@ -88,7 +88,7 @@ public abstract class Player implements Combatant {
     public void gainExperience(int exp) {
         experience += exp;
         System.out.println(name + " gained " + exp + " experience points.");
-        // TODO [Joseph]: Consider scaling EXP and calling checkLevelUp() at milestones
+        checkLevelUp();
     }
 
     private void levelUp() {
@@ -164,9 +164,23 @@ public abstract class Player implements Combatant {
     public void setSkills(Skill[] skills) { this.skills = skills; }
 
     // Inventory helpers
-    public java.util.List<String> getInventory() { return inventory; }
-    public void addItem(String itemId) { inventory.add(itemId); }
-    public boolean consumeItem(String itemId) { return inventory.remove(itemId); }
+    public java.util.Map<String, Integer> getInventory() { 
+        return inventory; 
+    }
+    public void addItem(String itemId) { 
+        inventory.put(itemId, inventory.getOrDefault(itemId, 0) + 1); 
+        System.out.println(name + " found " + itemId + " and added it to their inventory.");
+    }
+    public void addItem(String itemId, int count) { 
+        inventory.put(itemId, inventory.getOrDefault(itemId, 0) + count); 
+        System.out.println(name + " found " + count + " " + itemId + " and added it to their inventory.");
+    }
+    public boolean consumeItem(String itemId) {
+        Integer c = inventory.get(itemId);
+        if (c == null || c <= 0) return false;
+        if (c == 1) inventory.remove(itemId); else inventory.put(itemId, c - 1);
+        return true;
+    }
 
     // Cooldowns helpers
     public int getCooldown(String key) { return skillCooldowns.getOrDefault(key, 0); }

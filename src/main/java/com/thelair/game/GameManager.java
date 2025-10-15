@@ -31,7 +31,7 @@ public class GameManager {
             applyChosenUpgrade(player, stageNumber);
 			player.restoreStats();
 		}
-        ConsoleUI.header("MVP complete – Stages 1 through 4");
+        ConsoleUI.header("Stages 1–5 complete! GG");
 	}
 
     private void applyChosenUpgrade(Player player, int stageNumber) {

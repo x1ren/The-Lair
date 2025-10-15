@@ -94,25 +94,37 @@ public class BattleSystem {
                     break;
                 }
                 System.out.println("Items:");
-                for (int i = 0; i < player.getInventory().size(); i++) {
-                    System.out.println("  " + (i+1) + ") " + player.getInventory().get(i));
+                java.util.List<String> itemKeys = new java.util.ArrayList<>(player.getInventory().keySet());
+                for (int i = 0; i < itemKeys.size(); i++) {
+                    String key = itemKeys.get(i);
+                    System.out.println("  " + (i+1) + ") " + key + " x" + player.getInventory().get(key));
                 }
                 ConsoleUI.prompt("Choose item number:");
                 int idx = safeNextInt();
                 scanner.nextLine();
                 int sel = idx - 1;
-                if (sel < 0 || sel >= player.getInventory().size()) {
+                if (sel < 0 || sel >= itemKeys.size()) {
                     System.out.println("Invalid item.");
                     break;
                 }
-                String item = player.getInventory().get(sel);
+                String item = itemKeys.get(sel);
                 if (player.consumeItem(item)) {
                     if ("POTION_SMALL".equals(item)) {
                         player.heal(100);
                         System.out.println("You used a Small Potion and recovered 100 HP.");
+                    } else if ("POTION_MED".equals(item)) {
+                        player.heal(250);
+                        System.out.println("You used a Medium Potion and recovered 250 HP.");
                     } else if ("ETHER_SMALL".equals(item)) {
                         player.restoreMP(80);
-                        System.out.println("You used a Small Ether and recovered 80 MP.");
+                        System.out.println("You used a Small Ether and recovered 80 Wisdom.");
+                    } else if ("REVIVE".equals(item)) {
+                        if (!player.isAlive()) {
+                            player.heal(player.getMaxHP()/2);
+                            System.out.println("You used a Revive! Restored to 50% HP.");
+                        } else {
+                            System.out.println("Revive can only be used when down.");
+                        }
                     } else if ("BOMB".equals(item)) {
                         opponent.takeDamage(150);
                         System.out.println("You threw a Bomb for 150 true damage!");
