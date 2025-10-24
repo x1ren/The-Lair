@@ -7,6 +7,7 @@
 - **5 Complete Stages** with balanced progression
 - **5 Character Classes** with unique stats and skills
 - **Complete Puzzle Engine** with 5+ questions per guardian
+- **Multi-Phase Puzzle System** with 3-5 puzzles per stage + boss finisher puzzles
 - **Status Effect System** with turn-based buffs/debuffs
 - **Inventory Management** with stackable consumable items
 
@@ -15,8 +16,9 @@
   - Story moments with stat bonuses
   - Environmental hazards with Wisdom costs
   - Procedural random encounters with XP rewards
+- **Multi-Phase Puzzle System** (3-5 puzzles per stage + up to 3 boss finisher puzzles)
 - **Multi-Phase Boss Fights** (Dean transforms at 30% HP)
-- **Skill Synergies** (Debugger’s Eye enables Syntax Slayer double damage)
+- **Skill Synergies** (Debugger's Eye enables Syntax Slayer double damage)
 - **Experience & Leveling** (200 XP for level 2, 200×level for subsequent levels with +25 HP, +15 Logic, +10 Wisdom per level)
 
 ### **User Interface**
