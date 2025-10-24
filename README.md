@@ -40,8 +40,9 @@ This MVP uses OOP pillars:
 
 <p>Stages 1–5 are fully implemented with balanced combat, random events, puzzles, and story progression. Each stage features:
 - **5 minions** with increasing difficulty
-- **Boss battles** with animated dialogues and puzzle gating
-- **Random events** (20% chance): story moments, environmental hazards, or random encounters
+- **3-5 puzzle sequence** before boss battle 
+- **Boss battles** with animated dialogues and up to 3 finisher puzzles
+- **Random events** (60% chance): story moments, environmental hazards, or random encounters
 - **Experience rewards** that scale with stage difficulty (15-30 XP per minion, 75+ XP per boss)
 - **Level progression** with meaningful stat increases (+25 HP, +15 Logic, +10 Wisdom per level)</p>
 
@@ -60,7 +61,7 @@ This MVP uses OOP pillars:
 <h3>Implementation Status</h3>
 <p><b>FULLY IMPLEMENTED</b> - All planned features have been successfully implemented:</p>
 <ul>
-<li><b>Puzzle Engine</b>: Complete question bank with 5+ questions per guardian, difficulty scaling, and stat-based outcomes</li>
+<li><b>Puzzle Engine</b>: Complete question bank with 5+ questions per guardian, random selection, 3-5 puzzle sequences per stage, and boss finisher puzzles</li>
 <li><b>Skill System</b>: Multi-skill selection with costs, cooldowns, synergies, and status effects</li>
 <li><b>Stage Content</b>: All 5 stages with minions, bosses, random events, and balanced progression</li>
 <li><b>Dean Multi-Phase</b>: Complex final boss with guardian power channeling and transformation mechanics</li>

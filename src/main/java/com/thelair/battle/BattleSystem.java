@@ -234,15 +234,17 @@ public class BattleSystem {
         ConsoleUI.section(battleIntro);
         
         int bossPuzzleUses = 0;
+        int maxBossPuzzles = 3;
         while(player.isAlive() && opponent.isAlive()) {
             playerTurn(opponent);
             
             if(opponent.isAlive()) {
                 
                 if (opponent instanceof main.java.com.thelair.guardian.Guardian && 
-                    puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent) && bossPuzzleUses < 2) {
+                    puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent) && bossPuzzleUses < maxBossPuzzles) {
                     bossPuzzleUses++;
                     System.out.println("\n💡 " + opponent.getName() + " is weakened! Answer to deal extra damage!");
+                    System.out.println("Boss puzzle " + bossPuzzleUses + "/" + maxBossPuzzles);
                     boolean finisherSuccess = puzzleEngine.triggerFinisher(
                         (main.java.com.thelair.guardian.Guardian) opponent, player, scanner);
                     if (finisherSuccess) {

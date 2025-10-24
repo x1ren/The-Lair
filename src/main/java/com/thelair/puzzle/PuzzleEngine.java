@@ -3,6 +3,7 @@ package main.java.com.thelair.puzzle;
 import main.java.com.thelair.guardian.Guardian;
 import main.java.com.thelair.player.Player;
 import java.util.*;
+import java.util.Random;
 
 public class PuzzleEngine {
     private final Map<String, List<Question>> questionBank;
@@ -293,9 +294,9 @@ public class PuzzleEngine {
             return false;
         }
 
-        // prefer a harder question when the guardian is in finisher range, else we go random
-        availableQuestions.sort(Comparator.comparingInt(Question::getDifficulty).reversed());
-        Question question = availableQuestions.get(0);
+        // Random question selection for variety
+        Random random = new Random();
+        Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
         question.displayQuestion();
 
         String input = scanner.nextLine().trim().toUpperCase();
@@ -335,8 +336,9 @@ public class PuzzleEngine {
             System.out.println("No questions available for theme: " + themeGuardianName);
             return false;
         }
-        availableQuestions.sort(Comparator.comparingInt(Question::getDifficulty).reversed());
-        Question question = availableQuestions.get(0);
+        // Random question selection for variety
+        Random random = new Random();
+        Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
         question.displayQuestion();
 
         String input = scanner.nextLine().trim().toUpperCase();
@@ -351,6 +353,71 @@ public class PuzzleEngine {
                 return false;
         }
         return question.isCorrect(playerAnswer);
+    }
+
+    // Run the main puzzle sequence for a stage (3-5 puzzles as per documentation)
+    public boolean runPuzzleSequence(String guardianName, Player player, Scanner scanner) {
+        List<Question> availableQuestions = questionBank.get(guardianName);
+        if (availableQuestions == null || availableQuestions.isEmpty()) {
+            System.out.println("No questions available for " + guardianName);
+            return false;
+        }
+
+        Random random = new Random();
+        int puzzleCount = random.nextInt(3) + 3; // 3-5 puzzles
+        int correctAnswers = 0;
+        
+        System.out.println("\n " + guardianName + " challenges you with " + puzzleCount + " puzzles!");
+        System.out.println("Answer correctly to proceed to the final battle...\n");
+
+        for (int i = 1; i <= puzzleCount; i++) {
+            System.out.println("--- Puzzle " + i + "/" + puzzleCount + " ---");
+            
+            // Select random question
+            Question question = availableQuestions.get(random.nextInt(availableQuestions.size()));
+            question.displayQuestion();
+
+            String input = scanner.nextLine().trim().toUpperCase();
+            int playerAnswer = -1;
+            
+            switch(input) {
+                case "A": playerAnswer = 0; break;
+                case "B": playerAnswer = 1; break;
+                case "C": playerAnswer = 2; break;
+                case "D": playerAnswer = 3; break;
+                default: 
+                    System.out.println("Invalid input! Please enter A, B, C, or D.");
+                    i--; // Retry this puzzle
+                    continue;
+            }
+
+            if (question.isCorrect(playerAnswer)) {
+                System.out.println("✓ Correct! Well done!");
+                correctAnswers++;
+            } else {
+                System.out.println("✗ Incorrect. The answer was: " + question.getOptions()[question.getCorrectAnswer()]);
+                // Take damage based on difficulty
+                int damage = question.getDifficulty() * 10;
+                player.takeDamage(damage);
+                System.out.println("You take " + damage + " damage from the wrong answer!");
+                
+                if (!player.isAlive()) {
+                    System.out.println("You have been defeated by the puzzles!");
+                    return false;
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println("Puzzle sequence complete! You answered " + correctAnswers + "/" + puzzleCount + " correctly.");
+        
+        // Bonus for perfect score
+        if (correctAnswers == puzzleCount) {
+            System.out.println("Perfect score! You gain 50 bonus experience!");
+            player.gainExperience(50);
+        }
+        
+        return true; // Player survived the puzzle sequence
     }
 }
 
