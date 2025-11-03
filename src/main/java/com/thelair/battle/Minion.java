@@ -1,4 +1,4 @@
-package main.java.com.thelair.battle;
+package com.thelair.battle;
 
 public class Minion implements Combatant {
     private final String name;

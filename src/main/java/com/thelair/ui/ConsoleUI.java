@@ -1,7 +1,7 @@
-package main.java.com.thelair.ui;
+package com.thelair.ui;
 
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.battle.Combatant;
+import com.thelair.player.Player;
+import com.thelair.battle.Combatant;
 
 public final class ConsoleUI {
     private static final int WIDTH = 70;

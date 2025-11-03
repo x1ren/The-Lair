@@ -1,6 +1,6 @@
-package main.java.com.thelair.guardian;
+package com.thelair.guardian;
 import java.util.Random;
-import main.java.com.thelair.battle.Combatant;
+import com.thelair.battle.Combatant;
 
 public class Guardian implements Combatant {
     private String name;

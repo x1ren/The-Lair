@@ -1,8 +1,10 @@
-package main.java.com.thelair.battle;
+package com.thelair.battle;
 
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.puzzle.PuzzleEngine;
-import main.java.com.thelair.ui.ConsoleUI;
+import com.thelair.player.Player;
+import com.thelair.player.Skill;
+import com.thelair.guardian.Guardian;
+import com.thelair.puzzle.PuzzleEngine;
+import com.thelair.ui.ConsoleUI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,7 +55,7 @@ public class BattleSystem {
                 }
                 System.out.println("Skills:");
                 for (int i = 0; i < player.getSkills().length; i++) {
-                    main.java.com.thelair.player.Skill s = player.getSkills()[i];
+                    Skill s = player.getSkills()[i];
                     int cdLeft = player.getCooldown(s.getId());
                     System.out.printf("  %d) %s (Cost %d MP, CD %d) %s%n", i+1, s.getName(), s.getMpCost(), s.getCooldown(), cdLeft>0?"[CD "+cdLeft+"]":"");
                     System.out.println("     - " + s.getDescription());
@@ -66,7 +68,7 @@ public class BattleSystem {
                     System.out.println("Invalid skill.");
                     break;
                 }
-                main.java.com.thelair.player.Skill s = player.getSkills()[sSel];
+                Skill s = player.getSkills()[sSel];
                 int cdLeft = player.getCooldown(s.getId());
                 if (cdLeft > 0) {
                     System.out.println("Skill on cooldown for " + cdLeft + " more turn(s).");
@@ -81,16 +83,16 @@ public class BattleSystem {
                 int damage = 0;
                 if ("DBG_EYE".equals(s.getId())) {
                     // Debugger’s Eye: apply enemyDefenseDown for 3 turns
-                    if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
-                        ((main.java.com.thelair.guardian.Guardian) opponent).applyStatusEffect("enemyDefenseDown", 3);
+                    if (opponent instanceof Guardian) {
+                        ((Guardian) opponent).applyStatusEffect("enemyDefenseDown", 3);
                     }
                     System.out.println("You used " + s.getName() + " and reduced enemy defense!");
                     damage = player.useSignatureSkill();
                 } else if ("SYN_SLAYER".equals(s.getId())) {
                     // Syntax Slayer: check for enemyDefenseDown and double damage if present
                     damage = player.useSignatureSkill();
-                    if (opponent instanceof main.java.com.thelair.guardian.Guardian &&
-                        ((main.java.com.thelair.guardian.Guardian) opponent).hasStatusEffect("enemyDefenseDown")) {
+                    if (opponent instanceof Guardian &&
+                        ((Guardian) opponent).hasStatusEffect("enemyDefenseDown")) {
                         damage *= 2;
                         System.out.println("Enemy defense is down! Damage doubled!");
                     } else {
@@ -178,8 +180,8 @@ public class BattleSystem {
             case 5:
                 System.out.println("Enemy: " + opponent.getName());
                 System.out.println("HP: " + opponent.getCurrentHP() + "/" + opponent.getMaxHP());
-                if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
-                    main.java.com.thelair.guardian.Guardian g = (main.java.com.thelair.guardian.Guardian) opponent;
+                if (opponent instanceof Guardian) {
+                    Guardian g = (Guardian) opponent;
                     System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxWisdom());
                 }
                 break;
@@ -206,7 +208,7 @@ public class BattleSystem {
     public void startBattle(Combatant opponent, Integer experienceReward) {
        
         String battleIntro;
-        if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+        if (opponent instanceof Guardian) {
             String guardianName = opponent.getName();
             switch(guardianName) {
                 case "Ma'am Cathy":
@@ -240,23 +242,23 @@ public class BattleSystem {
             
             if(opponent.isAlive()) {
                 
-                if (opponent instanceof main.java.com.thelair.guardian.Guardian && 
-                    puzzleEngine.shouldTriggerFinisher((main.java.com.thelair.guardian.Guardian) opponent) && bossPuzzleUses < maxBossPuzzles) {
+                if (opponent instanceof Guardian && 
+                    puzzleEngine.shouldTriggerFinisher((Guardian) opponent) && bossPuzzleUses < maxBossPuzzles) {
                     bossPuzzleUses++;
                     System.out.println("\n💡 " + opponent.getName() + " is weakened! Answer to deal extra damage!");
                     System.out.println("Boss puzzle " + bossPuzzleUses + "/" + maxBossPuzzles);
                     boolean finisherSuccess = puzzleEngine.triggerFinisher(
-                        (main.java.com.thelair.guardian.Guardian) opponent, player, scanner);
+                        (Guardian) opponent, player, scanner);
                     if (finisherSuccess) {
                         int extra = (int)(player.getLogic() * 1.5);
                         opponent.takeDamage(extra);
                         System.out.println("Your answer was correct! Extra damage: " + extra);
                     } else {
                         int regen = Math.min( (int)(opponent.getMaxHP() * 0.20), opponent.getMaxHP() - opponent.getCurrentHP());
-                        ((main.java.com.thelair.guardian.Guardian) opponent).heal(regen);
+                        ((Guardian) opponent).heal(regen);
                         System.out.println(opponent.getName() + " regenerates " + regen + " HP!");
                     }
-                } else if (!(opponent instanceof main.java.com.thelair.guardian.Guardian)) {
+                } else if (!(opponent instanceof Guardian)) {
                     // Minion chance to ask a theme question; reward random item on success
                     if (new java.util.Random().nextInt(100) < 30) { // 30% chance
                         System.out.println("A quick puzzle appears!");
@@ -283,15 +285,15 @@ public class BattleSystem {
             
             // tick cooldowns and status effects at end of round
             player.tickCooldowns();
-            if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
-                ((main.java.com.thelair.guardian.Guardian) opponent).tickStatusEffects();
+            if (opponent instanceof Guardian) {
+                ((Guardian) opponent).tickStatusEffects();
             }
             ConsoleUI.battleHUD(player, opponent);
         }
         
         if(player.isAlive()) {
             String victoryMessage = "";
-            if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+            if (opponent instanceof Guardian) {
                 String guardianName = opponent.getName();
                 switch(guardianName) {
                     case "Cathy":
@@ -322,7 +324,7 @@ public class BattleSystem {
             }
         } else {
             String defeatMessage = "";
-            if (opponent instanceof main.java.com.thelair.guardian.Guardian) {
+            if (opponent instanceof Guardian) {
                 defeatMessage = opponent.getName() + " stands victorious: 'Come back when you're ready to learn!'";
             } else {
                 defeatMessage = "You were defeated by the " + opponent.getName() + "...";
