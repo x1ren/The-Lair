@@ -1,7 +1,7 @@
-package main.java.com.thelair.puzzle;
+package com.thelair.puzzle;
 
-import main.java.com.thelair.guardian.Guardian;
-import main.java.com.thelair.player.Player;
+import com.thelair.guardian.Guardian;
+import com.thelair.player.Player;
 import java.util.*;
 import java.util.Random;
 

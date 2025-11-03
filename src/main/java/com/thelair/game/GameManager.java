@@ -1,11 +1,11 @@
-package main.java.com.thelair.game;
+package com.thelair.game;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.ui.ConsoleUI;
+import com.thelair.player.Player;
+import com.thelair.ui.ConsoleUI;
 
 public class GameManager {
     private final List<Stage<?>> stages = new ArrayList<>();

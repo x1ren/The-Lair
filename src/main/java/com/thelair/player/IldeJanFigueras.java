@@ -1,4 +1,4 @@
-package main.java.com.thelair.player;
+package com.thelair.player;
 
 public class IldeJanFigueras extends Player {
     public IldeJanFigueras(String name, int level, int maxHP, int maxWisdom) {

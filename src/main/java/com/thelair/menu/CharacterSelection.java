@@ -1,13 +1,13 @@
-package main.java.com.thelair.menu;
+package com.thelair.menu;
 
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.player.AnoosIben;
-import main.java.com.thelair.player.GailleAmolong;
-import main.java.com.thelair.player.IldeJanFigueras;
-import main.java.com.thelair.player.JosephJimenez;
-import main.java.com.thelair.player.JamuelBacus;
-import main.java.com.thelair.player.DebugHero;
-import main.java.com.thelair.ui.ConsoleUI;
+import com.thelair.player.Player;
+import com.thelair.player.AnoosIben;
+import com.thelair.player.GailleAmolong;
+import com.thelair.player.IldeJanFigueras;
+import com.thelair.player.JosephJimenez;
+import com.thelair.player.JamuelBacus;
+import com.thelair.player.DebugHero;
+import com.thelair.ui.ConsoleUI;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

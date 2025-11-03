@@ -1,4 +1,4 @@
-package main.java.com.thelair.guardian;
+package com.thelair.guardian;
 
 public class KhaiGuardian extends Guardian {
 	public KhaiGuardian() {

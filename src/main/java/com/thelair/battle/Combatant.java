@@ -1,4 +1,4 @@
-package main.java.com.thelair.battle;
+package com.thelair.battle;
 
 /**
  * Simple interface to unify anything that can participate in battle.

@@ -1,4 +1,4 @@
-package main.java.com.thelair.player;
+package com.thelair.player;
 
 public class DebugHero extends Player {
     public DebugHero(String name, int level, int maxHP, int maxWisdom) {

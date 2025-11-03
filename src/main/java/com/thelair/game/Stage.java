@@ -1,10 +1,10 @@
-package main.java.com.thelair.game;
+package com.thelair.game;
 
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.guardian.Guardian;
-import main.java.com.thelair.battle.BattleSystem;
-import main.java.com.thelair.battle.Minion;
-import main.java.com.thelair.ui.ConsoleUI;
+import com.thelair.player.Player;
+import com.thelair.guardian.Guardian;
+import com.thelair.battle.BattleSystem;
+import com.thelair.battle.Minion;
+import com.thelair.ui.ConsoleUI;
 import java.util.Scanner;
 import java.util.Random;
 

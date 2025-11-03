@@ -1,6 +1,6 @@
-    package main.java.com.thelair.player;
+package com.thelair.player;
 
-import main.java.com.thelair.battle.Combatant;
+import com.thelair.battle.Combatant;
 import java.util.Random;
 
 

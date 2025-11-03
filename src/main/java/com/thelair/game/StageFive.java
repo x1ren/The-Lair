@@ -1,11 +1,11 @@
-package main.java.com.thelair.game;
+package com.thelair.game;
 
 import java.util.Scanner;
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.guardian.DeanGuardian;
-import main.java.com.thelair.battle.BattleSystem;
-import main.java.com.thelair.ui.ConsoleUI;
-import main.java.com.thelair.puzzle.PuzzleEngine;
+import com.thelair.player.Player;
+import com.thelair.guardian.DeanGuardian;
+import com.thelair.battle.BattleSystem;
+import com.thelair.ui.ConsoleUI;
+import com.thelair.puzzle.PuzzleEngine;
 
 public class StageFive extends Stage<DeanGuardian> {
     public StageFive() {

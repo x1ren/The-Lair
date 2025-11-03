@@ -1,4 +1,4 @@
-package main.java.com.thelair.puzzle;
+package com.thelair.puzzle;
 
 public class Question {
     private final String question;

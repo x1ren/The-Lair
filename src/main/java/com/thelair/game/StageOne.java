@@ -1,12 +1,12 @@
-package main.java.com.thelair.game;
+package com.thelair.game;
 
 import java.util.Scanner;
-import main.java.com.thelair.player.Player;
-import main.java.com.thelair.guardian.CathyGuardian;
-import main.java.com.thelair.battle.BattleSystem;
-import main.java.com.thelair.battle.Minion;
-import main.java.com.thelair.ui.ConsoleUI;
-import main.java.com.thelair.puzzle.PuzzleEngine;
+import com.thelair.player.Player;
+import com.thelair.guardian.CathyGuardian;
+import com.thelair.battle.BattleSystem;
+import com.thelair.battle.Minion;
+import com.thelair.ui.ConsoleUI;
+import com.thelair.puzzle.PuzzleEngine;
 
 public class StageOne extends Stage<CathyGuardian> {
 	public StageOne() {

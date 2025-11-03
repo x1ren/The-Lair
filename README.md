@@ -23,7 +23,7 @@ The first trial awaits. The quest for knowledge begins now.
 </code></pre>
 </li>
 <li><b>Run</b>
-<pre><code>java -cp out main.java.com.thelair.Main
+<pre><code>java -cp out com.thelair.Main
 </code></pre>
 </li>
 </ol>
