@@ -21,9 +21,9 @@ public class DeanGuardian extends Guardian {
 
     public String getIntro() {
         if (phase == 1) {
-            return "Stage 4 – The Hall of Balance: 'Strength with discipline is power.'";
+            return "NGE 105 – The Dean's Office: 'Strength with discipline is power.'";
         } else {
-            return "Stage 5 – The Dean’s Judgement: 'All your lessons lead here. Show me if you truly deserve to pass.'";
+            return "NGE 105 – The Dean's Office: 'All your lessons lead here. Show me if you truly deserve to pass.'";
         }
     }
 

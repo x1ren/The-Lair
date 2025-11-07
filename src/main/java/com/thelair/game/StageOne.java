@@ -10,7 +10,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageOne extends Stage<CathyGuardian> {
 	public StageOne() {
-		super("Stage 1 – The Hall of Flame", new CathyGuardian());
+		super("NGE 101 – The Hall of Ma'am Cathy", new CathyGuardian());
 	}
 
     public void intro() {

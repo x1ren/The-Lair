@@ -2,6 +2,7 @@ package com.thelair.ui;
 
 import com.thelair.player.Player;
 import com.thelair.battle.Combatant;
+import com.thelair.player.Skill;
 
 public final class ConsoleUI {
     private static final int WIDTH = 70;
@@ -154,6 +155,225 @@ public final class ConsoleUI {
                 break;
             }
         }
+    }
+
+    /**
+     * Displays items in a formatted table.
+     * @param inventory Map of item names to quantities
+     */
+    public static void displayItemsTable(java.util.Map<String, Integer> inventory) {
+        if (inventory == null || inventory.isEmpty()) {
+            System.out.println("Your bag is empty.");
+            return;
+        }
+
+        java.util.List<String> itemKeys = new java.util.ArrayList<>(inventory.keySet());
+        
+        // Format item names for display (replace underscores with spaces, capitalize)
+        java.util.List<String> formattedNames = new java.util.ArrayList<>();
+        int maxNameLength = 0;
+        for (String key : itemKeys) {
+            String formatted = formatItemName(key);
+            formattedNames.add(formatted);
+            if (formatted.length() > maxNameLength) {
+                maxNameLength = formatted.length();
+            }
+        }
+        
+        // Calculate column widths (ensure they fit within WIDTH)
+        int numWidth = 3;  // "#" column
+        int nameWidth = Math.max(Math.min(maxNameLength, 35), 20);  // Item name column (20-35 chars)
+        int qtyWidth = 8;  // Quantity column
+        
+        // Print header
+        System.out.println();
+        System.out.println(color(BOLD + "INVENTORY" + RESET, CYAN));
+        
+        // Print table top border
+        printTableDivider(numWidth, nameWidth, qtyWidth, true);
+        
+        // Print table header row
+        System.out.printf("| %-" + numWidth + "s | %-" + nameWidth + "s | %-" + qtyWidth + "s |%n",
+            color(BOLD + "#" + RESET, YELLOW),
+            color(BOLD + "Item Name" + RESET, YELLOW),
+            color(BOLD + "Quantity" + RESET, YELLOW));
+        
+        // Print separator between header and data
+        printTableDivider(numWidth, nameWidth, qtyWidth, false);
+        
+        // Print items
+        for (int i = 0; i < itemKeys.size(); i++) {
+            String itemName = formattedNames.get(i);
+            int quantity = inventory.get(itemKeys.get(i));
+            System.out.printf("| %-" + numWidth + "d | %-" + nameWidth + "s | %-" + qtyWidth + "d |%n",
+                i + 1,
+                itemName,
+                quantity);
+        }
+        
+        // Print table bottom border
+        printTableDivider(numWidth, nameWidth, qtyWidth, true);
+        System.out.println();
+    }
+
+    /**
+     * Prints a divider line for the items table.
+     * @param isOuter true for top/bottom borders (+---+), false for separators (+---+)
+     */
+    private static void printTableDivider(int numWidth, int nameWidth, int qtyWidth, boolean isOuter) {
+        char corner = isOuter ? '+' : '+';
+        char line = '-';
+        char join = '+';
+        
+        System.out.print(corner);
+        System.out.print(repeat(line, numWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, nameWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, qtyWidth + 2));
+        System.out.println(corner);
+    }
+
+    /**
+     * Formats item name for display (e.g., "POTION_SMALL" -> "Small Potion")
+     */
+    private static String formatItemName(String itemKey) {
+        if (itemKey == null) return "";
+        
+        // Replace underscores with spaces
+        String formatted = itemKey.replace("_", " ");
+        
+        // Convert to title case (first letter of each word capitalized)
+        String[] words = formatted.toLowerCase().split(" ");
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() > 0) {
+                result.append(Character.toUpperCase(words[i].charAt(0)));
+                if (words[i].length() > 1) {
+                    result.append(words[i].substring(1));
+                }
+            }
+            if (i < words.length - 1) {
+                result.append(" ");
+            }
+        }
+        
+        return result.toString();
+    }
+
+    /**
+     * Displays skills in a formatted table with cooldown information.
+     * @param skills Array of skills to display
+     * @param player Player object to get cooldown and wisdom information
+     */
+    public static void displaySkillsTable(Skill[] skills, 
+                                          Player player) {
+        if (skills == null || skills.length == 0) {
+            System.out.println("No skills available.");
+            return;
+        }
+
+        // Calculate column widths
+        int numWidth = 3;  // "#" column
+        int nameWidth = 0;
+        int costWidth = 6;  // "Cost" column
+        int cdWidth = 4;  // "CD" column (for max cooldown)
+        int statusWidth = 0;
+        
+        // Find max lengths
+        for (Skill s : skills) {
+            if (s.getName().length() > nameWidth) {
+                nameWidth = s.getName().length();
+            }
+        }
+        nameWidth = Math.max(Math.min(nameWidth, 30), 15);  // 15-30 chars
+        
+        // Status column needs to fit "Available" or "CD: X turns"
+        statusWidth = 15;
+        
+        // Print header
+        System.out.println();
+        System.out.println(color(BOLD + "AVAILABLE SKILLS" + RESET, CYAN));
+        
+        // Print table top border
+        printSkillsTableDivider(numWidth, nameWidth, costWidth, cdWidth, statusWidth, true);
+        
+        // Print table header row
+        System.out.printf("| %-" + numWidth + "s | %-" + nameWidth + "s | %-" + costWidth + "s | %-" + cdWidth + "s | %-" + statusWidth + "s |%n",
+            color(BOLD + "#" + RESET, YELLOW),
+            color(BOLD + "Skill Name" + RESET, YELLOW),
+            color(BOLD + "Cost" + RESET, YELLOW),
+            color(BOLD + "CD" + RESET, YELLOW),
+            color(BOLD + "Status" + RESET, YELLOW));
+        
+        // Print separator between header and data
+        printSkillsTableDivider(numWidth, nameWidth, costWidth, cdWidth, statusWidth, false);
+        
+        // Print skills
+        for (int i = 0; i < skills.length; i++) {
+            Skill s = skills[i];
+            int cdLeft = player.getCooldown(s.getId());
+            boolean isOnCooldown = cdLeft > 0;
+            boolean canAfford = player.getCurrentWisdom() >= s.getMpCost();
+            
+            // Format status
+            String status;
+            String statusColor;
+            if (isOnCooldown) {
+                status = "CD: " + cdLeft + " turn" + (cdLeft != 1 ? "s" : "");
+                statusColor = RED;
+            } else if (!canAfford) {
+                status = "Not enough MP";
+                statusColor = YELLOW;
+            } else {
+                status = "Available";
+                statusColor = GREEN;
+            }
+            
+            // Color skill name based on availability
+            String skillNameColor = (isOnCooldown || !canAfford) ? "" : "";
+            String skillName = skillNameColor + s.getName() + RESET;
+            
+            System.out.printf("| %-" + numWidth + "d | %-" + nameWidth + "s | %-" + costWidth + "d | %-" + cdWidth + "d | %-" + statusWidth + "s |%n",
+                i + 1,
+                skillName,
+                s.getMpCost(),
+                s.getCooldown(),
+                color(status, statusColor));
+        }
+        
+        // Print table bottom border
+        printSkillsTableDivider(numWidth, nameWidth, costWidth, cdWidth, statusWidth, true);
+        
+        // Print descriptions below table
+        System.out.println();
+        System.out.println(color(BOLD + "Skill Descriptions:" + RESET, CYAN));
+        for (int i = 0; i < skills.length; i++) {
+            Skill s = skills[i];
+            System.out.printf("  %d. %s: %s%n", i + 1, s.getName(), s.getDescription());
+        }
+        System.out.println();
+    }
+
+    /**
+     * Prints a divider line for the skills table.
+     */
+    private static void printSkillsTableDivider(int numWidth, int nameWidth, int costWidth, int cdWidth, int statusWidth, boolean isOuter) {
+        char corner = '+';
+        char line = '-';
+        char join = '+';
+        
+        System.out.print(corner);
+        System.out.print(repeat(line, numWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, nameWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, costWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, cdWidth + 2));
+        System.out.print(join);
+        System.out.print(repeat(line, statusWidth + 2));
+        System.out.println(corner);
     }
 }
 

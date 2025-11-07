@@ -7,6 +7,6 @@ public class KhaiGuardian extends Guardian {
 	}
 
 	public String getIntro() {
-		return "Stage 2 – The Object-Oriented Sentinel: 'Order is understanding. Code without structure is chaos.'";
+		return "NGE 102 – The OOP Sentinel of Sir Khai: 'Order is understanding. Code without structure is chaos.'";
 	}
 }

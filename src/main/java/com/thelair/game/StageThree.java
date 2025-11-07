@@ -10,7 +10,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageThree extends Stage<SeratoGuardian> {
 	public StageThree() {
-		super("Stage 3 – The Buglord Compiler", new SeratoGuardian());
+		super("NGE 103 – The DSA Sentinel of Sir Serato", new SeratoGuardian());
 	}
 
     public void intro() {
@@ -35,7 +35,7 @@ public class StageThree extends Stage<SeratoGuardian> {
             triggerRandomEvent(player, scanner);
             
             // Main puzzle sequence (3-5 puzzles as per documentation)
-            ConsoleUI.section("Before facing Serato, you must prove your knowledge of Debugging and Data Structures!");
+            ConsoleUI.section("Before facing the DSA Sentinel of Sir Serato, you must prove your knowledge of Debugging and Data Structures!");
             boolean puzzleSuccess = puzzleEngine.runPuzzleSequence("Serato", player, scanner);
             
             if (puzzleSuccess && player.isAlive()) {

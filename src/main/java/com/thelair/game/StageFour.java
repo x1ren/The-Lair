@@ -10,7 +10,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageFour extends Stage<TulinGuardian> {
 	public StageFour() {
-        super("Stage 4 – The Keeper of Knowledge", new TulinGuardian());
+        super("NGE 104 – The Database of Ma'am Tulin", new TulinGuardian());
 	}
 
     public void intro() {

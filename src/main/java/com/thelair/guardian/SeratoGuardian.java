@@ -7,6 +7,6 @@ public class SeratoGuardian extends Guardian {
     }
 
     public String getIntro() {
-        return "Stage 3 – The Buglord Compiler: 'Your code means nothing without proper logic.'";
+        return "NGE 103 – The DSA Sentinel of Sir Serato: 'Your code means nothing without proper logic.'";
     }
 }
