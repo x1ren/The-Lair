@@ -53,13 +53,7 @@ public class BattleSystem {
                     System.out.println("No skills available.");
                     break;
                 }
-                System.out.println("Skills:");
-                for (int i = 0; i < player.getSkills().length; i++) {
-                    Skill s = player.getSkills()[i];
-                    int cdLeft = player.getCooldown(s.getId());
-                    System.out.printf("  %d) %s (Cost %d MP, CD %d) %s%n", i+1, s.getName(), s.getMpCost(), s.getCooldown(), cdLeft>0?"[CD "+cdLeft+"]":"");
-                    System.out.println("     - " + s.getDescription());
-                }
+                ConsoleUI.displaySkillsTable(player.getSkills(), player);
                 ConsoleUI.prompt("Choose skill:");
                 int sIdx = safeNextInt();
                 scanner.nextLine();
@@ -133,16 +127,11 @@ public class BattleSystem {
                 // MVP: no state tracking; in a fuller build, track a defend flag
                 break;
             case 4:
+                ConsoleUI.displayItemsTable(player.getInventory());
                 if (player.getInventory().isEmpty()) {
-                    System.out.println("Your bag is empty.");
                     break;
                 }
-                System.out.println("Items:");
                 java.util.List<String> itemKeys = new java.util.ArrayList<>(player.getInventory().keySet());
-                for (int i = 0; i < itemKeys.size(); i++) {
-                    String key = itemKeys.get(i);
-                    System.out.println("  " + (i+1) + ") " + key + " x" + player.getInventory().get(key));
-                }
                 ConsoleUI.prompt("Choose item number:");
                 int idx = safeNextInt();
                 scanner.nextLine();
