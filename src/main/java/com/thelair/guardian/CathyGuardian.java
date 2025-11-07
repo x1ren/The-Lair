@@ -7,6 +7,6 @@ public class CathyGuardian extends Guardian {
 	}
 
 	public String getIntro() {
-        return "Stage 1 – The Keeper of First Flames: 'This is very easy guys. Dali ra kaau ni ihuman ninyo.'";
+        return "NGE 101 – The Hall of Ma'am Cathy: 'This is very easy guys. Dali ra kaau ni ihuman ninyo.'";
 	}
 }

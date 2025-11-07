@@ -9,7 +9,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageFive extends Stage<DeanGuardian> {
     public StageFive() {
-        super("Stage 5 – The Dean’s Judgement", new DeanGuardian());
+        super("NGE 105 – The Dean's Office", new DeanGuardian());
     }
 
     public void intro() {
