@@ -19,7 +19,7 @@ public class StageThree extends Stage<SeratoGuardian> {
 
     public void run(Player player, Scanner scanner) {
         intro();
-        BattleSystem battle = new BattleSystem(player, scanner);
+        BattleSystem battle = new BattleSystem(player, scanner, getWorldIndicator());
         PuzzleEngine puzzleEngine = new PuzzleEngine();
         
         // Minion wave: 5 Thieves (HP 50, ATK 8)

@@ -31,6 +31,25 @@ public abstract class Stage<T extends Guardian> {
 	}
 
 	/**
+	 * Extracts the world indicator (e.g., "NGE101") from the stage name.
+	 * @return The world indicator code, or "NGE101" as default
+	 */
+	protected String getWorldIndicator() {
+		// Extract pattern like "NGE 101" or "NGE101" from stage name
+		// Stage names are like "NGE 101 – The Hall of Ma'am Cathy"
+		if (stageName != null && stageName.length() > 0) {
+			// Find the first part before the "–" or "-" character
+			String[] parts = stageName.split("–|\\-");
+			if (parts.length > 0) {
+				String codePart = parts[0].trim();
+				// Remove spaces to get "NGE101" format
+				return codePart.replaceAll("\\s+", "");
+			}
+		}
+		return "NGE101"; // Default fallback
+	}
+
+	/**
 	 * Hook for intro narration/cutscene.
 	 */
 	public abstract void intro();
@@ -138,7 +157,7 @@ public abstract class Stage<T extends Guardian> {
         int enemyAttack = 5 + random.nextInt(15); // 5-20 attack
 
         Minion randomEnemy = new Minion(enemyName, enemyHP, enemyAttack);
-        BattleSystem battle = new BattleSystem(player, scanner);
+        BattleSystem battle = new BattleSystem(player, scanner, getWorldIndicator());
         battle.startBattle(randomEnemy, 15); // 15 XP reward
     }
 }
