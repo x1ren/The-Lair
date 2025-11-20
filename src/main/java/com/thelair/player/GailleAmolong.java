@@ -4,9 +4,9 @@ public class GailleAmolong extends Player {
     public GailleAmolong(String name, int level, int maxHP, int maxWisdom) {
         super("Gaille Amolong", "The Architect", 1, 500, 300);
         // Align to Character Stats doc (HP 500, Logic 200, Wisdom 300)
-        this.setMaxHP(500);
+        this.setMaxHP(750);
         this.setCurrentHP(500);
-        this.setLogic(200);
+        this.setLogic(new Random().nextInt(150 250));
         this.setWisdomStat(300);
         this.setMaxWisdom(300);
         this.setCurrentWisdom(300);

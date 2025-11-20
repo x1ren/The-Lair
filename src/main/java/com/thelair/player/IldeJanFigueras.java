@@ -4,9 +4,9 @@ public class IldeJanFigueras extends Player {
     public IldeJanFigueras(String name, int level, int maxHP, int maxWisdom) {
         super("Ilde", "The Challenger", 1, 600, 200);
         // Align to Character Stats doc (HP 600, Logic 100, Wisdom 200)
-        this.setMaxHP(600);
+        this.setMaxHP(800);
         this.setCurrentHP(600);
-        this.setLogic(100);
+        this.setLogic(new Random().nextInt(100 200));
         this.setWisdomStat(200);
         this.setMaxWisdom(200);
         this.setCurrentWisdom(200);

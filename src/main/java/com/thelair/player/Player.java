@@ -220,8 +220,9 @@ public abstract class Player implements Combatant {
 
     public int getEffectiveLogic() {
         int baseLogic = logic;
+        double randomBoost = 1.2 + Math.random() * 0.2; 
         if (hasStatusEffect("logicBuff")) {
-            baseLogic = (int) (baseLogic * 1.3); // 30% boost
+            baseLogic = (int) (baseLogic * randomBoost); // 30% boost
         }
         return baseLogic;
     }
