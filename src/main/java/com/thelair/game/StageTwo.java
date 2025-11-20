@@ -19,7 +19,7 @@ public class StageTwo extends Stage<KhaiGuardian> {
 
     public void run(Player player, Scanner scanner) {
         intro();
-        BattleSystem battle = new BattleSystem(player, scanner);
+        BattleSystem battle = new BattleSystem(player, scanner, getWorldIndicator());
         PuzzleEngine puzzleEngine = new PuzzleEngine();
         
         // Minion wave: 5 Sorcerers (HP 60, ATK 10)

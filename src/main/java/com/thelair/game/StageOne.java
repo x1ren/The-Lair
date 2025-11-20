@@ -19,7 +19,7 @@ public class StageOne extends Stage<CathyGuardian> {
 
     public void run(Player player, Scanner scanner) {
         intro();
-        BattleSystem battle = new BattleSystem(player, scanner);
+        BattleSystem battle = new BattleSystem(player, scanner, getWorldIndicator());
         PuzzleEngine puzzleEngine = new PuzzleEngine();
         
         // Minion wave: 5 Goblins (HP 40, ATK 5) - easier for testing

@@ -18,7 +18,7 @@ public class StageFive extends Stage<DeanGuardian> {
 
     public void run(Player player, Scanner scanner) {
         intro();
-        BattleSystem battle = new BattleSystem(player, scanner);
+        BattleSystem battle = new BattleSystem(player, scanner, getWorldIndicator());
         PuzzleEngine puzzleEngine = new PuzzleEngine();
         
         // Random event before puzzle sequence

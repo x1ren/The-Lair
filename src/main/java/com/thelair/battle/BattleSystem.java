@@ -12,11 +12,24 @@ public class BattleSystem {
     private final Player player;
     private final Scanner scanner;
     private final PuzzleEngine puzzleEngine;
+    private String worldIndicator;
 
     public BattleSystem(Player player, Scanner scanner) {
         this.player = player;
         this.scanner = scanner;
         this.puzzleEngine = new PuzzleEngine();
+        this.worldIndicator = "NGE101"; // Default
+    }
+
+    public BattleSystem(Player player, Scanner scanner, String worldIndicator) {
+        this.player = player;
+        this.scanner = scanner;
+        this.puzzleEngine = new PuzzleEngine();
+        this.worldIndicator = worldIndicator;
+    }
+
+    public void setWorldIndicator(String worldIndicator) {
+        this.worldIndicator = worldIndicator;
     }
 
     private int safeNextInt(int min, int max, String prompt) {
@@ -37,6 +50,7 @@ public class BattleSystem {
     }
 
     private void playerTurn(Combatant opponent) {
+        System.out.println(ConsoleUI.color("[" + worldIndicator + "]", ConsoleUI.CYAN + ConsoleUI.BOLD));
         ConsoleUI.menu("Your Turn! Choose an action:", new String[]{
             "Attack",
             "Signature Skill",
