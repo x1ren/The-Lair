@@ -36,8 +36,8 @@ public class Main {
 					"Watch full narration",
 					"Skip narration"
 				});
-				ConsoleUI.prompt("Enter choice:");
 				try {
+					ConsoleUI.prompt("Enter choice:");
 					narrationChoice = Integer.parseInt(scanner.nextLine().trim());
 					if (narrationChoice >= 1 && narrationChoice <= 2) {
 						break;
@@ -68,8 +68,8 @@ public class Main {
 					"Play Again",
 					"Exit"
 				});
-				ConsoleUI.prompt("Enter choice:");
 				try {
+					ConsoleUI.prompt("Enter choice:");
 					playAgainChoice = Integer.parseInt(scanner.nextLine().trim());
 					if (playAgainChoice >= 1 && playAgainChoice <= 2) {
 						break;

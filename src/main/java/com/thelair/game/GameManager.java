@@ -65,8 +65,8 @@ public class GameManager {
                 "+Logic",
                 "+Wisdom"
             });
-            ConsoleUI.prompt("Enter choice:");
             try {
+                ConsoleUI.prompt("Enter choice:");
                 int choice = Integer.parseInt(scanner.nextLine().trim());
                 if (choice >= 1 && choice <= 3) {
                     category = choice - 1;
