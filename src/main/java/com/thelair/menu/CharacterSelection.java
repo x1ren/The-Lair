@@ -34,14 +34,17 @@ public class CharacterSelection {
             try {
                 ConsoleUI.prompt("Enter the Player's Number of your choice:");
                 choice = scanner.nextInt();
-                break;
+                scanner.nextLine();
+                if (choice >= 1 && choice <= 6) {
+                    break;
+                } else {
+                    System.out.println("Invalid choice! Please enter a number between 1 and 6.");
+                }
             } catch (InputMismatchException ex) {
                 scanner.nextLine();
-                System.out.println("Invalid input! Please try again.");
-                
+                System.out.println("Invalid input! Please enter a number.");
             }
         }
-        scanner.nextLine();
         
         switch(choice) {
             case 1:
@@ -63,6 +66,7 @@ public class CharacterSelection {
                 player = new DebugHero("DEBUG HERO", 1, 9999, 9999);
                 break;
             default:
+                // This should never happen due to validation above, but kept for safety
                 System.out.println("Invalid choice! Defaulting to Iben Anoos.");
                 player = new AnoosIben("Iben Anoos", 1, 400, 200);
         }

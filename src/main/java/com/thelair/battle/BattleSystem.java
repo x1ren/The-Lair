@@ -19,13 +19,20 @@ public class BattleSystem {
         this.puzzleEngine = new PuzzleEngine();
     }
 
-    private int safeNextInt() {
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException ex) {
-            scanner.nextLine();
-            System.out.println("Invalid input. Defaulting to 1 (Attack).");
-            return 1;
+    private int safeNextInt(int min, int max, String prompt) {
+        while (true) {
+            try {
+                int value = scanner.nextInt();
+                scanner.nextLine();
+                if (value >= min && value <= max) {
+                    return value;
+                } else {
+                    System.out.println("Invalid choice! Please enter a number between " + min + " and " + max + ".");
+                }
+            } catch (InputMismatchException ex) {
+                scanner.nextLine();
+                System.out.println("Invalid input! Please enter a number.");
+            }
         }
     }
 
@@ -38,8 +45,7 @@ public class BattleSystem {
             "Inspect Enemy"
         });
         ConsoleUI.prompt("Enter choice:");
-        int choice = safeNextInt();
-        scanner.nextLine(); 
+        int choice = safeNextInt(1, 5, "Enter choice:"); 
         switch(choice) {
             case 1: {
                 int damage = player.attack();
@@ -54,14 +60,8 @@ public class BattleSystem {
                     break;
                 }
                 ConsoleUI.displaySkillsTable(player.getSkills(), player);
-                ConsoleUI.prompt("Choose skill:");
-                int sIdx = safeNextInt();
-                scanner.nextLine();
+                int sIdx = safeNextInt(1, player.getSkills().length, "Choose skill:");
                 int sSel = sIdx - 1;
-                if (sSel < 0 || sSel >= player.getSkills().length) {
-                    System.out.println("Invalid skill.");
-                    break;
-                }
                 Skill s = player.getSkills()[sSel];
                 int cdLeft = player.getCooldown(s.getId());
                 if (cdLeft > 0) {
@@ -132,14 +132,8 @@ public class BattleSystem {
                     break;
                 }
                 java.util.List<String> itemKeys = new java.util.ArrayList<>(player.getInventory().keySet());
-                ConsoleUI.prompt("Choose item number:");
-                int idx = safeNextInt();
-                scanner.nextLine();
+                int idx = safeNextInt(1, itemKeys.size(), "Choose item number:");
                 int sel = idx - 1;
-                if (sel < 0 || sel >= itemKeys.size()) {
-                    System.out.println("Invalid item.");
-                    break;
-                }
                 String item = itemKeys.get(sel);
                 if (player.consumeItem(item)) {
                     if ("POTION_SMALL".equals(item)) {
