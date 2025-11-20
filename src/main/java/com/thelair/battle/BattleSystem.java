@@ -35,6 +35,7 @@ public class BattleSystem {
     private int safeNextInt(int min, int max, String prompt) {
         while (true) {
             try {
+                ConsoleUI.prompt(prompt);
                 int value = scanner.nextInt();
                 scanner.nextLine();
                 if (value >= min && value <= max) {
@@ -58,7 +59,6 @@ public class BattleSystem {
             "Use Item",
             "Inspect Enemy"
         });
-        ConsoleUI.prompt("Enter choice:");
         int choice = safeNextInt(1, 5, "Enter choice:"); 
         switch(choice) {
             case 1: {
