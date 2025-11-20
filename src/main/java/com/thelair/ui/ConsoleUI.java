@@ -3,6 +3,10 @@ package com.thelair.ui;
 import com.thelair.player.Player;
 import com.thelair.battle.Combatant;
 import com.thelair.player.Skill;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public final class ConsoleUI {
     private static final int WIDTH = 70;
@@ -72,6 +76,57 @@ public final class ConsoleUI {
         sb.append(center(BOLD + title.toUpperCase() + RESET, WIDTH)).append("\n");
         sb.append(repeat('=', WIDTH)).append("\n");
         return sb.toString();
+    }
+
+    /**
+     * Reads and returns the title logo from title.txt file.
+     * @return The title logo as a string, or a fallback header if file cannot be read
+     */
+    public static String getTitleFromFile() {
+        InputStream inputStream = null;
+        
+        try {
+            // Try to read from resources (works when running from JAR or classpath)
+            inputStream = ConsoleUI.class.getResourceAsStream("/com/thelair/files/title.txt");
+            
+            // If not found as resource, try reading from file system (for development)
+            if (inputStream == null) {
+                String[] possiblePaths = {
+                    "src/main/java/com/thelair/files/title.txt",
+                    "out/com/thelair/files/title.txt",
+                    "com/thelair/files/title.txt"
+                };
+                
+                for (String path : possiblePaths) {
+                    java.io.File file = new java.io.File(path);
+                    if (file.exists() && file.isFile()) {
+                        inputStream = new java.io.FileInputStream(file);
+                        break;
+                    }
+                }
+            }
+            
+            if (inputStream != null) {
+                StringBuilder titleContent = new StringBuilder();
+                try (BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        titleContent.append(line).append("\n");
+                    }
+                }
+                return titleContent.toString();
+            }
+        } catch (Exception e) {
+            // If file reading fails, return fallback header
+            System.err.println("Warning: Could not load title.txt, using fallback header.");
+            if (e.getMessage() != null) {
+                System.err.println("Error: " + e.getMessage());
+            }
+        }
+        
+        // Fallback to default header if file cannot be read
+        return getHeader("WELCOME TO THE LAIR");
     }
 
     public static void section(String title) {

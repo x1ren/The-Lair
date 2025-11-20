@@ -12,9 +12,9 @@ public class Main {
 		boolean playAgain;
 
 		do {
-			// Story introduction with Star Wars-style animation
-			ConsoleUI.animateText(ConsoleUI.getHeader("WELCOME TO THE LAIR"), 10);
-			ConsoleUI.animateText(ConsoleUI.getBlankLine(), 40);
+			// Display title logo
+			System.out.print(ConsoleUI.getTitleFromFile());
+			System.out.println();
 
 			String storyText = "In a world where magic is written in code and power is measured in logic,\n" +
 				"there stands the grand citadel of learning known as Cebu Institute of Technology University.\n" +
@@ -30,16 +30,23 @@ public class Main {
 				"The first trial awaits. The quest for knowledge begins now.\n\n";
 
 			// Skip narration option
-			ConsoleUI.menu("Game Start", new String[]{
-				"Watch full narration",
-				"Skip narration"
-			});
-			ConsoleUI.prompt("Enter choice:");
 			int narrationChoice;
-			try {
-				narrationChoice = Integer.parseInt(scanner.nextLine().trim());
-			} catch (Exception e) {
-				narrationChoice = 1;
+			while (true) {
+				ConsoleUI.menu("Game Start", new String[]{
+					"Watch full narration",
+					"Skip narration"
+				});
+				ConsoleUI.prompt("Enter choice:");
+				try {
+					narrationChoice = Integer.parseInt(scanner.nextLine().trim());
+					if (narrationChoice >= 1 && narrationChoice <= 2) {
+						break;
+					} else {
+						System.out.println("Invalid choice! Please enter 1 or 2.");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid input! Please enter a number (1 or 2).");
+				}
 			}
 
 			if (narrationChoice == 1) {
@@ -55,16 +62,23 @@ public class Main {
 
 			// Play again prompt
 			System.out.println();
-			ConsoleUI.menu("Game Over", new String[]{
-				"Play Again",
-				"Exit"
-			});
-			ConsoleUI.prompt("Enter choice:");
 			int playAgainChoice;
-			try {
-				playAgainChoice = Integer.parseInt(scanner.nextLine().trim());
-			} catch (Exception e) {
-				playAgainChoice = 2;
+			while (true) {
+				ConsoleUI.menu("Game Over", new String[]{
+					"Play Again",
+					"Exit"
+				});
+				ConsoleUI.prompt("Enter choice:");
+				try {
+					playAgainChoice = Integer.parseInt(scanner.nextLine().trim());
+					if (playAgainChoice >= 1 && playAgainChoice <= 2) {
+						break;
+					} else {
+						System.out.println("Invalid choice! Please enter 1 or 2.");
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid input! Please enter a number (1 or 2).");
+				}
 			}
 			playAgain = (playAgainChoice == 1);
 		} while (playAgain);

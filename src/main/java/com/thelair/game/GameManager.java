@@ -58,17 +58,25 @@ public class GameManager {
 		}
 		Random rng = new Random();
 		int roll = rng.nextInt((max - min) + 1) + min;
-        ConsoleUI.menu("Choose your upgrade (Stage " + stageNumber + ")", new String[]{
-            "+HP",
-            "+Logic",
-            "+Wisdom"
-        });
-        ConsoleUI.prompt("Enter choice:");
         int category;
-        try {
-            category = Integer.parseInt(scanner.nextLine().trim()) - 1;
-        } catch (Exception e) {
-            category = 0;
+        while (true) {
+            ConsoleUI.menu("Choose your upgrade (Stage " + stageNumber + ")", new String[]{
+                "+HP",
+                "+Logic",
+                "+Wisdom"
+            });
+            ConsoleUI.prompt("Enter choice:");
+            try {
+                int choice = Integer.parseInt(scanner.nextLine().trim());
+                if (choice >= 1 && choice <= 3) {
+                    category = choice - 1;
+                    break;
+                } else {
+                    System.out.println("Invalid choice! Please enter 1, 2, or 3.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter a number (1, 2, or 3).");
+            }
         }
         switch (category) {
 			case 0:
