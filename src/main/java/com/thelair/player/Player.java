@@ -1,7 +1,7 @@
 package com.thelair.player;
 
 import com.thelair.battle.Combatant;
-import java.util.Random;
+import java.util.*;
 
 
 /** 
@@ -21,12 +21,12 @@ public abstract class Player implements Combatant {
     protected int level;
     protected int maxHP, currentHP;
     protected int maxWisdom, currentWisdom;
-    protected java.util.Map<String, Integer> statusEffects = new java.util.HashMap<>();
+    protected Map<String, Integer> statusEffects = new HashMap<>();
     protected int logic;
     protected int wisdom;
     protected Skill[] skills;
-    protected java.util.Map<String, Integer> skillCooldowns = new java.util.HashMap<>();
-    protected java.util.Map<String, Integer> inventory = new java.util.HashMap<>();
+    protected Map<String, Integer> skillCooldowns = new HashMap<>();
+    protected Map<String, Integer> inventory = new HashMap<>();
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
     protected boolean isDefending = false;
@@ -196,8 +196,8 @@ public abstract class Player implements Combatant {
     public int getCooldown(String key) { return skillCooldowns.getOrDefault(key, 0); }
     public void setCooldown(String key, int turns) { skillCooldowns.put(key, turns); }
     public void tickCooldowns() {
-        java.util.Map<String, Integer> next = new java.util.HashMap<>();
-        for (java.util.Map.Entry<String, Integer> e : skillCooldowns.entrySet()) {
+        Map<String, Integer> next = new HashMap<>();
+        for (Map.Entry<String, Integer> e : skillCooldowns.entrySet()) {
             int v = Math.max(0, e.getValue() - 1);
             if (v > 0) next.put(e.getKey(), v);
         }
@@ -206,8 +206,8 @@ public abstract class Player implements Combatant {
     }
 
     public void tickStatusEffects() {
-        java.util.Map<String, Integer> next = new java.util.HashMap<>();
-        for (java.util.Map.Entry<String, Integer> e : statusEffects.entrySet()) {
+        Map<String, Integer> next = new HashMap<>();
+        for (Map.Entry<String, Integer> e : statusEffects.entrySet()) {
             int v = Math.max(0, e.getValue() - 1);
             if (v > 0) next.put(e.getKey(), v);
         }

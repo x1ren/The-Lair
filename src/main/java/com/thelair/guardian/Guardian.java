@@ -1,5 +1,5 @@
 package com.thelair.guardian;
-import java.util.Random;
+import java.util.*; 
 import com.thelair.battle.Combatant;
 
 public class Guardian implements Combatant {
@@ -11,7 +11,7 @@ public class Guardian implements Combatant {
     //private int intelligence;
     private int logic;
     private int maxWisdom, currentWisdom;
-    protected java.util.Map<String, Integer> statusEffects = new java.util.HashMap<>();
+    protected Map<String, Integer> statusEffects = new HashMap<>();
 
 
     public Guardian(String name, int level, int maxHP, int logic, int maxWisdom) {
@@ -82,7 +82,7 @@ public class Guardian implements Combatant {
     }
 
     public void tickStatusEffects() {
-        java.util.Map<String, Integer> next = new java.util.HashMap<>();
+        Map<String, Integer> next = new HashMap<>();
         for (java.util.Map.Entry<String, Integer> e : statusEffects.entrySet()) {
             int v = Math.max(0, e.getValue() - 1);
             if (v > 0) next.put(e.getKey(), v);
@@ -93,7 +93,7 @@ public class Guardian implements Combatant {
     // Combatant implementation
     @Override
     public int attack() {
-        Random random = new Random();
+        Random random = new Random(); 
 
         int min = logic;
         int max = logic+30;

@@ -1,9 +1,6 @@
 package com.thelair.battle;
 
-/**
- * Simple interface to unify anything that can participate in battle.
- * Demonstrates abstraction and polymorphism across Players, Guardians, and Minions.
- */
+// combatant determines the actions of the combatant in the battle.. eg if it's a player or a guardian or a minion
 public interface Combatant {
     String getName();
     int getMaxHP();
