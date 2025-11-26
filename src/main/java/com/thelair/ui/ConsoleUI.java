@@ -3,10 +3,8 @@ package com.thelair.ui;
 import com.thelair.player.Player;
 import com.thelair.battle.Combatant;
 import com.thelair.player.Skill;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.io.*; 
 
 public final class ConsoleUI {
     private static final int WIDTH = 70;
@@ -98,9 +96,9 @@ public final class ConsoleUI {
                 };
                 
                 for (String path : possiblePaths) {
-                    java.io.File file = new java.io.File(path);
+                    File file = new File(path);
                     if (file.exists() && file.isFile()) {
-                        inputStream = new java.io.FileInputStream(file);
+                        inputStream = new FileInputStream(file);
                         break;
                     }
                 }

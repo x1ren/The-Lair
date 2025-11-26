@@ -6,7 +6,7 @@ import com.thelair.guardian.Guardian;
 import com.thelair.puzzle.PuzzleEngine;
 import com.thelair.ui.ConsoleUI;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*; 
 
 public class BattleSystem {
     private final Player player;
@@ -151,7 +151,7 @@ public class BattleSystem {
                 if (player.getInventory().isEmpty()) {
                     break;
                 }
-                java.util.List<String> itemKeys = new java.util.ArrayList<>(player.getInventory().keySet());
+                List<String> itemKeys = new ArrayList<>(player.getInventory().keySet());
                 int idx = safeNextInt(1, itemKeys.size(), "Choose item number:");
                 int sel = idx - 1;
                 String item = itemKeys.get(sel);
@@ -294,7 +294,7 @@ public class BattleSystem {
                     }
                 } else if (!(opponent instanceof Guardian)) {
                     // Minion chance to ask a theme question; reward random item on success
-                    if (new java.util.Random().nextInt(100) < 30) { // 30% chance
+                    if (new Random().nextInt(100) < 30) { // 30% chance
                         System.out.println("A quick puzzle appears!");
                         // Map puzzle theme based on current guardian in the stage: default Cathy
                         String theme = "Ma'am Cathy";
@@ -305,7 +305,7 @@ public class BattleSystem {
                         boolean ok = puzzleEngine.triggerThemeQuestion(theme, scanner);
                         if (ok) {
                             String[] pool = new String[]{"POTION_SMALL","POTION_SMALL","ETHER_SMALL","BOMB"};
-                            String reward = pool[new java.util.Random().nextInt(pool.length)];
+                            String reward = pool[new Random().nextInt(pool.length)];
                             player.addItem(reward);
                             System.out.println("You solved it! Found an item: " + reward);
                         } else {
