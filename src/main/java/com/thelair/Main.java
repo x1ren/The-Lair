@@ -32,13 +32,13 @@ public class Main {
 			// Skip narration option
 			int narrationChoice;
 			while (true) {
-				ConsoleUI.menu("Game Start", new String[]{
-					"Watch full narration",
-					"Skip narration"
-				});
+			ConsoleUI.menu("Game Start", new String[]{
+				"Watch full narration",
+				"Skip narration"
+			});
 				try {
-					ConsoleUI.prompt("Enter choice:");
-					narrationChoice = Integer.parseInt(scanner.nextLine().trim());
+			ConsoleUI.prompt("Enter choice:");
+				narrationChoice = Integer.parseInt(scanner.nextLine().trim());
 					if (narrationChoice >= 1 && narrationChoice <= 2) {
 						break;
 					} else {
@@ -64,13 +64,13 @@ public class Main {
 			System.out.println();
 			int playAgainChoice;
 			while (true) {
-				ConsoleUI.menu("Game Over", new String[]{
-					"Play Again",
-					"Exit"
-				});
+			ConsoleUI.menu("Game Over", new String[]{
+				"Play Again",
+				"Exit"
+			});
 				try {
-					ConsoleUI.prompt("Enter choice:");
-					playAgainChoice = Integer.parseInt(scanner.nextLine().trim());
+			ConsoleUI.prompt("Enter choice:");
+				playAgainChoice = Integer.parseInt(scanner.nextLine().trim());
 					if (playAgainChoice >= 1 && playAgainChoice <= 2) {
 						break;
 					} else {

@@ -1,7 +1,7 @@
 # The Lair - Technical Implementation Guide
 
 ## Overview
-This document provides detailed technical information about the implementation of The Lair's puzzle system and game mechanics.
+This document provides detailed technical information about the implementation of The Lair's puzzle system, game mechanics, UI features, and file handling systems.
 
 ## Puzzle System Architecture
 
@@ -223,6 +223,176 @@ java -cp out main.java.com.thelair.Main
 - No external libraries required
 - Standard Java collections and utilities only
 
+## UI System Implementation
+
+### Title Logo System
+
+#### ConsoleUI.getTitleFromFile()
+**Purpose**: Loads ASCII art title logo from external file
+
+**Implementation**:
+```java
+public static String getTitleFromFile() {
+    // Try resource path first (for JAR deployment)
+    InputStream inputStream = ConsoleUI.class.getResourceAsStream("/com/thelair/files/title.txt");
+    
+    // Fallback to file system paths (for development)
+    if (inputStream == null) {
+        String[] possiblePaths = {
+            "src/main/java/com/thelair/files/title.txt",
+            "out/com/thelair/files/title.txt",
+            "com/thelair/files/title.txt"
+        };
+        // Try each path until file found
+    }
+    
+    // Read file content line by line
+    // Return content or fallback header
+}
+```
+
+**File Location**: `src/main/java/com/thelair/files/title.txt`
+
+**Features**:
+- Multiple path fallback system
+- UTF-8 encoding support
+- Graceful error handling with fallback
+- Works in both development and JAR deployment
+
+### World Indicator System
+
+#### Stage.getWorldIndicator()
+**Purpose**: Extracts stage code (e.g., "NGE101") from stage name
+
+**Implementation**:
+```java
+protected String getWorldIndicator() {
+    // Extract pattern like "NGE 101" from stage name
+    // Stage names: "NGE 101 – The Hall of Ma'am Cathy"
+    String[] parts = stageName.split("–|\\-");
+    if (parts.length > 0) {
+        String codePart = parts[0].trim();
+        return codePart.replaceAll("\\s+", ""); // "NGE101"
+    }
+    return "NGE101"; // Default fallback
+}
+```
+
+#### BattleSystem Integration
+**Display**: Every battle turn shows `[NGE101]` in bold cyan
+```java
+System.out.println(ConsoleUI.color("[" + worldIndicator + "]", ConsoleUI.CYAN + ConsoleUI.BOLD));
+```
+
+**Features**:
+- Automatic extraction from stage name
+- ANSI color formatting (bold cyan)
+- Context-aware display
+- Stage-specific codes (NGE101-NGE105)
+
+### Input Validation System
+
+#### Comprehensive Error Handling
+
+**Main.java**:
+```java
+while (true) {
+    try {
+        ConsoleUI.prompt("Enter choice:");
+        int choice = Integer.parseInt(scanner.nextLine().trim());
+        if (choice >= 1 && choice <= max) {
+            break; // Valid input
+        } else {
+            System.out.println("Invalid choice! Please enter 1 or 2.");
+        }
+    } catch (NumberFormatException e) {
+        System.out.println("Invalid input! Please enter a number (1 or 2).");
+    }
+}
+```
+
+**BattleSystem.safeNextInt()**:
+```java
+private int safeNextInt(int min, int max, String prompt) {
+    while (true) {
+        try {
+            ConsoleUI.prompt(prompt);
+            int value = scanner.nextInt();
+            scanner.nextLine();
+            if (value >= min && value <= max) {
+                return value;
+            } else {
+                System.out.println("Invalid choice! Please enter a number between " + min + " and " + max + ".");
+            }
+        } catch (InputMismatchException ex) {
+            scanner.nextLine();
+            System.out.println("Invalid input! Please enter a number.");
+        }
+    }
+}
+```
+
+**Features**:
+- All prompts inside try blocks
+- Range validation for menu choices
+- Clear error messages
+- Automatic retry loops
+- Prevents invalid input crashes
+
+### ANSI Color System
+
+#### ConsoleUI Color Constants
+```java
+public static final String RESET = "\u001B[0m";
+public static final String BOLD = "\u001B[1m";
+public static final String RED = "\u001B[31m";
+public static final String GREEN = "\u001B[32m";
+public static final String YELLOW = "\u001B[33m";
+public static final String BLUE = "\u001B[34m";
+public static final String CYAN = "\u001B[36m";
+```
+
+#### Usage Examples
+- **World Indicators**: Bold cyan `[NGE101]`
+- **Battle HUD**: Green (HP), Blue (Wisdom), Red (Enemy HP)
+- **Menu Sections**: Cyan headers
+- **Emphasis**: Yellow for important text
+
+## File System Architecture
+
+### File Structure
+```
+src/main/java/com/thelair/
+├── files/
+│   └── title.txt          # ASCII art title logo
+├── battle/
+│   ├── BattleSystem.java # Combat and world indicator
+│   └── ...
+├── game/
+│   ├── Stage.java        # World indicator extraction
+│   └── ...
+└── ui/
+    └── ConsoleUI.java    # File loading and display
+```
+
+### Resource Loading Strategy
+
+1. **Primary**: Try resource path (`/com/thelair/files/title.txt`)
+   - Works when packaged as JAR
+   - Standard Java resource loading
+
+2. **Fallback 1**: Development path (`src/main/java/com/thelair/files/title.txt`)
+   - For running from project root
+   - Direct file system access
+
+3. **Fallback 2**: Compiled path (`out/com/thelair/files/title.txt`)
+   - For running from compiled output
+   - Post-compilation file access
+
+4. **Final Fallback**: Default header
+   - If all paths fail, use text-based header
+   - Ensures game always starts
+
 ## Maintenance Guidelines
 
 ### Adding New Questions
@@ -237,8 +407,21 @@ java -cp out main.java.com.thelair.Main
 3. Test all stages for proper flow
 4. Update documentation and flowcharts
 
+### Updating Title Logo
+1. Edit `src/main/java/com/thelair/files/title.txt`
+2. Ensure UTF-8 encoding
+3. Test file loading in both development and compiled modes
+4. Verify fallback behavior if file missing
+
+### Adding New Stages
+1. Create new `StageX.java` extending `Stage<Guardian>`
+2. Implement `getWorldIndicator()` automatically extracts code
+3. Pass world indicator to `BattleSystem` constructor
+4. Update `GameManager` to include new stage
+
 ### Performance Monitoring
 1. Monitor question selection performance
 2. Track memory usage with large question banks
 3. Ensure input validation doesn't cause delays
 4. Test with various player skill levels
+5. Monitor file I/O performance for title loading

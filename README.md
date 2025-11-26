@@ -1,78 +1,227 @@
-<h1>THE LAIR</h1>
-<h5>Welcome to the Lair Game</h5>
+# THE LAIR
 
-In a world where magic is written in code and power is measured in logic, there stands the grand citadel of learning known as the Cebu Institute of Technology University. To the outside world, it is a school, but to those who walk its halls, it is a proving ground for the next generation of digital pioneers.
+> *In a world where magic is written in code and power is measured in logic*
 
-A new student arrives, fresh from high school, ready to master the arcane arts of Information Technology and earn a degree. But this is no ordinary education. The path to graduation is a legendary quest, a series of seven great trials, each overseen by a formidable instructor who guards their knowledge with skill and wisdom.
+A text-based RPG adventure set in the halls of **Cebu Institute of Technology University**, where students must prove their mastery through five legendary trials. Battle minions, solve programming puzzles, and face formidable guardian instructors in your quest to become a true Scholar.
 
-To succeed, one must journey through realms of programming, conquer challenges of data, and command the very foundations of technology. The greatest tests lie not in simple exams, but in battles of wit and creativity against the masters themselves.
 
-The first trial awaits. The quest for knowledge begins now.
+---
 
-<h6> -----ALL HAIL MAROON AND GOLD-----</h6>
+## Overview
 
-<hr/>
+The Lair is a turn-based RPG that combines strategic combat with programming knowledge challenges. Players progress through 5 stages, each representing a course at CIT-U, battling enemies, solving puzzles, and facing guardian bosses who test both combat prowess and programming expertise.
 
-<h3>How to Run</h3>
+### Core Gameplay
+- **Turn-based Combat**: Strategic battles with 5 action types
+- **Puzzle System**: 3-5 puzzles per stage + boss finisher puzzles
+- **Character Progression**: Level up and upgrade stats between stages
+- **Random Events**: Dynamic encounters that shape your journey
+- **Skill System**: Unique abilities with synergies and cooldowns
 
-<p><b>Requirements:</b> Java 17+ (or compatible), a terminal/shell.</p>
+---
 
-<ol>
-<li><b>Compile</b>
-<pre><code>javac -d out $(find src/main/java -name "*.java")
-</code></pre>
-</li>
-<li><b>Run</b>
-<pre><code>java -cp out com.thelair.Main
-</code></pre>
-</li>
-</ol>
+## Quick Start
 
-<p>
-This MVP uses OOP pillars:
-<ul>
-<li><b>Abstraction</b>: `Stage<T extends Guardian>` and `Combatant` interface unify battles.</li>
-<li><b>Inheritance</b>: `CathyGuardian` and `KhaiGuardian` extend `Guardian`; heroes extend `Player`.</li>
-<li><b>Polymorphism</b>: `Player` subclasses override signature skills; `BattleSystem` accepts any `Combatant`.</li>
-<li><b>Encapsulation</b>: `Player`/`Guardian` fields are private with getters/setters.</li>
-</ul>
-</p>
+### Requirements
+- **Java 17+** (or compatible version)
+- Terminal/Command Line
 
-<p>Stages 1–5 are fully implemented with balanced combat, random events, puzzles, and story progression. Each stage features:
-- **5 minions** with increasing difficulty
-- **3-5 puzzle sequence** before boss battle 
-- **Boss battles** with animated dialogues and up to 3 finisher puzzles
-- **Random events** (60% chance): story moments, environmental hazards, or random encounters
-- **Experience rewards** that scale with stage difficulty (15-30 XP per minion, 75+ XP per boss)
-- **Level progression** with meaningful stat increases (+25 HP, +15 Logic, +10 Wisdom per level)</p>
+### Installation & Running
 
-<h3>New Features</h3>
-<ul>
-<li><b>Balanced Combat</b>: All character and guardian stats properly balanced for fair progression</li>
-<li><b>Balanced Experience System</b>: Proper progression requiring 200 XP for level 2, scaling to 200×level XP for subsequent levels</li>
-<li><b>Advanced Skill System</b>: Status effects, synergies, and cooldown management</li>
-<li><b>Random Events</b>: 60% chance for story moments, environmental hazards, or random encounters during stages</li>
-<li><b>Inventory & Items</b>: Stackable consumables with strategic usage in battle</li>
-<li><b>Animated Boss Dialogues</b>: Epic, multi-line introductions for all guardians</li>
-<li><b>Dean Ultimate Form</b>: Multi-phase final boss with powers from all guardians</li>
-<li><b>Debug Hero</b>: Testing character (option 6) for storyline review</li>
-</ul>
+```bash
+# Compile
+javac -d out $(find src/main/java -name "*.java")
 
-<h3>Implementation Status</h3>
-<p><b>FULLY IMPLEMENTED</b> - All planned features have been successfully implemented:</p>
-<ul>
-<li><b>Puzzle Engine</b>: Complete question bank with 5+ questions per guardian, random selection, 3-5 puzzle sequences per stage, and boss finisher puzzles</li>
-<li><b>Skill System</b>: Multi-skill selection with costs, cooldowns, synergies, and status effects</li>
-<li><b>Stage Content</b>: All 5 stages with minions, bosses, random events, and balanced progression</li>
-<li><b>Dean Multi-Phase</b>: Complex final boss with guardian power channeling and transformation mechanics</li>
-<li><b>UI Polish</b>: Animated intros, colored displays, and comprehensive battle feedback</li>
-</ul>
+# Run
+java -cp out com.thelair.Main
+```
 
-<h3>Advanced Features Added</h3>
-<ul>
-<li><b>Random Event System</b>: 60% chance for dynamic story moments, environmental challenges, and procedural encounters</li>
-<li><b>Status Effect Engine</b>: Turn-based buffs/debuffs with synergies (defense debuff enables damage multipliers)</li>
-<li><b>Experience Scaling</b>: Meaningful progression with +25 HP, +15 Logic, +10 Wisdom per level</li>
-<li><b>Inventory Management</b>: Stackable items with strategic combat applications</li>
-<li><b>Debug Testing Tools</b>: Special character for complete storyline review and balance testing</li>
-</ul>
+---
+
+## Game Features
+
+### Core Systems
+
+#### Combat System
+- **5 Combat Actions**: Attack, Signature Skills, Defend, Use Items, Inspect Enemy
+- **Turn-based Battles**: Strategic decision-making with resource management
+- **Status Effects**: Buffs and debuffs with turn-based duration
+- **Skill Synergies**: Combine skills for powerful combos
+
+#### Puzzle System
+- **Pre-Boss Puzzles**: 3-5 programming questions per stage
+- **Boss Finisher Puzzles**: Up to 3 puzzles when boss HP ≤ 40%
+- **Topics**: Loops, OOP, Data Structures, Information Systems, and more
+- **Perfect Score Bonus**: +50 XP for answering all puzzles correctly
+
+#### Progression System
+- **Experience Points**: Gain XP from battles and puzzles
+- **Leveling**: Level 2 at 200 XP, then 200 × level for subsequent levels
+- **Stat Upgrades**: Choose HP, Logic, or Wisdom after each stage
+- **Randomized Growth**: +35-65 HP, +35-60 Logic, +25-100 Wisdom per level
+
+### Character System
+
+**6 Playable Characters** with unique stats and skills:
+- **Iben Anoos** - The Codebreaker (High Logic, Glass Cannon)
+- **Gaille Amolong** - The Architect (Tank, Defensive)
+- **Ilde Jan Figueras** - The Challenger (High HP, Low Logic)
+- **Joseph Jimenez** - The Balanced (Versatile, All-Rounder)
+- **Jamuel Bacus** - The Tactician (High Wisdom, Strategic)
+- **DEBUG HERO** - The Unbeatable (Testing Character)
+
+### Stage Progression
+
+**5 Complete Stages** with increasing difficulty:
+1. **NGE 101** - Ma'am Cathy (Loops & Conditionals)
+2. **NGE 102** - Sir Khai (Object-Oriented Programming)
+3. **NGE 103** - Sir Serato (Debugging & Data Structures)
+4. **NGE 104** - Ma'am Tulin (Information Systems)
+5. **NGE 105** - The Dean (All Combined - Final Boss)
+
+Each stage includes:
+- 5 minion battles with random events
+- 3-5 puzzle sequence
+- Guardian boss battle with finisher puzzles
+- Stat upgrade choice upon completion
+
+### Random Event System
+
+**60% chance** for dynamic encounters:
+- **Story Events** (20%): Gain stat bonuses and lore progression
+- **Environmental Hazards** (20%): Wisdom costs with potential benefits
+- **Random Encounters** (20%): Battle code entities for XP and items
+
+### Inventory & Items
+
+**Consumable Items**:
+- **Small Potion**: Restores 100 HP
+- **Medium Potion**: Restores 250 HP
+- **Small Ether**: Restores 80 Wisdom
+- **Revive**: Restores 50% HP (when defeated)
+- **Bomb**: Deals 150 true damage to enemy
+
+---
+
+## User Interface
+
+### Visual Features
+- **ASCII Art Title**: Dynamic logo loaded from `title.txt` file
+- **World Indicators**: Stage codes `[NGE101]` displayed in bold cyan every turn
+- **ANSI Colors**: Color-coded battle HUD and menu sections
+- **Animated Text**: Star Wars-style typewriter effect for narration
+- **Formatted Menus**: Clean, organized displays with proper spacing
+
+### Input System
+- **Comprehensive Validation**: All inputs validated with try-catch blocks
+- **Error Recovery**: Clear error messages with automatic retry loops
+- **Range Checking**: Ensures valid menu options
+- **User-Friendly**: Helpful prompts and feedback
+
+---
+
+## Technical Architecture
+
+### Object-Oriented Design
+
+This project demonstrates all four OOP pillars:
+
+- **Abstraction**: `Stage<T extends Guardian>` and `Combatant` interface unify battles
+- **Inheritance**: Guardian classes extend `Guardian`; Player classes extend `Player`
+- **Polymorphism**: `BattleSystem` accepts any `Combatant`; Players override signature skills
+- **Encapsulation**: Private fields with getters/setters throughout
+
+### Key Components
+
+- **BattleSystem**: Manages combat flow, boss puzzles, and experience distribution
+- **PuzzleEngine**: Handles question banks, puzzle sequences, and answer validation
+- **Stage Classes**: Control stage-specific flow and random events
+- **ConsoleUI**: Provides formatting, colors, animations, and file loading
+- **Player/Guardian Classes**: Define character stats, skills, and abilities
+
+### File System
+
+- **Title Logo**: Loaded from `src/main/java/com/thelair/files/title.txt`
+- **Multiple Fallbacks**: Resource path, file system paths, and default header
+- **Error Handling**: Graceful degradation if files are missing
+
+---
+
+## Documentation
+
+Comprehensive documentation available in the `docs/` directory:
+
+- **[Complete Storyline](docs/Complete_Storyline.md)**: Full narrative for all stages
+- **[Character Guide](docs/Character_Guide.md)**: Detailed character stats and strategies
+- **[How It Works](docs/How_It_Works.md)**: Complete gameplay mechanics guide
+- **[Technical Implementation](docs/Technical_Implementation_Guide.md)**: Code architecture and details
+- **[Quick Reference](docs/Quick_Reference.md)**: At-a-glance information
+- **[Game Flow Documentation](docs/Game_Flow_Documentation.md)**: Flowcharts and structure
+
+---
+
+## Recent Updates
+
+### Latest Features
+- **File-Based Title System**: Dynamic ASCII art logo loading
+- **World Indicator Display**: Stage codes with ANSI colors
+- **Robust Input Validation**: Comprehensive error handling
+- **Enhanced UI**: Colored displays and formatted menus
+- **Complete Puzzle System**: 3-5 puzzles per stage + boss finishers
+- **Random Event System**: Dynamic story moments and encounters
+- **Status Effect Engine**: Turn-based buffs/debuffs with synergies
+
+---
+
+## Game Status
+
+**FULLY IMPLEMENTED** - All planned features are complete and tested:
+
+- 5 complete stages with balanced progression
+- 6 playable characters with unique abilities
+- Complete puzzle system with 25+ questions
+- Random event system with 3 event types
+- Inventory and item management
+- Experience and leveling system
+- Skill system with synergies
+- Status effects and cooldowns
+- Multi-phase boss battles
+- File handling and UI polish
+
+---
+
+## Educational Value
+
+The Lair serves as both entertainment and educational tool:
+
+- **Programming Concepts**: Questions test real Java and programming knowledge
+- **Problem Solving**: Puzzles require understanding of core concepts
+- **Strategic Thinking**: Combat requires resource management and planning
+- **OOP Demonstration**: Codebase showcases proper OOP principles
+
+---
+
+## License & Credits
+
+Developed as an Object-Oriented Programming project demonstrating:
+- Clean code architecture
+- Proper design patterns
+- Comprehensive documentation
+- User-friendly interfaces
+
+**Institution**: Cebu Institute of Technology University  
+
+---
+
+## Tips for Players
+
+1. **Manage Resources**: Balance Wisdom usage and item consumption
+2. **Learn Synergies**: Some skills work better together
+3. **Read Carefully**: Puzzles test real programming knowledge
+4. **Plan Upgrades**: Choose stat upgrades based on your character
+5. **Use Items Strategically**: Save powerful items for boss battles
+6. **Embrace Random Events**: They often provide valuable benefits
+
+---
+
+*Begin your journey through The Lair and prove yourself worthy of becoming a Scholar!*
