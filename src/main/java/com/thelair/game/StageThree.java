@@ -10,7 +10,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageThree extends Stage<SeratoGuardian> {
 	public StageThree() {
-		super("NGE 103 – The DSA Sentinel of Sir Serato", new SeratoGuardian());
+		super("RTL1 301 – The DSA Sentinel of Sir Serato", new SeratoGuardian());
 	}
 
     public void intro() {

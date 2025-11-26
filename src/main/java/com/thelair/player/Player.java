@@ -29,6 +29,7 @@ public abstract class Player implements Combatant {
     protected java.util.Map<String, Integer> inventory = new java.util.HashMap<>();
     protected int experience = 0;
     protected int experienceToNextLevel = 100;
+    protected boolean isDefending = false;
 
     public Player(String name, String characterClass, int level, int maxHP, int maxWisdom) {
         this.name = name;
@@ -53,6 +54,13 @@ public abstract class Player implements Combatant {
         System.out.println(name + "is now fully rested!");
 
     }
+    public void setIsDefending(boolean isDefending){
+        this.isDefending = isDefending;
+    }
+    public boolean getIsDefending(){
+        return isDefending;
+    }
+
 
     public boolean isAlive() {
         return currentHP > 0;

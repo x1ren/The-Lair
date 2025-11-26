@@ -1,12 +1,16 @@
 package com.thelair.player;
+import java.util.Random;        
 
 public class JosephJimenez extends Player {
     public JosephJimenez(String name, int level, int maxHP, int maxWisdom) {
-        super("Jimenez", "The Balanced", 1, 400, 200);
+        super("Jimenez", "The Balanced", 1, 750, 200);
         // Align to Character Stats doc (HP 400, Logic 200, Wisdom 200)
         this.setMaxHP(750);
-        this.setCurrentHP(400);
-        this.setLogic(new Random().nextInt(150 250));
+        this.setCurrentHP(750);
+        int min = 150;
+        int max = 250; 
+        int value = new Random().nextInt(max - min) + min;
+        this.setLogic(value);
         this.setWisdomStat(200);
         this.setMaxWisdom(200);
         this.setCurrentWisdom(200);

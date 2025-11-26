@@ -10,7 +10,7 @@ import com.thelair.puzzle.PuzzleEngine;
 
 public class StageTwo extends Stage<KhaiGuardian> {
 	public StageTwo() {
-		super("NGE 102 – The OOP Sentinel of Sir Khai", new KhaiGuardian());
+		super("GLE 202 – The OOP Sentinel of Sir Khai", new KhaiGuardian());
 	}
 
     public void intro() {

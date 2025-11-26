@@ -1,12 +1,15 @@
 package com.thelair.player;
-
+import java.util.Random; 
 public class AnoosIben extends Player {
     public AnoosIben(String name, int level, int maxHP, int maxWisdom) {
-        super("Iben Anoos", "The Codebreaker", 1, 400, 200);
-        // Align to Character Stats doc (HP 400, Logic 300, Wisdom 200)
+        super("Iben Anoos", "The Codebreaker", 1, 700, 200);
+
         this.setMaxHP(700);
-        this.setCurrentHP(400);
-        this.setLogic(new Random().nextInt(200 300));
+        this.setCurrentHP(700);
+        int min = 200;
+        int max = 300; 
+        int value = new Random().nextInt(max - min) + min;
+        this.setLogic(value);
         this.setWisdomStat(200);
         this.setMaxWisdom(200);
         this.setCurrentWisdom(200);

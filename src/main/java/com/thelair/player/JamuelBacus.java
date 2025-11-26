@@ -1,14 +1,17 @@
 package com.thelair.player;
-
+import java.util.Random; 
 public class JamuelBacus extends Player {
     public JamuelBacus(String name, int level, int maxHP, int maxWisdom) {
-        super("Bacus", "The Tactician", 1, 300, 400);
+        super("Bacus", "The Tactician", 1, 700, 200);
         // Align to Character Stats doc (HP 300, Logic 200, Wisdom 400)
         this.setMaxHP(700);
-        this.setCurrentHP(300);
-        this.setLogic(new Random().nextInt(200 300));
-        this.setWisdomStat(400);
-        this.setMaxWisdom(400);
+        this.setCurrentHP(700);
+        int min = 200;
+        int max = 300; 
+        int value = new Random().nextInt(max - min) + min;
+        this.setLogic(value);
+        this.setWisdomStat(200);
+        this.setMaxWisdom(200);
         this.setCurrentWisdom(400);
         this.setSkills(new Skill[]{
             new Skill("RECURSIVE_INSIGHT", "Recursive Insight", 40, "Reduces next enemy attack by 30%.", 2),

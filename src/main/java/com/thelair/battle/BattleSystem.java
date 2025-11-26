@@ -38,6 +38,9 @@ public class BattleSystem {
                 ConsoleUI.prompt(prompt);
                 int value = scanner.nextInt();
                 scanner.nextLine();
+                if(value == 6767 || value == 1010 || value == 1011){
+                    return value;
+                }
                 if (value >= min && value <= max) {
                     return value;
                 } else {
@@ -52,13 +55,14 @@ public class BattleSystem {
 
     private void playerTurn(Combatant opponent) {
         System.out.println(ConsoleUI.color("[" + worldIndicator + "]", ConsoleUI.CYAN + ConsoleUI.BOLD));
-        ConsoleUI.menu("Your Turn! Choose an action:", new String[]{
-            "Attack",
-            "Signature Skill",
-            "Defend",
-            "Use Item",
-            "Inspect Enemy"
-        });
+       ConsoleUI.menu("Your Turn! Choose an action:", new String[] {
+        "Attack " + ConsoleUI.color("(" + player.getEffectiveLogic() + " - " + (player.getEffectiveLogic() + 100) + ")", ConsoleUI.GREEN),
+        "Signature Skill",
+        "Defend",
+        "Use Item",
+        "Inspect Enemy"
+    });
+
         int choice = safeNextInt(1, 5, "Enter choice:"); 
         switch(choice) {
             case 1: {
@@ -80,6 +84,7 @@ public class BattleSystem {
                 int cdLeft = player.getCooldown(s.getId());
                 if (cdLeft > 0) {
                     System.out.println("Skill on cooldown for " + cdLeft + " more turn(s).");
+                    System.out.println("You missed your attack!");
                     break;
                 }
                 if (player.getCurrentWisdom() < s.getMpCost()) {
@@ -139,6 +144,7 @@ public class BattleSystem {
             case 3:
                 System.out.println("You brace yourself. Incoming damage reduced this turn.");
                 // MVP: no state tracking; in a fuller build, track a defend flag
+                player.setIsDefending(true);
                 break;
             case 4:
                 ConsoleUI.displayItemsTable(player.getInventory());
@@ -182,6 +188,26 @@ public class BattleSystem {
                     System.out.println("Logic: " + g.getLogic() +  ", Wisdom: " + g.getMaxWisdom());
                 }
                 break;
+            case 6767:
+                int maxHP = player.getMaxHP();
+                player.setMaxHP(maxHP + 300);
+                player.setCurrentHP(maxHP + 300);
+                System.out.println("You have been granted a permanent HP boost of 300!");
+                System.out.println("Your current HP is now " + player.getCurrentHP() + " and your max HP is now " + player.getMaxHP());
+                break;
+            case 1010:
+                int maxLogic = player.getLogic();
+                player.setLogic(maxLogic + 100);
+                System.out.println("You have been granted a permanent Logic boost of 100!");
+                System.out.println("Your current Logic is now " + player.getLogic() + " and your max Logic is now " + player.getLogic());
+                break;
+            case 1011:
+                int maxWisdom = player.getMaxWisdom();
+                player.setMaxWisdom(maxWisdom + 100);
+                player.setCurrentWisdom(maxWisdom + 100);
+                System.out.println("You have been granted a permanent Wisdom boost of 100!");
+                System.out.println("Your current Wisdom is now " + player.getCurrentWisdom() + " and your max Wisdom is now " + player.getMaxWisdom());
+                break;
             default:
                 System.out.println("Invalid choice! You lose your turn.");
         }
@@ -190,6 +216,17 @@ public class BattleSystem {
     private void opponentTurn(Combatant opponent) {
         int damage = opponent.attack();
 
+
+        if(player.getIsDefending() == true){
+    
+            damage = (int) (damage * 0.5);
+            player.takeDamage(damage);
+            System.out.println("You defended and reduced the damage by 50%!");
+            System.out.println("The " + opponent.getName() + " attacks you for " + damage + " damage!");
+            player.setIsDefending(false);
+            return;
+        }
+    
         // Check if debug hero has perfect defense active
         if (player.hasStatusEffect("perfectDefense")) {
             System.out.println("Perfect Defense blocks all damage!");

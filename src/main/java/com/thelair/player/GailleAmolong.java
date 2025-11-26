@@ -1,12 +1,14 @@
 package com.thelair.player;
-
+import java.util.Random; 
 public class GailleAmolong extends Player {
     public GailleAmolong(String name, int level, int maxHP, int maxWisdom) {
-        super("Gaille Amolong", "The Architect", 1, 500, 300);
-        // Align to Character Stats doc (HP 500, Logic 200, Wisdom 300)
+        super("Gaille Amolong", "The Architect", 1, 750, 300);
         this.setMaxHP(750);
-        this.setCurrentHP(500);
-        this.setLogic(new Random().nextInt(150 250));
+        this.setCurrentHP(750);
+        int min = 150;
+        int max = 250; 
+        int value = new Random().nextInt(max - min) + min;
+        this.setLogic(value);
         this.setWisdomStat(300);
         this.setMaxWisdom(300);
         this.setCurrentWisdom(300);
