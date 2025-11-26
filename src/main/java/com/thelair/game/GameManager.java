@@ -60,13 +60,13 @@ public class GameManager {
 		int roll = rng.nextInt((max - min) + 1) + min;
         int category;
         while (true) {
-            ConsoleUI.menu("Choose your upgrade (Stage " + stageNumber + ")", new String[]{
-                "+HP",
-                "+Logic",
-                "+Wisdom"
-            });
+        ConsoleUI.menu("Choose your upgrade (Stage " + stageNumber + ")", new String[]{
+            "+HP",
+            "+Logic",
+            "+Wisdom"
+        });
             try {
-                ConsoleUI.prompt("Enter choice:");
+        ConsoleUI.prompt("Enter choice:");
                 int choice = Integer.parseInt(scanner.nextLine().trim());
                 if (choice >= 1 && choice <= 3) {
                     category = choice - 1;
